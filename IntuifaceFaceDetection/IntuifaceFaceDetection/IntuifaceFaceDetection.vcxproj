@@ -155,6 +155,7 @@ XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\opencv\bin\opencv_imgproc420
 XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\opencv\bin\opencv_core420d.dll" "$(targetDir)" /S /Y
 XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\opencv\bin\opencv_imgcodecs420d.dll" "$(targetDir)" /S /Y
 XCOPY "$(solutionDir)models\*" "$(targetDir)\models\" /S /Y
+XCOPY "C:\program files (x86)\common files\intel\shared libraries\redist\intel64_win\compiler\*.dll" "$(targetDir)" /S /Y
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -198,6 +199,7 @@ XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\opencv\bin\opencv_imgproc420
 XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\opencv\bin\opencv_core420d.dll" "$(targetDir)" /S /Y
 XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\opencv\bin\opencv_imgcodecs420d.dll" "$(targetDir)" /S /Y
 XCOPY "$(solutionDir)models\*" "$(targetDir)\models\" /S /Y
+XCOPY "C:\program files (x86)\common files\intel\shared libraries\redist\intel64_win\compiler\*.dll" "$(targetDir)" /S /Y
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>

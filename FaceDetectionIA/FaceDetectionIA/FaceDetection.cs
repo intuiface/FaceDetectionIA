@@ -242,6 +242,15 @@ namespace FaceDetectionIA
             if (ViewerDetected != null)
             {
                 ViewerDetected(this, new ViewerEventArgs(viewerId, gender, ageRange, viewingTime));
+
+                if (gender == "male")
+                {
+                    RaiseMaleDetected(viewerId, gender, ageRange, viewingTime);
+                }
+                else
+                {
+                    RaiseFemaleDetected(viewerId, gender, ageRange, viewingTime);
+                }
             }
         }
 
