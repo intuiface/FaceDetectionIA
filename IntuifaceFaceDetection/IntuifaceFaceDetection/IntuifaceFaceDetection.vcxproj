@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\beast.hpp" />
+    <ClInclude Include="include\detectors.hpp" />
+    <ClInclude Include="include\exporter.hpp" />
+    <ClInclude Include="include\face.hpp" />
+    <ClInclude Include="include\HTTPRequest.hpp" />
+    <ClInclude Include="include\http_session.hpp" />
+    <ClInclude Include="include\interactive_face_detection.hpp" />
+    <ClInclude Include="include\listener.hpp" />
+    <ClInclude Include="include\net.hpp" />
+    <ClInclude Include="include\shared_state.hpp" />
+    <ClInclude Include="include\visualizer.hpp" />
+    <ClInclude Include="include\websocket_session.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="src\detectors.cpp" />
+    <ClCompile Include="src\exporter.cpp" />
+    <ClCompile Include="src\face.cpp" />
+    <ClCompile Include="src\http_session.cpp" />
+    <ClCompile Include="src\listener.cpp" />
+    <ClCompile Include="src\shared_state.cpp" />
+    <ClCompile Include="src\visualizer.cpp" />
+    <ClCompile Include="src\websocket_session.cpp" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>15.0</VCProjectVersion>
+    <ProjectGuid>{9FB7F7BC-D573-4EBA-B2DC-DA2C32B25D05}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>IntuifaceFaceDetection</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)\dist\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>build\$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)\dist\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>build\$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)\dist\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>build\$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)\dist\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>build\$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_SCL_SECURE_NO_WARNINGS;NOMINMAX;_CRT_SECURE_NO_WARNINGS;USE_OPENCV;GFLAGS_IS_A_DLL=0;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\demos\interactive_face_detection_demo\include;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\demos\interactive_face_detection_demo\..\common;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\demos\common\monitors;$(OPEN_VINO)\inference_engine_demos_build\thirdparty\gflags\include;C:\Program Files (x86)\IntelSWTools\openvino\opencv\include;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\include;C:\boost_1_72_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4251;4275;4267</DisableSpecificWarnings>
+      <UseFullPaths>false</UseFullPaths>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>C:\Program Files (x86)\IntelSWTools\openvino\opencv\lib\opencv_highgui420d.lib;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\lib\intel64\Debug\inference_engine_c_apid.lib;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\lib\intel64\Debug\inference_engine_nn_builderd.lib;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\lib\intel64\Debug\inference_engined.lib;$(OPEN_VINO)\inference_engine_demos_build\intel64\Debug\monitors.lib;$(OPEN_VINO)\inference_engine_demos_build\intel64\Debug\gflags_nothreads_static.lib;C:\Program Files (x86)\IntelSWTools\openvino\opencv\lib\opencv_videoio420d.lib;C:\Program Files (x86)\IntelSWTools\openvino\opencv\lib\opencv_imgcodecs420d.lib;C:\Program Files (x86)\IntelSWTools\openvino\opencv\lib\opencv_imgproc420d.lib;C:\Program Files (x86)\IntelSWTools\openvino\opencv\lib\opencv_core420d.lib;C:\boost_1_72_0\stage\lib\libboost_date_time-vc141-mt-gd-x64-1_72.lib;C:\boost_1_72_0\stage\lib\libboost_regex-vc141-mt-gd-x64-1_72.lib;pdh.lib;shlwapi.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <LargeAddressAware>true</LargeAddressAware>
+      <ImportLibrary>C:/Users/Nicolas Daures/Documents/Intel/OpenVINO/inference_engine_demos_build/intel64/Debug/interactive_face_detection_demo.lib</ImportLibrary>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+    <PostBuildEvent>
+      <Command>XCOPY "$(OPEN_VINO)\inference_engine_demos_build\intel64\Debug\ngraphd.dll" "$(targetDir)" /S /Y
+XCOPY "$(OPEN_VINO)\inference_engine_demos_build\intel64\Debug\tbb_debug.dll" "$(targetDir)" /S /Y
+XCOPY "$(OPEN_VINO)\inference_engine_demos_build\intel64\Debug\inference_engine_nn_builderd.dll" "$(targetDir)" /S /Y
+XCOPY "$(OPEN_VINO)\inference_engine_demos_build\intel64\Debug\inference_engined.dll" "$(targetDir)" /S /Y
+XCOPY "$(OPEN_VINO)\inference_engine_demos_build\intel64\Debug\clDNNPlugind.dll" "$(targetDir)" /S /Y
+XCOPY "$(OPEN_VINO)\inference_engine_demos_build\intel64\Debug\MKLDNNPlugind.dll" "$(targetDir)" /S /Y
+XCOPY "$(OPEN_VINO)\inference_engine_demos_build\intel64\Debug\mkl_tiny_tbb_debug.dll" "$(targetDir)" /S /Y
+XCOPY "$(OPEN_VINO)\inference_engine_demos_build\intel64\Debug\plugins.xml" "$(targetDir)" /S /Y
+XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\opencv\bin\opencv_highgui420d.dll" "$(targetDir)" /S /Y
+XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\opencv\bin\opencv_videoio420d.dll" "$(targetDir)" /S /Y
+XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\opencv\bin\opencv_imgproc420d.dll" "$(targetDir)" /S /Y
+XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\opencv\bin\opencv_core420d.dll" "$(targetDir)" /S /Y
+XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\opencv\bin\opencv_imgcodecs420d.dll" "$(targetDir)" /S /Y
+XCOPY "$(solutionDir)models\*" "$(targetDir)\models\" /S /Y
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\demos\interactive_face_detection_demo\include;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\demos\interactive_face_detection_demo\..\common;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\demos\common\monitors;$(OPEN_VINO)\inference_engine_demos_build\thirdparty\gflags\include;C:\Program Files (x86)\IntelSWTools\openvino\opencv\include;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\include;C:\boost_1_72_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4251;4275;4267</DisableSpecificWarnings>
+      <UseFullPaths>false</UseFullPaths>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>C:\Program Files (x86)\IntelSWTools\openvino\opencv\lib\opencv_highgui420d.lib;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\lib\intel64\Debug\inference_engine_c_apid.lib;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\lib\intel64\Debug\inference_engine_nn_builderd.lib;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\lib\intel64\Debug\inference_engined.lib;$(OPEN_VINO)\inference_engine_demos_build\intel64\Debug\monitors.lib;$(OPEN_VINO)\inference_engine_demos_build\intel64\Debug\gflags_nothreads_static.lib;C:\Program Files (x86)\IntelSWTools\openvino\opencv\lib\opencv_videoio420d.lib;C:\Program Files (x86)\IntelSWTools\openvino\opencv\lib\opencv_imgcodecs420d.lib;C:\Program Files (x86)\IntelSWTools\openvino\opencv\lib\opencv_imgproc420d.lib;C:\Program Files (x86)\IntelSWTools\openvino\opencv\lib\opencv_core420d.lib;C:\boost_1_72_0\stage\lib\libboost_date_time-vc141-mt-gd-x64-1_72.lib;C:\boost_1_72_0\stage\lib\libboost_regex-vc141-mt-gd-x64-1_72.lib;pdh.lib;shlwapi.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <LargeAddressAware>true</LargeAddressAware>
+      <ImportLibrary>C:/Users/Nicolas Daures/Documents/Intel/OpenVINO/inference_engine_demos_build/intel64/Debug/interactive_face_detection_demo.lib</ImportLibrary>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+    <PostBuildEvent>
+      <Command>XCOPY "$(OPEN_VINO)\inference_engine_demos_build\intel64\Debug\ngraphd.dll" "$(targetDir)" /S /Y
+XCOPY "$(OPEN_VINO)\inference_engine_demos_build\intel64\Debug\tbb_debug.dll" "$(targetDir)" /S /Y
+XCOPY "$(OPEN_VINO)\inference_engine_demos_build\intel64\Debug\inference_engine_nn_builderd.dll" "$(targetDir)" /S /Y
+XCOPY "$(OPEN_VINO)\inference_engine_demos_build\intel64\Debug\inference_engined.dll" "$(targetDir)" /S /Y
+XCOPY "$(OPEN_VINO)\inference_engine_demos_build\intel64\Debug\clDNNPlugind.dll" "$(targetDir)" /S /Y
+XCOPY "$(OPEN_VINO)\inference_engine_demos_build\intel64\Debug\MKLDNNPlugind.dll" "$(targetDir)" /S /Y
+XCOPY "$(OPEN_VINO)\inference_engine_demos_build\intel64\Debug\mkl_tiny_tbb_debug.dll" "$(targetDir)" /S /Y
+XCOPY "$(OPEN_VINO)\inference_engine_demos_build\intel64\Debug\plugins.xml" "$(targetDir)" /S /Y
+XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\opencv\bin\opencv_highgui420d.dll" "$(targetDir)" /S /Y
+XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\opencv\bin\opencv_videoio420d.dll" "$(targetDir)" /S /Y
+XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\opencv\bin\opencv_imgproc420d.dll" "$(targetDir)" /S /Y
+XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\opencv\bin\opencv_core420d.dll" "$(targetDir)" /S /Y
+XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\opencv\bin\opencv_imgcodecs420d.dll" "$(targetDir)" /S /Y
+XCOPY "$(solutionDir)models\*" "$(targetDir)\models\" /S /Y
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\demos\interactive_face_detection_demo\include;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\demos\interactive_face_detection_demo\..\common;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\demos\common\monitors;$(OPEN_VINO)\inference_engine_demos_build\thirdparty\gflags\include;C:\Program Files (x86)\IntelSWTools\openvino\opencv\include;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\include;C:\boost_1_72_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4251;4275;4267</DisableSpecificWarnings>
+      <UseFullPaths>false</UseFullPaths>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>C:\Program Files (x86)\IntelSWTools\openvino\opencv\lib\opencv_highgui420.lib;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\lib\intel64\Release\inference_engine_c_api.lib;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\lib\intel64\Release\inference_engine_nn_builder.lib;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\lib\intel64\Release\inference_engine.lib;$(OPEN_VINO)\inference_engine_demos_build\intel64\Release\monitors.lib;$(OPEN_VINO)\inference_engine_demos_build\intel64\Release\gflags_nothreads_static.lib;C:\Program Files (x86)\IntelSWTools\openvino\opencv\lib\opencv_videoio420.lib;C:\Program Files (x86)\IntelSWTools\openvino\opencv\lib\opencv_imgcodecs420.lib;C:\Program Files (x86)\IntelSWTools\openvino\opencv\lib\opencv_imgproc420.lib;C:\Program Files (x86)\IntelSWTools\openvino\opencv\lib\opencv_core420.lib;C:\boost_1_72_0\stage\lib\libboost_date_time-vc141-mt-x64-1_72.lib;C:\boost_1_72_0\stage\lib\libboost_regex-vc141-mt-x64-1_72.lib;pdh.lib;shlwapi.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <LargeAddressAware>true</LargeAddressAware>
+      <ImportLibrary>C:/Users/Nicolas Daures/Documents/Intel/OpenVINO/inference_engine_demos_build/intel64/Release/interactive_face_detection_demo.lib</ImportLibrary>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+    <PostBuildEvent>
+      <Command>XCOPY "$(OPEN_VINO)\inference_engine_demos_build\intel64\Release\ngraph.dll" "$(targetDir)" /S /Y
+XCOPY "$(OPEN_VINO)\inference_engine_demos_build\intel64\Release\tbb.dll" "$(targetDir)" /S /Y
+XCOPY "$(OPEN_VINO)\inference_engine_demos_build\intel64\Release\inference_engine_nn_builder.dll" "$(targetDir)" /S /Y
+XCOPY "$(OPEN_VINO)\inference_engine_demos_build\intel64\Release\inference_engine.dll" "$(targetDir)" /S /Y
+XCOPY "$(OPEN_VINO)\inference_engine_demos_build\intel64\Release\clDNNPlugin.dll" "$(targetDir)" /S /Y
+XCOPY "$(OPEN_VINO)\inference_engine_demos_build\intel64\Release\MKLDNNPlugin.dll" "$(targetDir)" /S /Y
+XCOPY "$(OPEN_VINO)\inference_engine_demos_build\intel64\Release\mkl_tiny_tbb.dll" "$(targetDir)" /S /Y
+XCOPY "$(OPEN_VINO)\inference_engine_demos_build\intel64\Release\plugins.xml" "$(targetDir)" /S /Y
+XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\opencv\bin\opencv_highgui420.dll" "$(targetDir)" /S /Y
+XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\opencv\bin\opencv_videoio420.dll" "$(targetDir)" /S /Y
+XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\opencv\bin\opencv_imgproc420.dll" "$(targetDir)" /S /Y
+XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\opencv\bin\opencv_core420.dll" "$(targetDir)" /S /Y
+XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\opencv\bin\opencv_imgcodecs420.dll" "$(targetDir)" /S /Y
+XCOPY "$(solutionDir)\models\*" "$(targetDir)\models\" /S /Y
+XCOPY "C:\program files (x86)\common files\intel\shared libraries\redist\intel64_win\compiler\*.dll" "$(targetDir)" /S /Y
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\demos\interactive_face_detection_demo\include;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\demos\interactive_face_detection_demo\..\common;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\demos\common\monitors;$(OPEN_VINO)\inference_engine_demos_build\thirdparty\gflags\include;C:\Program Files (x86)\IntelSWTools\openvino\opencv\include;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\include;C:\boost_1_72_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4251;4275;4267</DisableSpecificWarnings>
+      <UseFullPaths>false</UseFullPaths>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>C:\Program Files (x86)\IntelSWTools\openvino\opencv\lib\opencv_highgui420.lib;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\lib\intel64\Release\inference_engine_c_api.lib;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\lib\intel64\Release\inference_engine_nn_builder.lib;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\lib\intel64\Release\inference_engine.lib;$(OPEN_VINO)\inference_engine_demos_build\intel64\Release\monitors.lib;$(OPEN_VINO)\inference_engine_demos_build\intel64\Release\gflags_nothreads_static.lib;C:\Program Files (x86)\IntelSWTools\openvino\opencv\lib\opencv_videoio420.lib;C:\Program Files (x86)\IntelSWTools\openvino\opencv\lib\opencv_imgcodecs420.lib;C:\Program Files (x86)\IntelSWTools\openvino\opencv\lib\opencv_imgproc420.lib;C:\Program Files (x86)\IntelSWTools\openvino\opencv\lib\opencv_core420.lib;C:\boost_1_72_0\stage\lib\libboost_date_time-vc141-mt-x64-1_72.lib;C:\boost_1_72_0\stage\lib\libboost_regex-vc141-mt-x64-1_72.lib;pdh.lib;shlwapi.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <LargeAddressAware>true</LargeAddressAware>
+      <ImportLibrary>C:/Users/Nicolas Daures/Documents/Intel/OpenVINO/inference_engine_demos_build/intel64/Release/interactive_face_detection_demo.lib</ImportLibrary>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+    <PostBuildEvent>
+      <Command>XCOPY "$(OPEN_VINO)\inference_engine_demos_build\intel64\Release\ngraph.dll" "$(targetDir)" /S /Y
+XCOPY "$(OPEN_VINO)\inference_engine_demos_build\intel64\Release\tbb.dll" "$(targetDir)" /S /Y
+XCOPY "$(OPEN_VINO)\inference_engine_demos_build\intel64\Release\inference_engine_nn_builder.dll" "$(targetDir)" /S /Y
+XCOPY "$(OPEN_VINO)\inference_engine_demos_build\intel64\Release\inference_engine.dll" "$(targetDir)" /S /Y
+XCOPY "$(OPEN_VINO)\inference_engine_demos_build\intel64\Release\clDNNPlugin.dll" "$(targetDir)" /S /Y
+XCOPY "$(OPEN_VINO)\inference_engine_demos_build\intel64\Release\MKLDNNPlugin.dll" "$(targetDir)" /S /Y
+XCOPY "$(OPEN_VINO)\inference_engine_demos_build\intel64\Release\mkl_tiny_tbb.dll" "$(targetDir)" /S /Y
+XCOPY "$(OPEN_VINO)\inference_engine_demos_build\intel64\Release\plugins.xml" "$(targetDir)" /S /Y
+XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\opencv\bin\opencv_highgui420.dll" "$(targetDir)" /S /Y
+XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\opencv\bin\opencv_videoio420.dll" "$(targetDir)" /S /Y
+XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\opencv\bin\opencv_imgproc420.dll" "$(targetDir)" /S /Y
+XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\opencv\bin\opencv_core420.dll" "$(targetDir)" /S /Y
+XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\opencv\bin\opencv_imgcodecs420.dll" "$(targetDir)" /S /Y
+XCOPY "$(solutionDir)\models\*" "$(targetDir)\models\" /S /Y
+XCOPY "C:\program files (x86)\common files\intel\shared libraries\redist\intel64_win\compiler\*.dll" "$(targetDir)" /S /Y
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
