@@ -30,3 +30,12 @@
 *.exe
 *.out
 *.app
+
+# compiled output
+**/dist
+**/build
+**/bin
+**/obj
+**/tmp
+**/packages
+**/.vs

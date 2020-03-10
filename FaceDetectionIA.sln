@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 15.0.28307.852
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FaceDetectionIA", "FaceDetectionIA\FaceDetectionIA.csproj", "{BDB468E9-1670-4CB1-9BDF-46BB478EFBEA}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C1B7C78A-55C9-481E-BAE2-B2E240D9A392} = {C1B7C78A-55C9-481E-BAE2-B2E240D9A392}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestFaceDetection", "TestFaceDetection\TestFaceDetection.csproj", "{351ED45E-7E51-40F4-82D8-C21F77CAC745}"
 EndProject
@@ -44,11 +47,13 @@ Global
 		{351ED45E-7E51-40F4-82D8-C21F77CAC745}.Release|x86.ActiveCfg = Release|Any CPU
 		{351ED45E-7E51-40F4-82D8-C21F77CAC745}.Release|x86.Build.0 = Release|Any CPU
 		{C1B7C78A-55C9-481E-BAE2-B2E240D9A392}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{C1B7C78A-55C9-481E-BAE2-B2E240D9A392}.Debug|Any CPU.Build.0 = Debug|Win32
 		{C1B7C78A-55C9-481E-BAE2-B2E240D9A392}.Debug|x64.ActiveCfg = Debug|x64
 		{C1B7C78A-55C9-481E-BAE2-B2E240D9A392}.Debug|x64.Build.0 = Debug|x64
 		{C1B7C78A-55C9-481E-BAE2-B2E240D9A392}.Debug|x86.ActiveCfg = Debug|Win32
 		{C1B7C78A-55C9-481E-BAE2-B2E240D9A392}.Debug|x86.Build.0 = Debug|Win32
 		{C1B7C78A-55C9-481E-BAE2-B2E240D9A392}.Release|Any CPU.ActiveCfg = Release|Win32
+		{C1B7C78A-55C9-481E-BAE2-B2E240D9A392}.Release|Any CPU.Build.0 = Release|Win32
 		{C1B7C78A-55C9-481E-BAE2-B2E240D9A392}.Release|x64.ActiveCfg = Release|x64
 		{C1B7C78A-55C9-481E-BAE2-B2E240D9A392}.Release|x64.Build.0 = Release|x64
 		{C1B7C78A-55C9-481E-BAE2-B2E240D9A392}.Release|x86.ActiveCfg = Release|Win32
