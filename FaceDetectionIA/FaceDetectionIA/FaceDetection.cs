@@ -15,7 +15,7 @@ using WebSocketSharp;
 
 namespace FaceDetectionIA
 {
-    public class FaceDetection : INotifyPropertyChanged
+    public class FaceDetection : INotifyPropertyChanged, IDisposable
     {
         #region INotifyPropertyChanged
 
@@ -39,11 +39,11 @@ namespace FaceDetectionIA
         private string m_strServerHost = "127.0.0.1";
         // FaceDetection server Port
         private int m_iPort = 2975;
-        
+
         private WebSocket m_refWS;
 
         //Attributes to be displayed to IntuiFace
-        private int m_iCurrentCount = 0;        
+        private int m_iCurrentCount = 0;
         private string m_strLogText = "";
         private bool m_bActivateLogs = false;
         //private HashSet<int> m_mapCurrentViewerIds;
@@ -61,6 +61,8 @@ namespace FaceDetectionIA
         //main viewer
         private Viewer m_refMainViewer;
         private bool m_bIsMainViewerDetected = false;
+
+        private Process m_faceDetectionProcess = null;
 
         #endregion
 
@@ -120,7 +122,7 @@ namespace FaceDetectionIA
             }
         }
 
-      
+
         public string LogText
         {
             get { return m_strLogText; }
@@ -209,7 +211,7 @@ namespace FaceDetectionIA
                 if (m_refMainViewer != value)
                 {
                     m_refMainViewer = value;
-                    NotifyPropertyChanged("MainViewer");                    
+                    NotifyPropertyChanged("MainViewer");
                 }
             }
         }
@@ -247,7 +249,7 @@ namespace FaceDetectionIA
                 {
                     RaiseMaleDetected(viewerId, gender, ageRange, viewingTime);
                 }
-                else
+                else if (gender == "female")
                 {
                     RaiseFemaleDetected(viewerId, gender, ageRange, viewingTime);
                 }
@@ -288,6 +290,8 @@ namespace FaceDetectionIA
 
         public FaceDetection()
         {
+            GetOrCreateFaceDetectionProcess();
+
             //m_mapCurrentViewerIds = new HashSet<int>();
             CurrentViewers = new ObservableCollection<Viewer>();
             MainViewer = new Viewer()
@@ -295,21 +299,53 @@ namespace FaceDetectionIA
                 Id = -1
             };
 
-            //m_refWS = new WebSocket("ws://" + m_strServerHost + ":" + m_iPort, m_strServiceName);
-            m_refWS = new WebSocket("ws://" + m_strServerHost + ":" + m_iPort);
-
-            m_refWS.OnOpen += new EventHandler(m_refWS_OnOpen);
-            m_refWS.OnMessage += new EventHandler<MessageEventArgs>(m_refWS_OnMessage);
-            m_refWS.OnError += new EventHandler<WebSocketSharp.ErrorEventArgs>(m_refWS_OnError);
-
             m_refTimer = new Timer(TimerThreshold);
             m_refTimer.Elapsed += Timer_Elapsed;
+
+            _updateWS();
+        }
+
+        public void Dispose()
+        {
+            if (m_refWS != null && m_refWS.IsAlive)
+            {
+                m_refWS.OnOpen -= m_refWS_OnOpen;
+                m_refWS.OnMessage -= m_refWS_OnMessage;
+                m_refWS.OnError -= m_refWS_OnError;
+                m_refWS.OnClose -= m_refWS_OnClose;
+                m_refWS.Close();
+            }
+
+            if (m_faceDetectionProcess != null)
+            {
+                m_faceDetectionProcess.Kill();
+            }
         }
 
         private void Timer_Elapsed(object sender, ElapsedEventArgs e)
         {
             m_refTimer.Stop();
             m_bContinueListening = true;
+        }
+
+        private void GetOrCreateFaceDetectionProcess()
+        {
+            var runningFaceDetectionProcesses = Process.GetProcessesByName("IntuifaceFaceDetection");
+            if (runningFaceDetectionProcesses.Length <= 0)
+            {
+                Process.Start("IntuifaceFaceDetection.exe");
+
+                m_faceDetectionProcess = new Process();
+                m_faceDetectionProcess.StartInfo.UseShellExecute = false;
+                m_faceDetectionProcess.StartInfo.FileName = "IntuifaceFaceDetection.exe";
+                m_faceDetectionProcess.StartInfo.CreateNoWindow = true;
+                m_faceDetectionProcess.StartInfo.Arguments = "-i cam -m .\\models\\face-detection-adas-0001.xml -m_ag .\\models\\age-gender-recognition-retail-0013.xml -m_em .\\models\\emotions-recognition-retail-0003.xml -d GPU -n_ag \"32\" - n_em \"32\"";
+                m_faceDetectionProcess.Start();
+            }
+            else
+            {
+                m_faceDetectionProcess = runningFaceDetectionProcesses[0];
+            }
         }
 
         #endregion
@@ -627,6 +663,13 @@ namespace FaceDetectionIA
             LogText += "REMOVE VIEWER ERROR:" + e.Message + "\n";            
         }
 
+        void m_refWS_OnClose(object sender, WebSocketSharp.CloseEventArgs e)
+        {
+            LogText += "WebSocket Closed:" + e.Reason + "\n";
+            System.Threading.Thread.Sleep(5000);
+            _updateWS();
+            m_refWS.Connect();
+        }
 
         private string _computeGender(double maleScore, double femaleScore)
         {
@@ -644,16 +687,18 @@ namespace FaceDetectionIA
         {
             if (m_refWS != null && m_refWS.IsAlive)
             {
-                m_refWS.Close();
                 m_refWS.OnOpen -= m_refWS_OnOpen;
                 m_refWS.OnMessage -= m_refWS_OnMessage;
                 m_refWS.OnError -= m_refWS_OnError;
+                m_refWS.OnClose -= m_refWS_OnClose;
+                m_refWS.Close();
             }
             m_refWS = new WebSocket("ws://" + m_strServerHost + ":" + m_iPort);
 
             m_refWS.OnOpen += new EventHandler(m_refWS_OnOpen);
             m_refWS.OnMessage += new EventHandler<MessageEventArgs>(m_refWS_OnMessage);
             m_refWS.OnError += new EventHandler<WebSocketSharp.ErrorEventArgs>(m_refWS_OnError);
+            m_refWS.OnClose += new EventHandler<WebSocketSharp.CloseEventArgs>(m_refWS_OnClose);
         }
 
         #endregion
@@ -680,7 +725,6 @@ namespace FaceDetectionIA
 
             CurrentCount = 0;
         }
-
 
         #endregion
 
