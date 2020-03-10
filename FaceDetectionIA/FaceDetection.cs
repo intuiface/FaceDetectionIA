@@ -330,14 +330,14 @@ namespace FaceDetectionIA
 
         private void GetOrCreateFaceDetectionProcess()
         {
-            var runningFaceDetectionProcesses = Process.GetProcessesByName("IntuifaceFaceDetection");
+            var runningFaceDetectionProcesses = Process.GetProcessesByName("FaceDetection");
             if (runningFaceDetectionProcesses.Length <= 0)
             {
-                Process.Start("IntuifaceFaceDetection.exe");
+                Process.Start("FaceDetection.exe");
 
                 m_faceDetectionProcess = new Process();
                 m_faceDetectionProcess.StartInfo.UseShellExecute = false;
-                m_faceDetectionProcess.StartInfo.FileName = "IntuifaceFaceDetection.exe";
+                m_faceDetectionProcess.StartInfo.FileName = "FaceDetection.exe";
                 m_faceDetectionProcess.StartInfo.CreateNoWindow = true;
                 m_faceDetectionProcess.StartInfo.Arguments = "-i cam -m .\\models\\face-detection-adas-0001.xml -m_ag .\\models\\age-gender-recognition-retail-0013.xml -m_em .\\models\\emotions-recognition-retail-0003.xml -d GPU -n_ag \"32\" - n_em \"32\"";
                 m_faceDetectionProcess.Start();
