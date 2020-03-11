@@ -29,5 +29,15 @@ pipeline {
       }
     }
 
+	stage('Archive') {
+      agent {
+        node {
+          label 'sapin3'
+        }
+      }
+      steps {
+		archiveArtifacts "FaceDetectionIA.zip"
+      }
+    }
   }
 }
