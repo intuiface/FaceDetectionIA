@@ -99,7 +99,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\demos\interactive_face_detection_demo\include;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\demos\interactive_face_detection_demo\..\common;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\demos\common\monitors;$(OPEN_VINO)\inference_engine_demos_build\thirdparty\gflags\include;C:\Program Files (x86)\IntelSWTools\openvino\opencv\include;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\include;C:\boost_1_72_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\demos\interactive_face_detection_demo\include;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\demos\interactive_face_detection_demo\..\common;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\demos\common\monitors;$(OPEN_VINO)\inference_engine_demos_build\thirdparty\gflags\include;C:\Program Files (x86)\IntelSWTools\openvino\opencv\include;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\include;$(ProjectDir)include;C:\boost_1_72_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -139,7 +139,7 @@ XCOPY "C:\program files (x86)\common files\intel\shared libraries\redist\intel64
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\demos\interactive_face_detection_demo\include;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\demos\interactive_face_detection_demo\..\common;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\demos\common\monitors;$(OPEN_VINO)\inference_engine_demos_build\thirdparty\gflags\include;C:\Program Files (x86)\IntelSWTools\openvino\opencv\include;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\include;C:\boost_1_72_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\demos\interactive_face_detection_demo\include;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\demos\interactive_face_detection_demo\..\common;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\demos\common\monitors;$(OPEN_VINO)\inference_engine_demos_build\thirdparty\gflags\include;C:\Program Files (x86)\IntelSWTools\openvino\opencv\include;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\include;$(ProjectDir)include;C:\boost_1_72_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -181,7 +181,7 @@ XCOPY "C:\program files (x86)\common files\intel\shared libraries\redist\intel64
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\demos\interactive_face_detection_demo\include;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\demos\interactive_face_detection_demo\..\common;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\demos\common\monitors;$(OPEN_VINO)\inference_engine_demos_build\thirdparty\gflags\include;C:\Program Files (x86)\IntelSWTools\openvino\opencv\include;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\include;C:\boost_1_72_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\demos\interactive_face_detection_demo\include;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\demos\interactive_face_detection_demo\..\common;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\demos\common\monitors;$(OPEN_VINO)\inference_engine_demos_build\thirdparty\gflags\include;C:\Program Files (x86)\IntelSWTools\openvino\opencv\include;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\include;$(ProjectDir)include;C:\boost_1_72_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -225,7 +225,7 @@ XCOPY "C:\program files (x86)\common files\intel\shared libraries\redist\intel64
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\demos\interactive_face_detection_demo\include;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\demos\interactive_face_detection_demo\..\common;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\demos\common\monitors;$(OPEN_VINO)\inference_engine_demos_build\thirdparty\gflags\include;C:\Program Files (x86)\IntelSWTools\openvino\opencv\include;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\include;C:\boost_1_72_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\demos\interactive_face_detection_demo\include;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\demos\interactive_face_detection_demo\..\common;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\demos\common\monitors;$(OPEN_VINO)\inference_engine_demos_build\thirdparty\gflags\include;C:\Program Files (x86)\IntelSWTools\openvino\opencv\include;C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\include;$(ProjectDir)include;C:\boost_1_72_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
