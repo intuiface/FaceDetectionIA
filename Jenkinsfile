@@ -7,36 +7,22 @@ pipeline {
   }
   stages {
     stage('Build') {
-      agent {
-        node {
-          label 'sapin3'
-        }
-      }
       steps {
-		bat "\"${tool 'msbuild-v15'}\\MSBuild.exe\" /v:m /clp:ErrorsOnly;Summary /p:Configuration=Release /p:Platform=\"Any CPU\" FaceDetectionIA.sln"
-      }
-    }
-	
-	stage('Package') {
-      agent {
-        node {
-          label 'sapin3'
-        }
-      }
-      steps {
-		bat "package.bat"
+        bat "\"${tool 'msbuild-v15'}\\MSBuild.exe\" /v:m /clp:ErrorsOnly;Summary /p:Configuration=Release /p:Platform=\"Any CPU\" FaceDetectionIA.sln"
       }
     }
 
-	stage('Archive') {
-      agent {
-        node {
-          label 'sapin3'
-        }
-      }
+    stage('Package') {
       steps {
-		archiveArtifacts "FaceDetectionIA.zip"
+        bat 'package.bat'
       }
     }
+
+    stage('Archive') {
+      steps {
+        archiveArtifacts 'FaceDetectionIA.zip'
+      }
+    }
+
   }
 }
