@@ -13,7 +13,7 @@ pipeline {
         }
       }
       steps {
-	    def msbuild = tool name: 'msbuild-v15', type: 'msbuild'		
+	    def msbuild = tool name: 'msbuild', type: 'msbuild'		
 		bat "\"${msbuild}\\MSBuild.exe\"  /v:m /clp:ErrorsOnly;Summary /p:Configuration=Release /p:Platform="Any CPU" FaceDetectionIA.sln"
       }
     }
