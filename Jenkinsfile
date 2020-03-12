@@ -15,6 +15,7 @@ pipeline {
     stage('Package') {
       steps {
         bat 'package.bat'
+		zip archive: true, dir: "dist\\x64\\Release", glob: '', zipFile: "FaceDetectionIA.zip"
       }
     }
 
