@@ -112,14 +112,14 @@
       <LinkLibraryDependencies>false</LinkLibraryDependencies>
     </ProjectReference>
     <PostBuildEvent>
-      <Command>XCOPY "$(OPEN_VINO)\inference_engine_demos_build\intel64\Debug\ngraphd.dll" "$(targetDir)" /S /Y
-XCOPY "$(OPEN_VINO)\inference_engine_demos_build\intel64\Debug\tbb_debug.dll" "$(targetDir)" /S /Y
-XCOPY "$(OPEN_VINO)\inference_engine_demos_build\intel64\Debug\inference_engine_nn_builderd.dll" "$(targetDir)" /S /Y
-XCOPY "$(OPEN_VINO)\inference_engine_demos_build\intel64\Debug\inference_engined.dll" "$(targetDir)" /S /Y
-XCOPY "$(OPEN_VINO)\inference_engine_demos_build\intel64\Debug\clDNNPlugind.dll" "$(targetDir)" /S /Y
-XCOPY "$(OPEN_VINO)\inference_engine_demos_build\intel64\Debug\MKLDNNPlugind.dll" "$(targetDir)" /S /Y
-XCOPY "$(OPEN_VINO)\inference_engine_demos_build\intel64\Debug\mkl_tiny_tbb_debug.dll" "$(targetDir)" /S /Y
-XCOPY "$(OPEN_VINO)\inference_engine_demos_build\intel64\Debug\plugins.xml" "$(targetDir)" /S /Y
+      <Command>XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\ngraph\lib\ngraphd.dll" "$(targetDir)" /S /Y
+XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\external\tbb\bin\tbb_debug.dll" "$(targetDir)" /S /Y
+XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\inference_engine\bin\intel64\Debug\inference_engine_nn_builderd.dll" "$(targetDir)" /S /Y
+XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\inference_engine\bin\intel64\Debug\inference_engined.dll" "$(targetDir)" /S /Y
+XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\inference_engine\bin\intel64\Debug\clDNNPlugind.dll" "$(targetDir)" /S /Y
+XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\inference_engine\bin\intel64\Debug\MKLDNNPlugind.dll" "$(targetDir)" /S /Y
+XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\inference_engine\bin\intel64\Debug\mkl_tiny_tbb_debug.dll" "$(targetDir)" /S /Y
+XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\inference_engine\bin\intel64\Debug\plugins.xml" "$(targetDir)" /S /Y
 XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\opencv\bin\opencv_highgui420d.dll" "$(targetDir)" /S /Y
 XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\opencv\bin\opencv_videoio420d.dll" "$(targetDir)" /S /Y
 XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\opencv\bin\opencv_imgproc420d.dll" "$(targetDir)" /S /Y
@@ -127,7 +127,9 @@ XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\opencv\bin\opencv_core420d.d
 XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\opencv\bin\opencv_imgcodecs420d.dll" "$(targetDir)" /S /Y
 XCOPY "$(solutionDir)models\*" "$(targetDir)\models\" /S /Y
 XCOPY "C:\program files (x86)\common files\intel\shared libraries\redist\intel64_win\compiler\*.dll" "$(targetDir)" /S /Y
-</Command>
+XCOPY "C:\Windows\System32\msvcp140d.dll" "$(targetDir)" /S /Y
+XCOPY "C:\Windows\System32\vcruntime140d.dll" "$(targetDir)" /S /Y
+XCOPY "C:\Windows\System32\concrt140d.dll" "$(targetDir)" /S /Y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -152,14 +154,14 @@ XCOPY "C:\program files (x86)\common files\intel\shared libraries\redist\intel64
       <LinkLibraryDependencies>false</LinkLibraryDependencies>
     </ProjectReference>
     <PostBuildEvent>
-      <Command>XCOPY "$(OPEN_VINO)\inference_engine_demos_build\intel64\Debug\ngraphd.dll" "$(targetDir)" /S /Y
-XCOPY "$(OPEN_VINO)\inference_engine_demos_build\intel64\Debug\tbb_debug.dll" "$(targetDir)" /S /Y
-XCOPY "$(OPEN_VINO)\inference_engine_demos_build\intel64\Debug\inference_engine_nn_builderd.dll" "$(targetDir)" /S /Y
-XCOPY "$(OPEN_VINO)\inference_engine_demos_build\intel64\Debug\inference_engined.dll" "$(targetDir)" /S /Y
-XCOPY "$(OPEN_VINO)\inference_engine_demos_build\intel64\Debug\clDNNPlugind.dll" "$(targetDir)" /S /Y
-XCOPY "$(OPEN_VINO)\inference_engine_demos_build\intel64\Debug\MKLDNNPlugind.dll" "$(targetDir)" /S /Y
-XCOPY "$(OPEN_VINO)\inference_engine_demos_build\intel64\Debug\mkl_tiny_tbb_debug.dll" "$(targetDir)" /S /Y
-XCOPY "$(OPEN_VINO)\inference_engine_demos_build\intel64\Debug\plugins.xml" "$(targetDir)" /S /Y
+      <Command>XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\ngraph\lib\ngraphd.dll" "$(targetDir)" /S /Y
+XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\external\tbb\bin\tbb_debug.dll" "$(targetDir)" /S /Y
+XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\inference_engine\bin\intel64\Debug\inference_engine_nn_builderd.dll" "$(targetDir)" /S /Y
+XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\inference_engine\bin\intel64\Debug\inference_engined.dll" "$(targetDir)" /S /Y
+XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\inference_engine\bin\intel64\Debug\clDNNPlugind.dll" "$(targetDir)" /S /Y
+XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\inference_engine\bin\intel64\Debug\MKLDNNPlugind.dll" "$(targetDir)" /S /Y
+XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\inference_engine\bin\intel64\Debug\mkl_tiny_tbb_debug.dll" "$(targetDir)" /S /Y
+XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\inference_engine\bin\intel64\Debug\plugins.xml" "$(targetDir)" /S /Y
 XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\opencv\bin\opencv_highgui420d.dll" "$(targetDir)" /S /Y
 XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\opencv\bin\opencv_videoio420d.dll" "$(targetDir)" /S /Y
 XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\opencv\bin\opencv_imgproc420d.dll" "$(targetDir)" /S /Y
@@ -167,7 +169,9 @@ XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\opencv\bin\opencv_core420d.d
 XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\opencv\bin\opencv_imgcodecs420d.dll" "$(targetDir)" /S /Y
 XCOPY "$(solutionDir)models\*" "$(targetDir)\models\" /S /Y
 XCOPY "C:\program files (x86)\common files\intel\shared libraries\redist\intel64_win\compiler\*.dll" "$(targetDir)" /S /Y
-</Command>
+XCOPY "C:\Windows\System32\msvcp140d.dll" "$(targetDir)" /S /Y
+XCOPY "C:\Windows\System32\vcruntime140d.dll" "$(targetDir)" /S /Y
+XCOPY "C:\Windows\System32\concrt140d.dll" "$(targetDir)" /S /Y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -196,14 +200,14 @@ XCOPY "C:\program files (x86)\common files\intel\shared libraries\redist\intel64
       <LinkLibraryDependencies>false</LinkLibraryDependencies>
     </ProjectReference>
     <PostBuildEvent>
-      <Command>XCOPY "$(OPEN_VINO)\inference_engine_demos_build\intel64\Release\ngraph.dll" "$(targetDir)" /S /Y
-XCOPY "$(OPEN_VINO)\inference_engine_demos_build\intel64\Release\tbb.dll" "$(targetDir)" /S /Y
-XCOPY "$(OPEN_VINO)\inference_engine_demos_build\intel64\Release\inference_engine_nn_builder.dll" "$(targetDir)" /S /Y
-XCOPY "$(OPEN_VINO)\inference_engine_demos_build\intel64\Release\inference_engine.dll" "$(targetDir)" /S /Y
-XCOPY "$(OPEN_VINO)\inference_engine_demos_build\intel64\Release\clDNNPlugin.dll" "$(targetDir)" /S /Y
-XCOPY "$(OPEN_VINO)\inference_engine_demos_build\intel64\Release\MKLDNNPlugin.dll" "$(targetDir)" /S /Y
-XCOPY "$(OPEN_VINO)\inference_engine_demos_build\intel64\Release\mkl_tiny_tbb.dll" "$(targetDir)" /S /Y
-XCOPY "$(OPEN_VINO)\inference_engine_demos_build\intel64\Release\plugins.xml" "$(targetDir)" /S /Y
+      <Command>XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\ngraph\lib\ngraph.dll" "$(targetDir)" /S /Y
+XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\external\tbb\bin\tbb.dll" "$(targetDir)" /S /Y
+XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\inference_engine\bin\intel64\Release\inference_engine_nn_builder.dll" "$(targetDir)" /S /Y
+XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\inference_engine\bin\intel64\Release\inference_engine.dll" "$(targetDir)" /S /Y
+XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\inference_engine\bin\intel64\Release\clDNNPlugin.dll" "$(targetDir)" /S /Y
+XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\inference_engine\bin\intel64\Release\MKLDNNPlugin.dll" "$(targetDir)" /S /Y
+XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\inference_engine\bin\intel64\Release\mkl_tiny_tbb.dll" "$(targetDir)" /S /Y
+XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\inference_engine\bin\intel64\Release\plugins.xml" "$(targetDir)" /S /Y
 XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\opencv\bin\opencv_highgui420.dll" "$(targetDir)" /S /Y
 XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\opencv\bin\opencv_videoio420.dll" "$(targetDir)" /S /Y
 XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\opencv\bin\opencv_imgproc420.dll" "$(targetDir)" /S /Y
@@ -211,6 +215,10 @@ XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\opencv\bin\opencv_core420.dl
 XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\opencv\bin\opencv_imgcodecs420.dll" "$(targetDir)" /S /Y
 XCOPY "$(solutionDir)\models\*" "$(targetDir)\models\" /S /Y
 XCOPY "C:\program files (x86)\common files\intel\shared libraries\redist\intel64_win\compiler\*.dll" "$(targetDir)" /S /Y
+XCOPY "C:\Windows\System32\msvcp140.dll" "$(targetDir)" /S /Y
+XCOPY "C:\Windows\System32\vcruntime140.dll" "$(targetDir)" /S /Y
+XCOPY "C:\Windows\System32\concrt140.dll" "$(targetDir)" /S /Y
+
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -240,14 +248,14 @@ XCOPY "C:\program files (x86)\common files\intel\shared libraries\redist\intel64
       <LinkLibraryDependencies>false</LinkLibraryDependencies>
     </ProjectReference>
     <PostBuildEvent>
-      <Command>XCOPY "$(OPEN_VINO)\inference_engine_demos_build\intel64\Release\ngraph.dll" "$(targetDir)" /S /Y
-XCOPY "$(OPEN_VINO)\inference_engine_demos_build\intel64\Release\tbb.dll" "$(targetDir)" /S /Y
-XCOPY "$(OPEN_VINO)\inference_engine_demos_build\intel64\Release\inference_engine_nn_builder.dll" "$(targetDir)" /S /Y
-XCOPY "$(OPEN_VINO)\inference_engine_demos_build\intel64\Release\inference_engine.dll" "$(targetDir)" /S /Y
-XCOPY "$(OPEN_VINO)\inference_engine_demos_build\intel64\Release\clDNNPlugin.dll" "$(targetDir)" /S /Y
-XCOPY "$(OPEN_VINO)\inference_engine_demos_build\intel64\Release\MKLDNNPlugin.dll" "$(targetDir)" /S /Y
-XCOPY "$(OPEN_VINO)\inference_engine_demos_build\intel64\Release\mkl_tiny_tbb.dll" "$(targetDir)" /S /Y
-XCOPY "$(OPEN_VINO)\inference_engine_demos_build\intel64\Release\plugins.xml" "$(targetDir)" /S /Y
+      <Command>XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\ngraph\lib\ngraph.dll" "$(targetDir)" /S /Y
+XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\deployment_tools\inference_engine\external\tbb\bin\tbb.dll" "$(targetDir)" /S /Y
+XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\inference_engine\bin\intel64\Release\inference_engine_nn_builder.dll" "$(targetDir)" /S /Y
+XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\inference_engine\bin\intel64\Release\inference_engine.dll" "$(targetDir)" /S /Y
+XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\inference_engine\bin\intel64\Release\clDNNPlugin.dll" "$(targetDir)" /S /Y
+XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\inference_engine\bin\intel64\Release\MKLDNNPlugin.dll" "$(targetDir)" /S /Y
+XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\inference_engine\bin\intel64\Release\mkl_tiny_tbb.dll" "$(targetDir)" /S /Y
+XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\inference_engine\bin\intel64\Release\plugins.xml" "$(targetDir)" /S /Y
 XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\opencv\bin\opencv_highgui420.dll" "$(targetDir)" /S /Y
 XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\opencv\bin\opencv_videoio420.dll" "$(targetDir)" /S /Y
 XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\opencv\bin\opencv_imgproc420.dll" "$(targetDir)" /S /Y
@@ -255,6 +263,10 @@ XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\opencv\bin\opencv_core420.dl
 XCOPY "C:\Program Files (x86)\IntelSWTools\openvino\opencv\bin\opencv_imgcodecs420.dll" "$(targetDir)" /S /Y
 XCOPY "$(solutionDir)\models\*" "$(targetDir)\models\" /S /Y
 XCOPY "C:\program files (x86)\common files\intel\shared libraries\redist\intel64_win\compiler\*.dll" "$(targetDir)" /S /Y
+XCOPY "C:\Windows\System32\msvcp140.dll" "$(targetDir)" /S /Y
+XCOPY "C:\Windows\System32\vcruntime140.dll" "$(targetDir)" /S /Y
+XCOPY "C:\Windows\System32\concrt140.dll" "$(targetDir)" /S /Y
+
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
