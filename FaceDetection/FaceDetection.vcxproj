@@ -72,23 +72,23 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SolutionDir)\dist\$(Platform)\$(Configuration)\</OutDir>
-    <IntDir>build\$(Platform)\$(Configuration)\</IntDir>
+    <OutDir>$(SolutionDir)\dist\$(Platform)\$(Configuration)\$(ProjectName)\</OutDir>
+    <IntDir>build\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SolutionDir)\dist\$(Platform)\$(Configuration)\</OutDir>
-    <IntDir>build\$(Platform)\$(Configuration)\</IntDir>
+    <OutDir>$(SolutionDir)\dist\$(Platform)\$(Configuration)\$(ProjectName)\</OutDir>
+    <IntDir>build\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(SolutionDir)\dist\$(Platform)\$(Configuration)\</OutDir>
-    <IntDir>build\$(Platform)\$(Configuration)\</IntDir>
+    <OutDir>$(SolutionDir)\dist\$(Platform)\$(Configuration)\$(ProjectName)\</OutDir>
+    <IntDir>build\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(SolutionDir)\dist\$(Platform)\$(Configuration)\</OutDir>
-    <IntDir>build\$(Platform)\$(Configuration)\</IntDir>
+    <OutDir>$(SolutionDir)\dist\$(Platform)\$(Configuration)\$(ProjectName)\</OutDir>
+    <IntDir>build\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -275,7 +275,6 @@ XCOPY "C:\Windows\System32\concrt140.dll" "$(targetDir)" /S /Y
     <ClInclude Include="include\detectors.hpp" />
     <ClInclude Include="include\exporter.hpp" />
     <ClInclude Include="include\face.hpp" />
-    <ClInclude Include="include\HTTPRequest.hpp" />
     <ClInclude Include="include\http_session.hpp" />
     <ClInclude Include="include\interactive_face_detection.hpp" />
     <ClInclude Include="include\listener.hpp" />

@@ -1,19 +1,30 @@
+// ****************************************************************************
+// <copyright file="export.cpp" company="IntuiLab">
+// INTUILAB CONFIDENTIAL
+//_____________________
+// [2002] - [2020] IntuiLab
+// All Rights Reserved.
+// NOTICE: All information contained herein is, and remains
+// the property of IntuiLab. The intellectual and technical
+// concepts contained herein are proprietary to IntuiLab
+// and may be covered by U.S. and other country Patents, patents
+// in process, and are protected by trade secret or copyright law.
+// Dissemination of this information or reproduction of this
+// material is strictly forbidden unless prior written permission
+// is obtained from IntuiLab.
+// </copyright>
+// ****************************************************************************
 
-
+#include <iostream>
+#include <boost/asio/signal_set.hpp>
+#include <boost/smart_ptr.hpp>
+#include <boost/property_tree/ptree.hpp>
+#include <boost/property_tree/json_parser.hpp>
 
 #include "listener.hpp"
 #include "shared_state.hpp"
 
-#include <boost/asio/signal_set.hpp>
-#include <boost/smart_ptr.hpp>
-
-
 #include "exporter.hpp"
-#include <iostream>
-
-#include <boost/property_tree/ptree.hpp>
-#include <boost/property_tree/json_parser.hpp>
-
 
 using boost::property_tree::ptree;
 using boost::property_tree::write_json;
@@ -25,15 +36,20 @@ namespace net = boost::asio;            // from <boost/asio.hpp>
 using tcp = boost::asio::ip::tcp;       // from <boost/asio/ip/tcp.hpp>
 
 
-/******* Web Sockets Classes *******/
+// Web socket shared state
 boost::shared_ptr<shared_state> m_refSharedState;
 
 // The io_context is required for all I/O
 net::io_context ioc;
 
+
+// ************************************************************************
+// LIFE CYCLE
+// ************************************************************************
+
 Exporter::Exporter()
 {
-	//start websocket server
+	// Start websocket server
 	auto address = net::ip::make_address("0.0.0.0");
 	auto port = static_cast<unsigned short>(std::atoi("2975"));
 	auto doc_root = ".";
@@ -46,81 +62,78 @@ Exporter::Exporter()
 		ioc,
 		tcp::endpoint{ address, port },
 		m_refSharedState)->run();
-
 }
 
-void Exporter::poll()
+Exporter::~Exporter()
 {
-	ioc.poll();
+
 }
 
+
+// ************************************************************************
+// OPERATIONS
+// ************************************************************************
 
 void Exporter::exportFaces(std::list<Face::Ptr> faces, size_t width, size_t height)
 {
-	//SME process faces list and generate JSON structure. 
+	// Create a property tree and add Face Count property
 	ptree root;
 	root.put("Count", faces.size());
 
-	// Add a list
-	ptree viewers;
-	for (auto &entry : faces)
+	float fInvWidth = 1 / width;
+	float fInvHeight = 1 / height;
+
+	// Add a list of faces informations
+	ptree faceList;
+	for (auto &entry: faces)
 	{
-		// Create an unnamed node containing the value
-		ptree viewer;
-		viewer.put("id", entry->getId());
+		// Create a node containing all informations of a face
+		ptree faceProperties;
+		faceProperties.put("id", entry->getId());
 		
-		//Add gender
-		if (entry->isMale())
-			viewer.put("gender", "male");
-		else
-			viewer.put("gender", "female");
+		// Add gender
+		faceProperties.put("gender", entry->isMale() ? "male" : "female");
 
-		//add precise score to give more options on the IA side
-		viewer.put("maleScore", entry->getMaleScore());
-		viewer.put("femaleScore", entry->getFemaleScore());
+		// Add age
+		faceProperties.put("age", entry->getAge());
 
-		//Add age
-		viewer.put("age", entry->getAge());
-
-		//Build emotions list & main emotion
+		// Add main emotion and score for each emotion
+		faceProperties.put("mainEmotion.emotion", entry->getMainEmotion().first);
+		faceProperties.put("mainEmotion.confidence", entry->getMainEmotion().second);
 		for (auto &emotionPair: entry->getEmotions())
 		{
-			viewer.put("emotions."+emotionPair.first, emotionPair.second);
+			faceProperties.put("emotions." + emotionPair.first, emotionPair.second);
 		}
-		viewer.put("mainEmotion.emotion", entry->getMainEmotion().first);
-		viewer.put("mainEmotion.confidence", entry->getMainEmotion().second);
 		
-		//Add face location using normalized coords
-		viewer.put("location.x", (float)(entry->_location.x) / width);
-		viewer.put("location.y", (float)(entry->_location.y) / height);
-		viewer.put("location.width", (float)(entry->_location.width) / width);
-		viewer.put("location.height", (float)(entry->_location.height) / height);
+		// Add face location using normalized coordinates
+		faceProperties.put("location.x", (float)(entry->_location.x) * fInvWidth);
+		faceProperties.put("location.y", (float)(entry->_location.y) * fInvHeight);
+		faceProperties.put("location.width", (float)(entry->_location.width) * fInvWidth);
+		faceProperties.put("location.height", (float)(entry->_location.height) * fInvHeight);
 
-		// Add this node to the list.
-		viewers.push_back(std::make_pair("", viewer));
+		// Add informations of this face to the face list
+		faceList.push_back(std::make_pair("", faceProperties));
 	}
-	root.add_child("viewers", viewers);
+	root.add_child("faces", faceList);
 
-	//convert JSON object in string
-	std::ostringstream buf;
-	write_json(buf, root, false);
-	std::string json = buf.str();
+	// Convert JSON to string
+	std::ostringstream buffer;
+	write_json(buffer, root, false);
+	std::string json = buffer.str();
 
-	//send structure through web socket
+	// Send structure through web socket
 	sendMessage(json);
 
-	//poll websocket
+	// Poll websocket
 	ioc.poll();
 }
-
 
 void Exporter::sendMessage(std::string msg)
 {	
 	m_refSharedState->send(msg);	
 }
 
-Exporter::~Exporter()
+void Exporter::poll()
 {
-	//TODO SME
+	ioc.poll();
 }
-

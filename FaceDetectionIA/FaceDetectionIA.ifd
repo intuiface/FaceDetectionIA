@@ -1,440 +1,327 @@
 {
-  "kind": "discovery#restDescription",
-  "discoveryVersion": "v1",
-  "id": "FaceDetectionIA",
-  "name": "FaceDetectionIA",
-  "version": "1.0",
-  "protocol": "dll",
-  "baseUrl": null,
-  "basePath": "FaceDetectionIA",
-  "auth": {},
-  "dependencies": [
-    "FaceDetectionIA.dll"
-  ],
-  "schemas": {
-    "FaceDetection": {
-      "id": "FaceDetection",
-      "type": "object",
-        "properties": {
-            "ServerHost": {
-                "title": "ServerHost",
-                "type": "string",
-                "description": "ServerHost"
-            },
-            "ServerPort": {
-                "title": "ServerPort",
-                "type": "integer",
-                "description": "ServerPort"
-            },
-            "ActivateLogs": {
-                "title": "ActivateLogs",
-                "type": "boolean",
-                "description": "ActivateLogs"
-            },
-            "CurrentCount": {
-                "title": "CurrentCount",
-                "type": "integer",
-                "readonly": true,
-                "description": "CurrentCount"
-            },
-            "LogText": {
-                "title": "LogText",
-                "type": "string",
-                "readonly": true,
-                "description": "LogText"
-            },
-            "CurrentViewers": {
-                "title": "CurrentViewers",
-                "type": "array",
-                "readonly": true,
-                "description": "CurrentViewers",
-                "items": {
-                    "$ref": "Viewer"
-                }
-            },
-            "FilterHeadSize": {
-                "title": "FilterHeadSize",
-                "type": "boolean",
-                "description": "FilterHeadSize"
-            },
-            "HeadSizeThreashold": {
-                "title": "HeadSizeThreashold",
-                "type": "integer",
-                "description": "HeadSizeThreashold"
-            },
-            "GenderScoreThreshold": {
-                "title": "GenderScoreThreshold",
-                "type": "number",
-                "description": "GenderScoreThreshold",
-                "format": "double"
-            },
-            "TimerThreshold": {
-                "title": "TimerThreshold",
-                "type": "integer",
-                "description": "TimerThreshold"
-            },
-            "MainViewer": {
-                "type": "object",
-                "readonly": true,
-                "properties": {
-                    "Id": {
-                        "title": "Id",
-                        "type": "integer",
-                        "description": "Id"
-                    },
-                    "Gender": {
-                        "title": "Gender",
-                        "type": "string",
-                        "description": "Gender"
-                    },
-                    "AgeRange": {
-                        "title": "AgeRange",
-                        "type": "string",
-                        "description": "AgeRange"
-                    },
-                    "ViewingTime": {
-                        "title": "ViewingTime",
-                        "type": "integer",
-                        "description": "ViewingTime"
-                    },
-                    "X": {
-                        "title": "X",
-                        "type": "number",
-                        "description": "X",
-                        "format": "double"
-                    },
-                    "Y": {
-                        "title": "Y",
-                        "type": "number",
-                        "description": "Y",
-                        "format": "double"
-                    },
-                    "Width": {
-                        "title": "Width",
-                        "type": "number",
-                        "description": "Width",
-                        "format": "double"
-                    },
-                    "Height": {
-                        "title": "Height",
-                        "type": "number",
-                        "description": "Height",
-                        "format": "double"
-                    },
-                    "Distance": {
-                        "title": "Distance",
-                        "type": "integer",
-                        "description": "Distance"
-                    },
-                    "MainEmotion": {
-                        "title": "Main emotion",
-                        "type": "string",
-                        "description": "Main emotion"
-                    },
-                    "MainEmotionConfidence": {
-                        "title": "Main emotion confidence",
-                        "type": "number",
-                        "description": "Main emotion confidence",
-                        "format": "double"
-                    },
-                    "AngerConfidence": {
-                        "title": "Anger emotion confidence",
-                        "type": "number",
-                        "description": "Anger emotion confidence",
-                        "format": "double"
-                    },
-                    "HappyConfidence": {
-                        "title": "Happy emotion confidence",
-                        "type": "number",
-                        "description": "Happy emotion confidence",
-                        "format": "double"
-                    },
-                    "NeutralConfidence": {
-                        "title": "Neutral emotion confidence",
-                        "type": "number",
-                        "description": "Neutral emotion confidence",
-                        "format": "double"
-                    },
-                    "SadConfidence": {
-                        "title": "Sad emotion confidence",
-                        "type": "number",
-                        "description": "Sad emotion confidence",
-                        "format": "double"
-                    },
-                    "SurpriseConfidence": {
-                        "title": "Surprise emotion confidence",
-                        "type": "number",
-                        "description": "Surprise emotion confidence",
-                        "format": "double"
-                    },
-                    "MaleScore": {
-                        "title": "Male score",
-                        "type": "number",
-                        "description": "Male score",
-                        "format": "double"
-                    },
-                    "FemaleScore": {
-                        "title": "Female score",
-                        "type": "number",
-                        "description": "Female score",
-                        "format": "double"
-                    },
-                    "ComputedGender": {
-                        "title": "Computed gender",
-                        "type": "string",
-                        "description": "Computed gender"
-                    }
-                }
-
-            },
-            "IsMainViewerDetected": {
-                "title": "IsMainViewerDetected",
-                "type": "boolean",
-                "description": "IsMainViewerDetected",
-                "readonly": true
-            }
-        }
-    },
-    "Viewer": {
-      "id": "Viewer",
-      "type": "object",
-        "properties": {
-            "Id": {
-                "title": "Id",
-                "type": "integer",
-                "description": "Id"
-            },
-            "Gender": {
-                "title": "Gender",
-                "type": "string",
-                "description": "Gender"
-            },
-            "AgeRange": {
-                "title": "AgeRange",
-                "type": "string",
-                "description": "AgeRange"
-            },
-            "ViewingTime": {
-                "title": "ViewingTime",
-                "type": "integer",
-                "description": "ViewingTime"
-            },
-            "X": {
-                "title": "X",
-                "type": "number",
-                "description": "X",
-                "format": "double"
-            },
-            "Y": {
-                "title": "Y",
-                "type": "number",
-                "description": "Y",
-                "format": "double"
-            },
-            "Width": {
-                "title": "Width",
-                "type": "number",
-                "description": "Width",
-                "format": "double"
-            },
-            "Height": {
-                "title": "Height",
-                "type": "number",
-                "description": "Height",
-                "format": "double"
-            },
-            "Distance": {
-                "title": "Distance",
-                "type": "integer",
-                "description": "Distance"
-            },
-            "MainEmotion": {
-                "title": "Main emotion",
-                "type": "string",
-                "description": "Main emotion"
-            },
-            "MainEmotionConfidence": {
-                "title": "Main emotion confidence",
-                "type": "number",
-                "description": "Main emotion confidence",
-                "format": "double"
-            },
-            "AngerConfidence": {
-                "title": "Anger emotion confidence",
-                "type": "number",
-                "description": "Anger emotion confidence",
-                "format": "double"
-            },
-            "HappyConfidence": {
-                "title": "Happy emotion confidence",
-                "type": "number",
-                "description": "Happy emotion confidence",
-                "format": "double"
-            },
-            "NeutralConfidence": {
-                "title": "Neutral emotion confidence",
-                "type": "number",
-                "description": "Neutral emotion confidence",
-                "format": "double"
-            },
-            "SadConfidence": {
-                "title": "Sad emotion confidence",
-                "type": "number",
-                "description": "Sad emotion confidence",
-                "format": "double"
-            },
-            "SurpriseConfidence": {
-                "title": "Surpriseemotion confidence",
-                "type": "number",
-                "description": "Surprise emotion confidence",
-                "format": "double"
-            },
-            "MaleScore": {
-                "title": "Male score",
-                "type": "number",
-                "description": "Male score",
-                "format": "double"
-            },
-            "FemaleScore": {
-                "title": "Female score",
-                "type": "number",
-                "description": "Female score",
-                "format": "double"
-            },
-            "ComputedGender": {
-                "title": "Computed gender",
-                "type": "string",
-                "description": "Computed gender"
-            }
-        }
-    }
-  },
-  "resources": {
-    "FaceDetection": {
-      "title": "FaceDetection",
-      "isInterfaceAsset": true,
-      "methods": {
-        "StartListening": {
-          "title": "StartListening",
-          "description": "StartListening",
-          "response": {
-            "type": "null"
-          }
-        },
-        "StopListening": {
-          "title": "StopListening",
-          "description": "StopListening",
-          "response": {
-            "type": "null"
-          }
-        },
-        "Refresh": {
-          "title": "Refresh",
-          "description": "Refresh",
-          "response": {
-            "type": "null"
-          }
-        }
-      },
-      "events": {                        
-		"ViewerDetected": {
-          "id": "ViewerDetected",
-		  "if.category": "FaceDetection",
-		  "title": "Viewer detected",
-		  "description": "Raised when a new viewer is detected.",
-		  "properties": {
-            "ViewerId": {
-              "type": "integer",
-              "title": "Viewer Id"             
-            },
-			"Gender": {
-              "type": "string",
-              "title": "Gender"             
-            },
-			"AgeRange": {
-              "type": "string",
-              "title": "Age Range"             
-            },
-			"ViewingTime": {
-              "type": "integer",
-              "title": "Viewing Time"             
-            }
+	"kind": "discovery#restDescription",
+	"discoveryVersion": "v1",
+	"id": "FaceDetectionIA",
+	"name": "FaceDetectionIA",
+	"version": "1.0",
+	"protocol": "dll",
+	"baseUrl": null,
+	"basePath": "FaceDetectionIA",
+	"auth": {},
+	"dependencies": [
+		"FaceDetectionIA.dll"
+	],
+	"schemas": {
+		"FaceDetection": {
+			"id": "FaceDetection",
+			"type": "object",
+			"properties": {
+				"ServerHost": {
+					"title": "Face detection server host",
+					"type": "string",
+					"description": "Face detection server host"
+				},
+				"ServerPort": {
+					"title": "Face detection server port",
+					"type": "integer",
+					"description": "Face detection server port"
+				},
+				"MinimumFaceSize": {
+					"title": "Minimum face size",
+					"type": "integer",
+					"description": "Minimum face size"
+				},
+				"TimerThreshold": {
+					"title": "TimerThreshold",
+					"type": "integer",
+					"description": "TimerThreshold"
+				},
+				"FaceCount": {
+					"title": "Face count",
+					"type": "integer",
+					"readonly": true,
+					"description": "Face count"
+				},
+				"MainFace": {
+					"type": "object",
+					"readonly": true,
+					"properties": {
+						"Id": {
+							"title": "ID",
+							"type": "integer",
+							"description": "ID"
+						},
+						"X": {
+							"title": "X",
+							"type": "number",
+							"description": "X",
+							"format": "double"
+						},
+						"Y": {
+							"title": "Y",
+							"type": "number",
+							"description": "Y",
+							"format": "double"
+						},
+						"Width": {
+							"title": "Width",
+							"type": "number",
+							"description": "Width",
+							"format": "double"
+						},
+						"Height": {
+							"title": "Height",
+							"type": "number",
+							"description": "Height",
+							"format": "double"
+						},
+						"Gender": {
+							"title": "Gender",
+							"type": "string",
+							"description": "Gender"
+						},
+						"Age": {
+							"title": "Age",
+							"type": "string",
+							"description": "Age"
+						},
+						"FaceSize": {
+							"title": "Face size",
+							"type": "integer",
+							"description": "Face size"
+						},
+						"MainEmotion": {
+							"title": "Main emotion",
+							"type": "string",
+							"description": "Main emotion"
+						},
+						"MainEmotionConfidence": {
+							"title": "Main emotion confidence",
+							"type": "number",
+							"description": "Main emotion confidence",
+							"format": "double"
+						},
+						"AngerConfidence": {
+							"title": "Anger emotion confidence",
+							"type": "number",
+							"description": "Anger emotion confidence",
+							"format": "double"
+						},
+						"HappyConfidence": {
+							"title": "Happy emotion confidence",
+							"type": "number",
+							"description": "Happy emotion confidence",
+							"format": "double"
+						},
+						"NeutralConfidence": {
+							"title": "Neutral emotion confidence",
+							"type": "number",
+							"description": "Neutral emotion confidence",
+							"format": "double"
+						},
+						"SadConfidence": {
+							"title": "Sad emotion confidence",
+							"type": "number",
+							"description": "Sad emotion confidence",
+							"format": "double"
+						},
+						"SurpriseConfidence": {
+							"title": "Surprise emotion confidence",
+							"type": "number",
+							"description": "Surprise emotion confidence",
+							"format": "double"
+						}
+					}
+				},
+				"IsMainFaceDetected": {
+					"title": "Is main face detected",
+					"type": "boolean",
+					"description": "Is main face detected",
+					"readonly": true
+				},
+				"Faces": {
+					"title": "Faces",
+					"type": "array",
+					"readonly": true,
+					"description": "Faces",
+					"items": {
+						"$ref": "Face"
+					}
+				},
+				"ActivityLog": {
+					"title": "Activity log",
+					"type": "string",
+					"readonly": true,
+					"description": "Activity log"
+				}
 			}
-        },
-		"FemaleDetected": {
-          "id": "FemaleDetected",
-		  "if.category": "FaceDetection",
-          "title": "Female viewer detected",
-          "description": "Raised when a new female viewer is detected.",
-		  "properties": {
-            "ViewerId": {
-              "type": "integer",
-              "title": "Viewer Id"             
-            },
-			"Gender": {
-              "type": "string",
-              "title": "Gender"             
-            },
-			"AgeRange": {
-              "type": "string",
-              "title": "Age Range"             
-            },
-			"ViewingTime": {
-              "type": "integer",
-              "title": "Viewing Time"             
-            }
+		},
+		"Face": {
+			"id": "Face",
+			"type": "object",
+			"properties": {
+				"Id": {
+					"title": "ID",
+					"type": "integer",
+					"description": "ID"
+				},
+				"X": {
+					"title": "X",
+					"type": "number",
+					"description": "X",
+					"format": "double"
+				},
+				"Y": {
+					"title": "Y",
+					"type": "number",
+					"description": "Y",
+					"format": "double"
+				},
+				"Width": {
+					"title": "Width",
+					"type": "number",
+					"description": "Width",
+					"format": "double"
+				},
+				"Height": {
+					"title": "Height",
+					"type": "number",
+					"description": "Height",
+					"format": "double"
+				},
+				"Gender": {
+					"title": "Gender",
+					"type": "string",
+					"description": "Gender"
+				},
+				"Age": {
+					"title": "Age",
+					"type": "string",
+					"description": "Age"
+				},
+				"FaceSize": {
+					"title": "Face size",
+					"type": "integer",
+					"description": "Face size"
+				},
+				"MainEmotion": {
+					"title": "Main emotion",
+					"type": "string",
+					"description": "Main emotion"
+				},
+				"MainEmotionConfidence": {
+					"title": "Main emotion confidence",
+					"type": "number",
+					"description": "Main emotion confidence",
+					"format": "double"
+				},
+				"AngerConfidence": {
+					"title": "Anger emotion confidence",
+					"type": "number",
+					"description": "Anger emotion confidence",
+					"format": "double"
+				},
+				"HappyConfidence": {
+					"title": "Happy emotion confidence",
+					"type": "number",
+					"description": "Happy emotion confidence",
+					"format": "double"
+				},
+				"NeutralConfidence": {
+					"title": "Neutral emotion confidence",
+					"type": "number",
+					"description": "Neutral emotion confidence",
+					"format": "double"
+				},
+				"SadConfidence": {
+					"title": "Sad emotion confidence",
+					"type": "number",
+					"description": "Sad emotion confidence",
+					"format": "double"
+				},
+				"SurpriseConfidence": {
+					"title": "Surpriseemotion confidence",
+					"type": "number",
+					"description": "Surprise emotion confidence",
+					"format": "double"
+				}
 			}
-        },
-		"MaleDetected": {
-          "id": "MaleDetected",
-		  "if.category": "FaceDetection",
-          "title": "Male viewer detected",
-          "description": "Raised when a new male viewer is detected.",
-		  "properties": {
-            "ViewerId": {
-              "type": "integer",
-              "title": "Viewer Id"             
-            },
-			"Gender": {
-              "type": "string",
-              "title": "Gender"             
-            },
-			"AgeRange": {
-              "type": "string",
-              "title": "Age Range"             
-            },
-			"ViewingTime": {
-              "type": "integer",
-              "title": "Viewing Time"             
-            }
+		}
+	},
+	"resources": {
+		"FaceDetection": {
+			"title": "FaceDetection",
+			"isInterfaceAsset": true,
+			"methods": {
+				"ConnectToServer": {
+					"title": "Connect to face detection server",
+					"description": "Connect to face detection server",
+					"response": {
+						"type": "null"
+					}
+				},
+				"DisconnectFromServer": {
+					"title": "Disconnect from face detection server",
+					"description": "Disconnect from face detection server",
+					"response": {
+						"type": "null"
+					}
+				}
+			},
+			"events": {
+				"FaceDetected": {
+					"id": "FaceDetected",
+					"if.category": "FaceDetection",
+					"title": "Face detected",
+					"description": "Raised when a new face is detected.",
+					"properties": {
+						"ViewerId": {
+							"type": "integer",
+							"title": "Face Id"
+						},
+						"Gender": {
+							"type": "string",
+							"title": "Gender"
+						},
+						"Age": {
+							"type": "string",
+							"title": "Age"
+						}
+					}
+				},
+				"FaceLost": {
+					"id": "FaceLost",
+					"if.category": "FaceDetection",
+					"title": "Face lost",
+					"description": "Raised when a face is lost.",
+					"properties": {
+						"ViewerId": {
+							"type": "integer",
+							"title": "Face Id"
+						},
+						"Gender": {
+							"type": "string",
+							"title": "Gender"
+						},
+						"Age": {
+							"type": "string",
+							"title": "Age"
+						}
+					}
+				},
+				"FaceCountChanged": {
+					"id": "FaceCountChanged",
+					"if.category": "FaceDetection",
+					"title": "Face count changed",
+					"description": "Raised when face count changed.",
+					"properties": {
+						"Count": {
+							"type": "integer",
+							"title": "Count"
+						}
+					}
+				}
 			}
-        },
-        "ViewerLost": {
-          "id": "ViewerLost",
-		  "if.category": "FaceDetection",
-          "title": "Viewer lost",
-          "description": "Raised when a viewer is lost.",
-		  "properties": {
-            "ViewerId": {
-              "type": "integer",
-              "title": "Viewer Id"             
-            },
-			"Gender": {
-              "type": "string",
-              "title": "Gender"             
-            },
-			"AgeRange": {
-              "type": "string",
-              "title": "Age Range"             
-            },
-			"ViewingTime": {
-              "type": "integer",
-              "title": "Viewing Time"             
-            }
-			}
-        }
-		
-      }
-    }
-  }
+		}
+	}
 }

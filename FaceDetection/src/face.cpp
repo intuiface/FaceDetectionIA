@@ -24,23 +24,11 @@ void Face::updateGender(float value) {
     if (value < 0)
         return;
 
-	//SME Note: original openVINO sample code
 	if (value > 0.5) {
         _maleScore += value - 0.5f;
     } else {
         _femaleScore += 0.5f - value;
     }
-
-	//SME: algo for Intuiface computed gender
-	/*if (value > 0.5) {
-		_maleScore = (value - 0.5f) * 2;
-		_femaleScore = 0;
-	}
-	else
-	{
-		_femaleScore = (0.5f - value)*2;
-		_maleScore = 0;
-	}*/
 }
 
 void Face::updateEmotions(std::map<std::string, float> values) {
@@ -64,16 +52,6 @@ void Face::updateLandmarks(std::vector<float> values) {
 int Face::getAge() {
     return static_cast<int>(std::floor(_age + 0.5f));
 }
-
-float Face::getMaleScore() {
-	return _maleScore;
-}
-
-float Face::getFemaleScore() {
-	return _femaleScore;
-}
-
-
 
 bool Face::isMale() {
     return _maleScore > _femaleScore;

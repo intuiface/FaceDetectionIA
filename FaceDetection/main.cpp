@@ -23,8 +23,6 @@
 #include <list>
 #include <set>
 
-#include "HTTPRequest.hpp"
-
 #include <inference_engine.hpp>
 
 #include <samples/ocv_common.hpp>
@@ -88,7 +86,6 @@ int main(int argc, char *argv[]) {
 
         slog::info << "Reading input" << slog::endl;
         cv::VideoCapture cap;
-		//SME: open(0) uses the default camera found on system. 
         if (!(FLAGS_i == "cam" ? cap.open(0) : cap.open(FLAGS_i))) {
             throw std::logic_error("Cannot open input file or camera: " + FLAGS_i);
         }
@@ -205,11 +202,11 @@ int main(int argc, char *argv[]) {
             }
         }
 
-		//SME: init exporter for JSON / WebSocket
+		// Initializing exporter for JSON / WebSocket
 		Exporter::Ptr exporter;
 		exporter = std::make_shared<Exporter>();
 
-		std::cout << std::endl << "------ Exporter created ------" << std::endl;
+		std::cout << std::endl << "Create exporter" << std::endl;
 
         // Detecting all faces on the first frame and reading the next one
         faceDetector.enqueue(frame);
@@ -247,8 +244,6 @@ int main(int argc, char *argv[]) {
             // Filling inputs of face analytics networks
             for (auto &&face : prev_detection_results) {
                 if (isFaceAnalyticsEnabled) {
-					//SME: crops the area around the face to process a sub-part in different models (age-gender, emotions, ...)
-					//SME: check the relationship with FP8, FP16, FP32 models. 
                     auto clippedRect = face.location & cv::Rect(0, 0, width, height);
                     cv::Mat face = prev_frame(clippedRect);
                     ageGenderDetector.enqueue(face);
@@ -293,8 +288,8 @@ int main(int argc, char *argv[]) {
 
             faces.clear();
 
-			//SME: TODO: make this configurable at launch through command line parameter. 
-			//See article here for explanation: https://www.pyimagesearch.com/2016/11/07/intersection-over-union-iou-for-object-detection/
+			// TODO: make this configurable at launch through command line parameter. 
+			// See article here for explanation: https://www.pyimagesearch.com/2016/11/07/intersection-over-union-iou-for-object-detection/
 			float IoUThreshold = 0.40;
 
             // For every detected face			
@@ -365,34 +360,8 @@ int main(int argc, char *argv[]) {
                 }
             }
 
-			//SME: first test: send the number of faces. 
-			//if (count != faces.size())
-			//{
-			//	try
-			//	{
-			//		count = faces.size();
-			//		std::string url = "http://localhost:8000/intuiface/sendMessage?message=NumberOfViewers&parameter1=" + std::to_string(count);
-
-			//		//std::cout << "COUNT: " << count << std::endl;
-
-			//		http::InternetProtocol protocol = http::InternetProtocol::V4;
-			//		http::Request request(url, protocol);
-
-			//		//SME: Uncomment this to use Local Network Triggers to get count
-			//		/*http::Response response = request.send("GET", "", {
-			//			"Content-Type: application/x-www-form-urlencoded",
-			//			"User-Agent: runscope/0.1"
-			//		});*/						
-			//	}
-			//	catch (const std::exception& e)
-			//	{
-			//		std::cerr << "Request failed, error: " << e.what() << '\n';
-			//	}
-			//}
-
-			//SME: export faces to web socket
+			// Export faces to web socket
 			exporter->exportFaces(faces, width, height);
-
 
             if (!FLAGS_o.empty()) {
                 videoWriter.write(prev_frame);

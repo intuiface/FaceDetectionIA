@@ -1,20 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
+﻿// ****************************************************************************
+// <copyright file="Viewer.cs" company="IntuiLab">
+// INTUILAB CONFIDENTIAL
+//_____________________
+// [2002] - [2020] IntuiLab
+// All Rights Reserved.
+// NOTICE: All information contained herein is, and remains
+// the property of IntuiLab. The intellectual and technical
+// concepts contained herein are proprietary to IntuiLab
+// and may be covered by U.S. and other country Patents, patents
+// in process, and are protected by trade secret or copyright law.
+// Dissemination of this information or reproduction of this
+// material is strictly forbidden unless prior written permission
+// is obtained from IntuiLab.
+// </copyright>
+// ****************************************************************************
+
+using System;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FaceDetectionIA
 {
-    public class Viewer : INotifyPropertyChanged
+    /// <summary>
+    /// Face informations
+    /// </summary>
+    public class Face : INotifyPropertyChanged
     {
         #region INotifyPropertyChanged
-
-
+        
         public event PropertyChangedEventHandler PropertyChanged;
-
-
+        
         private void NotifyPropertyChanged(String info)
         {
             if (PropertyChanged != null)
@@ -23,33 +37,27 @@ namespace FaceDetectionIA
             }
         }
 
-        #endregion
+        #endregion INotifyPropertyChanged
 
         #region Private Attributes
 
         private int m_iId;
-        private string m_strGender, m_strAgeRange;
-        private int m_iViewingTime, m_iDistance;
+        private string m_strGender, m_strAge;
+        private int m_iViewingTime, m_iFaceSize;
         private double m_iX, m_iY, m_iWidth, m_iHeight;
 
-        //precision gender decision
-        private double m_dMaleScore, m_dFemaleScore;
-        private string m_strComputedGender;
-
-        //main emotion
+        // Main emotion
         private string m_strMainEmotion;
         private double m_dMainEmotionConfidence;
 
-        //5 detected emotions & confidence level
+        // 5 detected emotions & confidence level
         private double m_dAngerConfidence;
         private double m_dHappyConfidence;
         private double m_dNeutralConfidence;
         private double m_dSadConfidence;
         private double m_dSurpriseConfidence;
 
-
-
-        #endregion
+        #endregion Private Attributes
 
         #region Public Properties
 
@@ -79,54 +87,15 @@ namespace FaceDetectionIA
             }
         }
 
-        public string ComputedGender
+        public string Age
         {
-            get { return m_strComputedGender; }
+            get { return m_strAge; }
             set
             {
-                if (m_strComputedGender != value)
+                if (m_strAge != value)
                 {
-                    m_strComputedGender = value;
-                    NotifyPropertyChanged("ComputedGender");
-                }
-            }
-        }
-
-        public double MaleScore
-        {
-            get { return m_dMaleScore; }
-            set
-            {
-                if (m_dMaleScore != value)
-                {
-                    m_dMaleScore = value;
-                    NotifyPropertyChanged("MaleScore");
-                }
-            }
-        }
-
-        public double FemaleScore
-        {
-            get { return m_dFemaleScore; }
-            set
-            {
-                if (m_dFemaleScore != value)
-                {
-                    m_dFemaleScore = value;
-                    NotifyPropertyChanged("FemaleScore");
-                }
-            }
-        }
-
-        public string AgeRange
-        {
-            get { return m_strAgeRange; }
-            set
-            {
-                if (m_strAgeRange != value)
-                {
-                    m_strAgeRange = value;
-                    NotifyPropertyChanged("AgeRange");
+                    m_strAge = value;
+                    NotifyPropertyChanged("Age");
                 }
             }
         }
@@ -197,22 +166,21 @@ namespace FaceDetectionIA
             }
         }
 
-        public int Distance
+        public int FaceSize
         {
-            get { return m_iDistance; }
+            get { return m_iFaceSize; }
             set
             {
-                if (m_iDistance != value)
+                if (m_iFaceSize != value)
                 {
-                    m_iDistance = value;
-                    NotifyPropertyChanged("Distance");
+                    m_iFaceSize = value;
+                    NotifyPropertyChanged("FaceSize");
                 }
             }
         }
 
 
-        //main emotion
-
+        // Main emotion
 
         public string MainEmotion
         {
@@ -227,7 +195,6 @@ namespace FaceDetectionIA
             }
         }
 
-
         public double MainEmotionConfidence
         {
             get { return m_dMainEmotionConfidence; }
@@ -241,7 +208,7 @@ namespace FaceDetectionIA
             }
         }
 
-        //other emotions
+        // Other emotions
         public double AngerConfidence
         {
             get { return m_dAngerConfidence; }
@@ -307,12 +274,13 @@ namespace FaceDetectionIA
             }
         }
 
-        #endregion
+        #endregion Public Properties
+
+        #region Operations
 
         public override string ToString()
         {
-            string res = Id + " -- " + Gender + " -- " + AgeRange + " -- " + ViewingTime + "\n";
-            //res += X + " -- " + Y + " -- " + Width + " -- " + Height + "\n";
+            string res = Id + " -- " + Gender + " -- " + Age + " -- " + ViewingTime + "\n";
             return res;
         }
 
@@ -323,10 +291,16 @@ namespace FaceDetectionIA
 
         public override bool Equals(object obj)
         {
-            Viewer other = obj as Viewer;
-            if (object.ReferenceEquals(obj, null)|| other == null) // return false if obj is null OR if obj doesn't implement IUser
+            Face other = obj as Face;
+
+            // return false if obj is null OR if obj doesn't implement IUser
+            if (object.ReferenceEquals(obj, null)|| other == null)
+            {
                 return false;
+            }
             return (this.Id == other.Id);
         }
+
+        #endregion Operations
     }
 }

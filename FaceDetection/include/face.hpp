@@ -29,8 +29,6 @@ public:
 
     int getAge();
     bool isMale();
-	float getMaleScore();
-	float getFemaleScore();
     std::map<std::string, float> getEmotions();
     std::pair<std::string, float> getMainEmotion();
     HeadPoseDetection::Results getHeadPose();

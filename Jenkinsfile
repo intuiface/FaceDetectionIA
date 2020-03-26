@@ -15,12 +15,14 @@ pipeline {
     stage('Package') {
       steps {
         bat 'package.bat'
-		zip archive: true, dir: "dist\\x64\\Release", glob: '', zipFile: "FaceDetectionIA.zip"
+		zip archive: true, dir: "dist\\x64\\Release\\FaceDetection", glob: '', zipFile: "FaceDetectionServer.zip"
+		zip archive: true, dir: "dist\\x64\\Release\\FaceDetectionIA", glob: '', zipFile: "FaceDetectionIA.zip"
       }
     }
 
     stage('Archive') {
       steps {
+        archiveArtifacts 'FaceDetectionServer.zip'
         archiveArtifacts 'FaceDetectionIA.zip'
       }
     }

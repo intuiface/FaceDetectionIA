@@ -1,84 +1,69 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Fichiers sources">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    <Filter Include="WebSocket">
+      <UniqueIdentifier>{a79616e0-0080-4345-8275-6d4d5c0d2e3d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Fichiers d%27en-tête">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
-    <Filter Include="Fichiers de ressources">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    <Filter Include="FaceDetection">
+      <UniqueIdentifier>{f1f377a5-663f-4175-a4e3-991ee5092a0e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\beast.hpp">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="include\detectors.hpp">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="include\exporter.hpp">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="include\face.hpp">
-      <Filter>Fichiers d%27en-tête</Filter>
+      <Filter>WebSocket</Filter>
     </ClInclude>
     <ClInclude Include="include\http_session.hpp">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="include\HTTPRequest.hpp">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="include\interactive_face_detection.hpp">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="include\listener.hpp">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="include\net.hpp">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="include\shared_state.hpp">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="include\visualizer.hpp">
-      <Filter>Fichiers d%27en-tête</Filter>
+      <Filter>WebSocket</Filter>
     </ClInclude>
     <ClInclude Include="include\websocket_session.hpp">
-      <Filter>Fichiers d%27en-tête</Filter>
+      <Filter>WebSocket</Filter>
     </ClInclude>
+    <ClInclude Include="include\shared_state.hpp">
+      <Filter>WebSocket</Filter>
+    </ClInclude>
+    <ClInclude Include="include\net.hpp">
+      <Filter>WebSocket</Filter>
+    </ClInclude>
+    <ClInclude Include="include\listener.hpp">
+      <Filter>WebSocket</Filter>
+    </ClInclude>
+    <ClInclude Include="include\visualizer.hpp">
+      <Filter>FaceDetection</Filter>
+    </ClInclude>
+    <ClInclude Include="include\face.hpp">
+      <Filter>FaceDetection</Filter>
+    </ClInclude>
+    <ClInclude Include="include\interactive_face_detection.hpp">
+      <Filter>FaceDetection</Filter>
+    </ClInclude>
+    <ClInclude Include="include\detectors.hpp">
+      <Filter>FaceDetection</Filter>
+    </ClInclude>
+    <ClInclude Include="include\exporter.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\detectors.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="src\exporter.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="src\face.cpp">
-      <Filter>Fichiers sources</Filter>
+    <ClCompile Include="src\shared_state.cpp">
+      <Filter>WebSocket</Filter>
     </ClCompile>
     <ClCompile Include="src\http_session.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="src\listener.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="src\shared_state.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="src\visualizer.cpp">
-      <Filter>Fichiers sources</Filter>
+      <Filter>WebSocket</Filter>
     </ClCompile>
     <ClCompile Include="src\websocket_session.cpp">
-      <Filter>Fichiers sources</Filter>
+      <Filter>WebSocket</Filter>
     </ClCompile>
-    <ClCompile Include="main.cpp">
-      <Filter>Fichiers sources</Filter>
+    <ClCompile Include="src\listener.cpp">
+      <Filter>WebSocket</Filter>
     </ClCompile>
+    <ClCompile Include="src\visualizer.cpp">
+      <Filter>FaceDetection</Filter>
+    </ClCompile>
+    <ClCompile Include="src\detectors.cpp">
+      <Filter>FaceDetection</Filter>
+    </ClCompile>
+    <ClCompile Include="src\face.cpp">
+      <Filter>FaceDetection</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="src\exporter.cpp" />
   </ItemGroup>
 </Project>

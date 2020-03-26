@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace TestFaceDetection
 {
     class Program
@@ -14,7 +13,7 @@ namespace TestFaceDetection
         static void Main(string[] args)
         {
             fd = new FaceDetection();
-            fd.StartListening();
+            fd.ConnectToServer();
 
             string q = "";
             while (q != "q")
