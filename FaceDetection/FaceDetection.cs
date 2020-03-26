@@ -15,7 +15,7 @@
 // </copyright>
 // ****************************************************************************
 
-using FaceDetectionIA.Events;
+using FaceDetection.Events;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.ObjectModel;
@@ -25,7 +25,7 @@ using System.Linq;
 using System.Timers;
 using WebSocketSharp;
 
-namespace FaceDetectionIA
+namespace FaceDetection
 {
     public class FaceDetection : INotifyPropertyChanged, IDisposable
     {

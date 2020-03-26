@@ -1,4 +1,4 @@
-﻿using FaceDetectionIA;
+﻿using FaceDetection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,11 +8,11 @@ namespace TestFaceDetection
 {
     class Program
     {
-        static FaceDetection fd;
+        static FaceDetection.FaceDetection fd;
 
         static void Main(string[] args)
         {
-            fd = new FaceDetection();
+            fd = new FaceDetection.FaceDetection();
             fd.ConnectToServer();
 
             string q = "";

@@ -16,7 +16,7 @@
 // ****************************************************************************
 
 using System;
-namespace FaceDetectionIA.Events
+namespace FaceDetection.Events
 {
     /// <summary>
     /// Class for event arguments.

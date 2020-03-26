@@ -51,9 +51,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FaceDetectionIA\FaceDetectionIA.csproj">
+    <ProjectReference Include="..\FaceDetection\FaceDetection.csproj">
       <Project>{bdb468e9-1670-4cb1-9bdf-46bb478efbea}</Project>
-      <Name>FaceDetectionIA</Name>
+      <Name>FaceDetection</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

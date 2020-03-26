@@ -18,7 +18,7 @@
 using System;
 using System.ComponentModel;
 
-namespace FaceDetectionIA
+namespace FaceDetection
 {
     /// <summary>
     /// Face informations

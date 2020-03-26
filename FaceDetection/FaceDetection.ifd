@@ -1,15 +1,15 @@
 {
 	"kind": "discovery#restDescription",
 	"discoveryVersion": "v1",
-	"id": "FaceDetectionIA",
-	"name": "FaceDetectionIA",
+	"id": "FaceDetection",
+	"name": "FaceDetection",
 	"version": "1.0",
 	"protocol": "dll",
 	"baseUrl": null,
-	"basePath": "FaceDetectionIA",
+	"basePath": "FaceDetection",
 	"auth": {},
 	"dependencies": [
-		"FaceDetectionIA.dll"
+		"FaceDetection.dll"
 	],
 	"schemas": {
 		"FaceDetection": {

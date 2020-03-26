@@ -3,14 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.852
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FaceDetectionIA", "FaceDetectionIA\FaceDetectionIA.csproj", "{BDB468E9-1670-4CB1-9BDF-46BB478EFBEA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FaceDetection", "FaceDetection\FaceDetection.csproj", "{BDB468E9-1670-4CB1-9BDF-46BB478EFBEA}"
 	ProjectSection(ProjectDependencies) = postProject
 		{C1B7C78A-55C9-481E-BAE2-B2E240D9A392} = {C1B7C78A-55C9-481E-BAE2-B2E240D9A392}
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestFaceDetection", "TestFaceDetection\TestFaceDetection.csproj", "{351ED45E-7E51-40F4-82D8-C21F77CAC745}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FaceDetection", "FaceDetection\FaceDetection.vcxproj", "{C1B7C78A-55C9-481E-BAE2-B2E240D9A392}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OpenVINOFaceDetectionServer", "OpenVINOFaceDetectionServer\OpenVINOFaceDetectionServer.vcxproj", "{C1B7C78A-55C9-481E-BAE2-B2E240D9A392}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
