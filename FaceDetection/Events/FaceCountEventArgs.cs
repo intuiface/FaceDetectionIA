@@ -1,5 +1,5 @@
 ﻿// ****************************************************************************
-// <copyright file="FaceEventArgs.cs" company="IntuiLab">
+// <copyright file="FaceCountEventArgs.cs" company="IntuiLab">
 // INTUILAB CONFIDENTIAL
 //_____________________
 // [2002] - [2020] IntuiLab
@@ -21,25 +21,19 @@ namespace FaceDetection.Events
     /// <summary>
     /// Class for event arguments.
     /// </summary>
-    public class FaceEventArgs : EventArgs
+    public class FaceCountEventArgs : EventArgs
     {
         #region Fields
 
-        public int FaceId { get; set; }
-        public string Gender { get; set; }
-        public string Age { get; set; }
-        public int ViewingTime { get; set; }
+        public int Count { get; set; }
 
         #endregion Fields
 
         #region Constructor
 
-        public FaceEventArgs(int faceId, string gender, string age, int viewingTime)
+        public FaceCountEventArgs(int count)
         {
-            this.FaceId = faceId;
-            this.Gender = gender;
-            this.Age = age;
-            this.ViewingTime = viewingTime;
+            this.Count = count;
         }
 
         #endregion Constructor

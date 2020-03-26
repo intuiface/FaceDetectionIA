@@ -1,5 +1,5 @@
 ﻿// ****************************************************************************
-// <copyright file="Viewer.cs" company="IntuiLab">
+// <copyright file="Face.cs" company="IntuiLab">
 // INTUILAB CONFIDENTIAL
 //_____________________
 // [2002] - [2020] IntuiLab
@@ -42,7 +42,7 @@ namespace FaceDetection
         #region Private Attributes
 
         private int m_iId;
-        private string m_strGender, m_strAge;
+        private string m_strGender, m_strAge, m_strAgeRange;
         private int m_iViewingTime, m_iFaceSize;
         private double m_iX, m_iY, m_iWidth, m_iHeight;
 
@@ -50,12 +50,11 @@ namespace FaceDetection
         private string m_strMainEmotion;
         private double m_dMainEmotionConfidence;
 
-        // 5 detected emotions & confidence level
-        private double m_dAngerConfidence;
-        private double m_dHappyConfidence;
-        private double m_dNeutralConfidence;
-        private double m_dSadConfidence;
-        private double m_dSurpriseConfidence;
+        // Other emotions
+        private EmotionConfidence m_EmotionConfidence;
+
+        // Head pose
+        private HeadPoseEstimation m_HeadPoseEstimation;
 
         #endregion Private Attributes
 
@@ -100,6 +99,18 @@ namespace FaceDetection
             }
         }
 
+        public string AgeRange
+        {
+            get { return m_strAgeRange; }
+            set
+            {
+                if (m_strAgeRange != value)
+                {
+                    m_strAgeRange = value;
+                    NotifyPropertyChanged("AgeRange");
+                }
+            }
+        }
 
         public int ViewingTime
         {
@@ -181,7 +192,6 @@ namespace FaceDetection
 
 
         // Main emotion
-
         public string MainEmotion
         {
             get { return m_strMainEmotion; }
@@ -209,67 +219,29 @@ namespace FaceDetection
         }
 
         // Other emotions
-        public double AngerConfidence
+        public EmotionConfidence EmotionConfidence
         {
-            get { return m_dAngerConfidence; }
+            get { return m_EmotionConfidence; }
             set
             {
-                if (m_dAngerConfidence != value)
+                if (m_EmotionConfidence != value)
                 {
-                    m_dAngerConfidence = value;
-                    NotifyPropertyChanged("AngerConfidence");
+                    m_EmotionConfidence = value;
+                    NotifyPropertyChanged("EmotionConfidence");
                 }
             }
         }
 
-        public double SurpriseConfidence
+        // Head pose
+        public HeadPoseEstimation HeadPoseEstimation
         {
-            get { return m_dSurpriseConfidence; }
+            get { return m_HeadPoseEstimation; }
             set
             {
-                if (m_dSurpriseConfidence != value)
+                if (m_HeadPoseEstimation != value)
                 {
-                    m_dSurpriseConfidence = value;
-                    NotifyPropertyChanged("SurpriseConfidence");
-                }
-            }
-        }
-
-        public double HappyConfidence
-        {
-            get { return m_dHappyConfidence; }
-            set
-            {
-                if (m_dHappyConfidence != value)
-                {
-                    m_dHappyConfidence = value;
-                    NotifyPropertyChanged("HappyConfidence");
-                }
-            }
-        }
-
-        public double NeutralConfidence
-        {
-            get { return m_dNeutralConfidence; }
-            set
-            {
-                if (m_dNeutralConfidence != value)
-                {
-                    m_dNeutralConfidence = value;
-                    NotifyPropertyChanged("NeutralConfidence");
-                }
-            }
-        }
-
-        public double SadConfidence
-        {
-            get { return m_dSadConfidence; }
-            set
-            {
-                if (m_dSadConfidence != value)
-                {
-                    m_dSadConfidence = value;
-                    NotifyPropertyChanged("SadConfidence");
+                    m_HeadPoseEstimation = value;
+                    NotifyPropertyChanged("HeadPoseEstimation");
                 }
             }
         }

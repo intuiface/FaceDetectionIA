@@ -111,6 +111,12 @@ void Exporter::exportFaces(std::list<Face::Ptr> faces, size_t width, size_t heig
 		faceProperties.put("location.width", (float)(entry->_location.width) * fInvWidth);
 		faceProperties.put("location.height", (float)(entry->_location.height) * fInvHeight);
 
+		// Add head position estimation
+		auto headPose = entry->getHeadPose();
+		faceProperties.put("headpose.pitch", headPose.angle_p);
+		faceProperties.put("headpose.yaw", headPose.angle_y);
+		faceProperties.put("headpose.roll", headPose.angle_r);
+
 		// Add informations of this face to the face list
 		faceList.push_back(std::make_pair("", faceProperties));
 	}

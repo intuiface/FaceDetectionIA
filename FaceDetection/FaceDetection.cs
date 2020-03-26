@@ -63,12 +63,14 @@ namespace FaceDetection
         // FPS limiter
         private int m_iTimerThreshold = 500;
 
-        // Main viewer
+        // Main face
         private Face m_refMainFace;
         private bool m_bIsMainFaceDetected = false;
 
         private Timer m_refTimer;
         private bool m_bContinueListening = true;
+
+        private bool m_bIsConnectedToFaceDetectionServer = false;
 
         #endregion Private attributes
 
@@ -111,6 +113,19 @@ namespace FaceDetection
                 {
                     m_iFaceCount = value;
                     NotifyPropertyChanged("FaceCount");
+                }
+            }
+        }
+
+        public bool IsConnectedToFaceDetectionServer
+        {
+            get { return m_bIsConnectedToFaceDetectionServer; }
+            set
+            {
+                if (m_bIsConnectedToFaceDetectionServer != value)
+                {
+                    m_bIsConnectedToFaceDetectionServer = value;
+                    NotifyPropertyChanged("IsConnectedToFaceDetectionServer");
                 }
             }
         }
@@ -202,17 +217,25 @@ namespace FaceDetection
         #region Events
 
         public delegate void FaceEventHandler(object sender, FaceEventArgs e);
+        public delegate void FaceCountEventHandler(object sender, FaceCountEventArgs e);
+
         public event FaceEventHandler FaceDetected;
         public event FaceEventHandler FaceLost;
+        public event FaceCountEventHandler FaceCountChanged;
 
-        protected void RaiseFaceDetected(int viewerId, string gender, string ageRange, int viewingTime)
+        protected void RaiseFaceDetected(int faceId, string gender, string ageRange, int viewingTime)
         {
-            FaceDetected(this, new FaceEventArgs(viewerId, gender, ageRange, viewingTime));
+            FaceDetected(this, new FaceEventArgs(faceId, gender, ageRange, viewingTime));
         }
 
-        protected void RaiseFaceLost(int viewerId, string gender, string ageRange, int viewingTime)
+        protected void RaiseFaceLost(int faceId, string gender, string ageRange, int viewingTime)
         {
-            FaceLost(this, new FaceEventArgs(viewerId, gender, ageRange, viewingTime));
+            FaceLost(this, new FaceEventArgs(faceId, gender, ageRange, viewingTime));
+        }
+
+        protected void RaiseFaceCountChanged(int count)
+        {
+            FaceCountChanged(this, new FaceCountEventArgs(count));
         }
 
         #endregion Events
@@ -259,6 +282,8 @@ namespace FaceDetection
 
         void m_refWS_OnOpen(object sender, EventArgs e)
         {
+            IsConnectedToFaceDetectionServer = true;
+
             Console.WriteLine("Web socket open");
             ActivityLog += "Web socket open on " + ServerHost + ":" + ServerPort + "\n";
         }
@@ -277,13 +302,13 @@ namespace FaceDetection
             {
                 JObject o = JObject.Parse(e.Data);
 
-                // Case the list of viewers is empty                 
-                if (o["viewers"] == null)
+                // Case the list of faces is empty                 
+                if (o["faces"] == null)
                     return;
 
-                JArray ja = o["viewers"] as JArray;
+                JArray ja = o["faces"] as JArray;
 
-                // Empty list addressed in _updateViewsList, to remove previous viewers. 
+                // Empty list addressed in _updateFacesList, to remove previous faces. 
                 _updateFacesList(ja);
             }
             catch (Exception ex)
@@ -297,11 +322,11 @@ namespace FaceDetection
         {
             ObservableCollection<Face> newColl = new ObservableCollection<Face>();
 
-            // Main viewer computation
+            // Main face computation
             int mainFaceID = -1;
             float maxHeadSize = -1;
 
-            // Copy new viewers in existing list            
+            // Copy new faces in existing list            
             if (ja != null)
             {
                 foreach (var v in ja)
@@ -309,7 +334,13 @@ namespace FaceDetection
                     // Parse basic info
                     int id = int.Parse(v["id"].ToString());
                     string gender = v["gender"].ToString();
+
                     string age = v["age"].ToString();
+                    var ageInteger = Int16.Parse(age);
+                    string ageRange = ageInteger <= 16 ? "child" :
+                                ageInteger <= 30 ? "young adult" :
+                                ageInteger <= 45 ? "middle-aged adult" : "old-aged adult";
+
                     var x = float.Parse(v["location"]["x"].ToString(), CultureInfo.InvariantCulture); // TODO: normalize? (or on C++ side?)
                     var y = float.Parse(v["location"]["y"].ToString(), CultureInfo.InvariantCulture);
 
@@ -327,11 +358,18 @@ namespace FaceDetection
                     var mainEmotionConfidence = float.Parse(v["mainEmotion"]["confidence"].ToString(), CultureInfo.InvariantCulture);
 
                     // Parse additional emotions
-                    var angerConfidence = float.Parse(v["emotions"]["anger"].ToString(), CultureInfo.InvariantCulture);
-                    var happyConfidence = float.Parse(v["emotions"]["happy"].ToString(), CultureInfo.InvariantCulture);
-                    var neutralConfidence = float.Parse(v["emotions"]["neutral"].ToString(), CultureInfo.InvariantCulture);
-                    var sadConfidence = float.Parse(v["emotions"]["sad"].ToString(), CultureInfo.InvariantCulture);
-                    var surpriseConfidence = float.Parse(v["emotions"]["surprise"].ToString(), CultureInfo.InvariantCulture);
+                    EmotionConfidence emotionConfidence = new EmotionConfidence();
+                    emotionConfidence.Angry = float.Parse(v["emotions"]["anger"].ToString(), CultureInfo.InvariantCulture);
+                    emotionConfidence.Happy = float.Parse(v["emotions"]["happy"].ToString(), CultureInfo.InvariantCulture);
+                    emotionConfidence.Neutral = float.Parse(v["emotions"]["neutral"].ToString(), CultureInfo.InvariantCulture);
+                    emotionConfidence.Sad = float.Parse(v["emotions"]["sad"].ToString(), CultureInfo.InvariantCulture);
+                    emotionConfidence.Surprised = float.Parse(v["emotions"]["surprise"].ToString(), CultureInfo.InvariantCulture);
+
+                    // Parse head pose estimation
+                    HeadPoseEstimation headPoseEstimation = new HeadPoseEstimation();
+                    headPoseEstimation.Pitch = float.Parse(v["headpose"]["pitch"].ToString(), CultureInfo.InvariantCulture);
+                    headPoseEstimation.Yaw = float.Parse(v["headpose"]["yaw"].ToString(), CultureInfo.InvariantCulture);
+                    headPoseEstimation.Roll = float.Parse(v["headpose"]["roll"].ToString(), CultureInfo.InvariantCulture);
 
                     // If face size filtering is active, check is head is bigger than threshold
                     if (distance < m_dMinimumFaceSize)
@@ -357,13 +395,11 @@ namespace FaceDetection
                         FaceSize = distance,
                         Gender = gender,
                         Age = age,
+                        AgeRange = ageRange,
                         MainEmotion = mainEmotion,
                         MainEmotionConfidence = mainEmotionConfidence,
-                        AngerConfidence = angerConfidence,
-                        HappyConfidence = happyConfidence,
-                        NeutralConfidence = neutralConfidence,
-                        SadConfidence = sadConfidence,
-                        SurpriseConfidence = surpriseConfidence
+                        EmotionConfidence = emotionConfidence,
+                        HeadPoseEstimation = headPoseEstimation
                     });                             
                 }
             }
@@ -399,8 +435,15 @@ namespace FaceDetection
 
             int newCount = newColl.Count;
             int oldCount = Faces.Count;
-            
-            // Adjust number of viewers in Faces
+
+            if (newCount != oldCount)
+            {
+                // Raise face count changed event
+                Console.WriteLine("Face count changed: " + newCount);
+                RaiseFaceCountChanged(newCount);
+            }
+
+            // Adjust number of faces in Faces
             // New users to add
             if (newCount > oldCount)
             {
@@ -418,7 +461,7 @@ namespace FaceDetection
                 }
             }
 
-            // Copy new coll properties in existing viewers list.
+            // Copy new coll properties in existing faces list.
             int index = 0;
             foreach (var item in newColl)
             {
@@ -431,17 +474,17 @@ namespace FaceDetection
                     Faces[index].Height = item.Height;
                     Faces[index].Gender = item.Gender;
                     Faces[index].Age = item.Age;
+                    Faces[index].AgeRange = item.AgeRange;
                     Faces[index].FaceSize = item.FaceSize;
 
                     Faces[index].MainEmotion = item.MainEmotion;
                     Faces[index].MainEmotionConfidence = item.MainEmotionConfidence;
 
                     // Additional emotions
-                    Faces[index].AngerConfidence = item.AngerConfidence;
-                    Faces[index].HappyConfidence = item.HappyConfidence;
-                    Faces[index].NeutralConfidence = item.NeutralConfidence;
-                    Faces[index].SadConfidence = item.SadConfidence;
-                    Faces[index].SurpriseConfidence = item.SurpriseConfidence;
+                    Faces[index].EmotionConfidence = item.EmotionConfidence;
+
+                    // Head pose estimation
+                    Faces[index].HeadPoseEstimation = item.HeadPoseEstimation;
                 }
                 catch (Exception ex)
                 {
@@ -456,7 +499,7 @@ namespace FaceDetection
             // Update face count
             FaceCount = Faces.Count();
 
-            // Copy main viewer info
+            // Copy main face info
             if (FaceCount > 0)
             {
                 var item = Faces.Single(i => i.Id == mainFaceID);
@@ -469,17 +512,17 @@ namespace FaceDetection
                 MainFace.Gender = item.Gender;
 
                 MainFace.Age = item.Age;
+                MainFace.AgeRange = item.AgeRange;
                 MainFace.MainEmotion = item.MainEmotion;
                 MainFace.MainEmotionConfidence = item.MainEmotionConfidence;
 
                 // Additional emotions
-                MainFace.AngerConfidence = item.AngerConfidence;
-                MainFace.HappyConfidence = item.HappyConfidence;
-                MainFace.NeutralConfidence = item.NeutralConfidence;
-                MainFace.SadConfidence = item.SadConfidence;
-                MainFace.SurpriseConfidence = item.SurpriseConfidence;
+                MainFace.EmotionConfidence = item.EmotionConfidence;
 
-                // Mark the viewer detected
+                // Head pose estimation
+                MainFace.HeadPoseEstimation = item.HeadPoseEstimation;
+
+                // Mark the face detected
                 IsMainFaceDetected = true;
             }
             else
@@ -515,7 +558,7 @@ namespace FaceDetection
                     Faces.RemoveAt(index);
                     FaceCount = Faces.Count;
 
-                    Console.WriteLine("Remove viewer " + id + " at index " + index);
+                    Console.WriteLine("Remove faces " + id + " at index " + index);
                 }
             }
             catch (Exception ex)
@@ -532,6 +575,8 @@ namespace FaceDetection
 
         void m_refWS_OnClose(object sender, WebSocketSharp.CloseEventArgs e)
         {
+            IsConnectedToFaceDetectionServer = false;
+
             ActivityLog += "WebSocket Closed:" + e.Reason + "\n";
             System.Threading.Thread.Sleep(5000);
             _updateWS();

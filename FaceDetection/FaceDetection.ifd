@@ -43,6 +43,7 @@
 					"description": "Face count"
 				},
 				"MainFace": {
+					"title": "Main face",
 					"type": "object",
 					"readonly": true,
 					"properties": {
@@ -85,6 +86,11 @@
 							"type": "string",
 							"description": "Age"
 						},
+						"AgeRange": {
+							"title": "Age range",
+							"type": "string",
+							"description": "Age range"
+						},
 						"FaceSize": {
 							"title": "Face size",
 							"type": "integer",
@@ -101,35 +107,67 @@
 							"description": "Main emotion confidence",
 							"format": "double"
 						},
-						"AngerConfidence": {
-							"title": "Anger emotion confidence",
-							"type": "number",
-							"description": "Anger emotion confidence",
-							"format": "double"
+						"EmotionConfidence": {
+							"title": "Emotion confidence",
+							"type": "object",
+							"description": "Emotion confidence",
+							"properties": {
+								"Angry": {
+									"title": "Angry",
+									"type": "number",
+									"description": "Angry",
+									"format": "double"
+								},
+								"Happy": {
+									"title": "Happy",
+									"type": "number",
+									"description": "Happy",
+									"format": "double"
+								},
+								"Neutral": {
+									"title": "Neutral",
+									"type": "number",
+									"description": "Neutral",
+									"format": "double"
+								},
+								"Sad": {
+									"title": "Sad",
+									"type": "number",
+									"description": "Sad",
+									"format": "double"
+								},
+								"Surprised": {
+									"title": "Surprised",
+									"type": "number",
+									"description": "Surprised",
+									"format": "double"
+								}
+							}
 						},
-						"HappyConfidence": {
-							"title": "Happy emotion confidence",
-							"type": "number",
-							"description": "Happy emotion confidence",
-							"format": "double"
-						},
-						"NeutralConfidence": {
-							"title": "Neutral emotion confidence",
-							"type": "number",
-							"description": "Neutral emotion confidence",
-							"format": "double"
-						},
-						"SadConfidence": {
-							"title": "Sad emotion confidence",
-							"type": "number",
-							"description": "Sad emotion confidence",
-							"format": "double"
-						},
-						"SurpriseConfidence": {
-							"title": "Surprise emotion confidence",
-							"type": "number",
-							"description": "Surprise emotion confidence",
-							"format": "double"
+						"HeadPoseEstimation": {
+							"title": "Head pose estimation",
+							"type": "object",
+							"description": "Head pose estimation",
+							"properties": {
+								"Pitch": {
+									"title": "Pitch",
+									"type": "number",
+									"description": "Pitch",
+									"format": "double"
+								},
+								"Yaw": {
+									"title": "Yaw",
+									"type": "number",
+									"description": "Yaw",
+									"format": "double"
+								},
+								"Roll": {
+									"title": "Roll",
+									"type": "number",
+									"description": "Roll",
+									"format": "double"
+								}
+							}
 						}
 					}
 				},
@@ -147,6 +185,12 @@
 					"items": {
 						"$ref": "Face"
 					}
+				},
+				"IsConnectedToFaceDetectionServer": {
+					"title": "Is connected to face detection server",
+					"type": "string",
+					"readonly": true,
+					"description": "Is connected to face detection server"
 				},
 				"ActivityLog": {
 					"title": "Activity log",
@@ -199,6 +243,11 @@
 					"type": "string",
 					"description": "Age"
 				},
+				"AgeRange": {
+					"title": "Age range",
+					"type": "string",
+					"description": "Age range"
+				},
 				"FaceSize": {
 					"title": "Face size",
 					"type": "integer",
@@ -215,35 +264,67 @@
 					"description": "Main emotion confidence",
 					"format": "double"
 				},
-				"AngerConfidence": {
-					"title": "Anger emotion confidence",
-					"type": "number",
-					"description": "Anger emotion confidence",
-					"format": "double"
+				"EmotionConfidence": {
+					"title": "Emotion confidence",
+					"type": "object",
+					"description": "Emotion confidence",
+					"properties": {
+						"Angry": {
+							"title": "Angry",
+							"type": "number",
+							"description": "Angry",
+							"format": "double"
+						},
+						"Happy": {
+							"title": "Happy",
+							"type": "number",
+							"description": "Happy",
+							"format": "double"
+						},
+						"Neutral": {
+							"title": "Neutral",
+							"type": "number",
+							"description": "Neutral",
+							"format": "double"
+						},
+						"Sad": {
+							"title": "Sad",
+							"type": "number",
+							"description": "Sad",
+							"format": "double"
+						},
+						"Surprised": {
+							"title": "Surprised",
+							"type": "number",
+							"description": "Surprised",
+							"format": "double"
+						}
+					}
 				},
-				"HappyConfidence": {
-					"title": "Happy emotion confidence",
-					"type": "number",
-					"description": "Happy emotion confidence",
-					"format": "double"
-				},
-				"NeutralConfidence": {
-					"title": "Neutral emotion confidence",
-					"type": "number",
-					"description": "Neutral emotion confidence",
-					"format": "double"
-				},
-				"SadConfidence": {
-					"title": "Sad emotion confidence",
-					"type": "number",
-					"description": "Sad emotion confidence",
-					"format": "double"
-				},
-				"SurpriseConfidence": {
-					"title": "Surpriseemotion confidence",
-					"type": "number",
-					"description": "Surprise emotion confidence",
-					"format": "double"
+				"HeadPoseEstimation": {
+					"title": "Head pose estimation",
+					"type": "object",
+					"description": "Head pose estimation",
+					"properties": {
+						"Pitch": {
+							"title": "Pitch",
+							"type": "number",
+							"description": "Pitch",
+							"format": "double"
+						},
+						"Yaw": {
+							"title": "Yaw",
+							"type": "number",
+							"description": "Yaw",
+							"format": "double"
+						},
+						"Roll": {
+							"title": "Roll",
+							"type": "number",
+							"description": "Roll",
+							"format": "double"
+						}
+					}
 				}
 			}
 		}
@@ -275,9 +356,9 @@
 					"title": "Face detected",
 					"description": "Raised when a new face is detected.",
 					"properties": {
-						"ViewerId": {
+						"Id": {
 							"type": "integer",
-							"title": "Face Id"
+							"title": "ID"
 						},
 						"Gender": {
 							"type": "string",
@@ -295,9 +376,9 @@
 					"title": "Face lost",
 					"description": "Raised when a face is lost.",
 					"properties": {
-						"ViewerId": {
+						"Id": {
 							"type": "integer",
-							"title": "Face Id"
+							"title": "ID"
 						},
 						"Gender": {
 							"type": "string",
