@@ -270,6 +270,7 @@ int main(int argc, char *argv[]) {
                     }
                     frameReadStatus = cap.read(next_frame);
                 }
+				flip(next_frame, next_frame, 1);
             }
 
             if (isFaceAnalyticsEnabled) {
