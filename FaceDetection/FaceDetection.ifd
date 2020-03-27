@@ -8,6 +8,9 @@
 	"baseUrl": null,
 	"basePath": "FaceDetection",
 	"auth": {},
+	"icons": {
+		"x32": "icon_facedetection_32.png"
+	},
 	"dependencies": [
 		"FaceDetection.dll"
 	],
