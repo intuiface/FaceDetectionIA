@@ -18,6 +18,7 @@
 using FaceDetection.Events;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Globalization;
@@ -61,7 +62,7 @@ namespace FaceDetection
         private int m_dMinimumFaceSize = 2000; // width x height in pixels
 
         // FPS limiter
-        private int m_iTimerThreshold = 500;
+        private int m_iDetectionUpdateFrequency = 500;
 
         // Main face
         private Face m_refMainFace;
@@ -71,6 +72,9 @@ namespace FaceDetection
         private bool m_bContinueListening = true;
 
         private bool m_bIsConnectedToFaceDetectionServer = false;
+
+        // Dwell time by face
+        private Dictionary<int, DateTime> m_startTimeMap = new Dictionary<int, DateTime>();
 
         #endregion Private attributes
 
@@ -169,15 +173,15 @@ namespace FaceDetection
             }
         }
 
-        public int TimerThreshold
+        public int DetectionUpdateFrequency
         {
-            get { return m_iTimerThreshold; }
+            get { return m_iDetectionUpdateFrequency; }
             set
             {
-                if (m_iTimerThreshold != value)
+                if (m_iDetectionUpdateFrequency != value)
                 {
-                    m_iTimerThreshold = value;
-                    NotifyPropertyChanged("TimerThreshold");
+                    m_iDetectionUpdateFrequency = value;
+                    NotifyPropertyChanged("DetectionUpdateFrequency");
                     if (m_refTimer != null)
                     {
                         m_refTimer.Interval = value;
@@ -223,14 +227,14 @@ namespace FaceDetection
         public event FaceEventHandler FaceLost;
         public event FaceCountEventHandler FaceCountChanged;
 
-        protected void RaiseFaceDetected(int faceId, string gender, string ageRange, int viewingTime)
+        protected void RaiseFaceDetected(int faceId, string gender, string ageRange)
         {
-            FaceDetected(this, new FaceEventArgs(faceId, gender, ageRange, viewingTime));
+            FaceDetected(this, new FaceEventArgs(faceId, gender, ageRange));
         }
 
-        protected void RaiseFaceLost(int faceId, string gender, string ageRange, int viewingTime)
+        protected void RaiseFaceLost(int faceId, string gender, string ageRange)
         {
-            FaceLost(this, new FaceEventArgs(faceId, gender, ageRange, viewingTime));
+            FaceLost(this, new FaceEventArgs(faceId, gender, ageRange));
         }
 
         protected void RaiseFaceCountChanged(int count)
@@ -247,7 +251,7 @@ namespace FaceDetection
             Faces = new ObservableCollection<Face>();
             MainFace = new Face() { Id = -1 };
 
-            m_refTimer = new Timer(TimerThreshold);
+            m_refTimer = new Timer(DetectionUpdateFrequency);
             m_refTimer.Elapsed += Timer_Elapsed;
 
             _updateWS();
@@ -446,7 +450,8 @@ namespace FaceDetection
                 {
                     // Raise face lost event
                     Console.WriteLine("Face lost: " + face);
-                    RaiseFaceLost(face.Id, face.Gender, face.Age, 0);
+                    RaiseFaceLost(face.Id, face.Gender, face.Age);
+                    m_startTimeMap.Remove(face.Id);
                 }
             }
             if (added.Count() > 0)
@@ -455,7 +460,8 @@ namespace FaceDetection
                 {
                     // Raise face added event
                     Console.WriteLine("Face added: " + face);
-                    RaiseFaceDetected(face.Id, face.Gender, face.Age, 0);
+                    RaiseFaceDetected(face.Id, face.Gender, face.Age);
+                    m_startTimeMap.Add(face.Id, DateTime.Now);
                 }
             }
 
@@ -503,6 +509,8 @@ namespace FaceDetection
                     Faces[index].Gender = item.Gender;
                     Faces[index].Age = item.Age;
                     Faces[index].AgeRange = item.AgeRange;
+                    Faces[index].DwellTime = (DateTime.Now - m_startTimeMap[item.Id]).TotalSeconds;
+
                     Faces[index].FaceSize = item.FaceSize;
 
                     Faces[index].MainEmotion = item.MainEmotion;
@@ -541,6 +549,8 @@ namespace FaceDetection
 
                 MainFace.Age = item.Age;
                 MainFace.AgeRange = item.AgeRange;
+                MainFace.DwellTime = (DateTime.Now - m_startTimeMap[item.Id]).TotalSeconds;
+
                 MainFace.MainEmotion = item.MainEmotion;
                 MainFace.MainEmotionConfidence = item.MainEmotionConfidence;
 
@@ -580,7 +590,8 @@ namespace FaceDetection
                     Face v = Faces[index];
 
                     // Raise event first
-                    RaiseFaceLost(v.Id, v.Gender, v.Age, 0);
+                    RaiseFaceLost(v.Id, v.Gender, v.Age);
+                    m_startTimeMap.Remove(v.Id);
 
                     // Remove index from map and Face from list
                     Faces.RemoveAt(index);

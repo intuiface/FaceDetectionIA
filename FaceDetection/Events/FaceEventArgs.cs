@@ -28,18 +28,16 @@ namespace FaceDetection.Events
         public int FaceId { get; set; }
         public string Gender { get; set; }
         public string Age { get; set; }
-        public int ViewingTime { get; set; }
 
         #endregion Fields
 
         #region Constructor
 
-        public FaceEventArgs(int faceId, string gender, string age, int viewingTime)
+        public FaceEventArgs(int faceId, string gender, string age)
         {
             this.FaceId = faceId;
             this.Gender = gender;
             this.Age = age;
-            this.ViewingTime = viewingTime;
         }
 
         #endregion Constructor

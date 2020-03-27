@@ -34,10 +34,10 @@
 					"type": "integer",
 					"description": "Minimum face size"
 				},
-				"TimerThreshold": {
-					"title": "TimerThreshold",
+				"DetectionUpdateFrequency": {
+					"title": "Detection update frequency",
 					"type": "integer",
-					"description": "TimerThreshold"
+					"description": "Detection update frequency"
 				},
 				"FaceCount": {
 					"title": "Face count",
@@ -93,6 +93,12 @@
 							"title": "Age range",
 							"type": "string",
 							"description": "Age range"
+						},
+						"DwellTime": {
+							"title": "Dwell time",
+							"type": "number",
+							"description": "Dwell time",
+							"format": "double"
 						},
 						"FaceSize": {
 							"title": "Face size",
@@ -250,6 +256,12 @@
 					"title": "Age range",
 					"type": "string",
 					"description": "Age range"
+				},
+				"DwellTime": {
+					"title": "Dwell time",
+					"type": "number",
+					"description": "Dwell time",
+					"format": "double"
 				},
 				"FaceSize": {
 					"title": "Face size",

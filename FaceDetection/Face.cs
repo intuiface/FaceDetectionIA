@@ -43,8 +43,8 @@ namespace FaceDetection
 
         private int m_iId;
         private string m_strGender, m_strAge, m_strAgeRange;
-        private int m_iViewingTime, m_iFaceSize;
-        private double m_iX, m_iY, m_iWidth, m_iHeight;
+        private int m_iFaceSize;
+        private double m_iX, m_iY, m_iWidth, m_iHeight, m_dDwellTime;
 
         // Main emotion
         private string m_strMainEmotion;
@@ -112,15 +112,15 @@ namespace FaceDetection
             }
         }
 
-        public int ViewingTime
+        public double DwellTime
         {
-            get { return m_iViewingTime; }
+            get { return m_dDwellTime; }
             set
             {
-                if (m_iViewingTime != value)
+                if (m_dDwellTime != value)
                 {
-                    m_iViewingTime = value;
-                    NotifyPropertyChanged("ViewingTime");
+                    m_dDwellTime = value;
+                    NotifyPropertyChanged("DwellTime");
                 }
             }
         }
@@ -252,7 +252,7 @@ namespace FaceDetection
 
         public override string ToString()
         {
-            string res = Id + " -- " + Gender + " -- " + Age + " -- " + ViewingTime + "\n";
+            string res = Id + " -- " + Gender + " -- " + Age + " -- " + DwellTime + "\n";
             return res;
         }
 
