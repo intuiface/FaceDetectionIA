@@ -50,7 +50,7 @@ namespace FaceDetection
         // FaceDetection server Port
         private int m_iServerPort = 2975;
 
-        private WebSocket m_refWS;
+        private WebSocket m_refWebSocket;
 
         // Attributes to be displayed to IntuiFace
         private int m_iFaceCount = 0;
@@ -255,22 +255,17 @@ namespace FaceDetection
 
         public void Dispose()
         {
-            if (m_refWS != null && m_refWS.IsAlive)
+            if (m_refWebSocket != null && m_refWebSocket.IsAlive)
             {
-                m_refWS.OnOpen -= m_refWS_OnOpen;
-                m_refWS.OnMessage -= m_refWS_OnMessage;
-                m_refWS.OnError -= m_refWS_OnError;
-                m_refWS.OnClose -= m_refWS_OnClose;
-                m_refWS.Close();
+                m_refWebSocket.OnOpen -= _OnWebSocketOpen;
+                m_refWebSocket.OnMessage -= _OnWebSocketMessage;
+                m_refWebSocket.OnError -= _OnWebSocketError;
+                m_refWebSocket.OnClose -= _OnWebSocketClose;
+                m_refWebSocket.Close();
             }
         }
 
         #endregion Constructor
-
-        #region Private Operations
-
-
-        #endregion Private Operations
 
         #region Callbacks
 
@@ -280,7 +275,7 @@ namespace FaceDetection
             m_bContinueListening = true;
         }
 
-        void m_refWS_OnOpen(object sender, EventArgs e)
+        private void _OnWebSocketOpen(object sender, EventArgs e)
         {
             IsConnectedToFaceDetectionServer = true;
 
@@ -288,7 +283,7 @@ namespace FaceDetection
             ActivityLog += "Web socket open on " + ServerHost + ":" + ServerPort + "\n";
         }
 
-        void m_refWS_OnMessage(object sender, MessageEventArgs e)
+        private void _OnWebSocketMessage(object sender, MessageEventArgs e)
         {
             if (!m_bContinueListening)
             {
@@ -316,6 +311,39 @@ namespace FaceDetection
                 Console.WriteLine("ERROR: " + ex.Message);
                 ActivityLog += ex.Message + "\n";
             }
+        }
+
+        private void _OnWebSocketError(object sender, WebSocketSharp.ErrorEventArgs e)
+        {
+            ActivityLog += "REMOVE VIEWER ERROR:" + e.Message + "\n";
+        }
+
+        private void _OnWebSocketClose(object sender, WebSocketSharp.CloseEventArgs e)
+        {
+            IsConnectedToFaceDetectionServer = false;
+
+            ActivityLog += "WebSocket Closed:" + e.Reason + "\n";
+            System.Threading.Thread.Sleep(5000);
+            _updateWS();
+            m_refWebSocket.Connect();
+        }
+
+        private void _updateWS()
+        {
+            if (m_refWebSocket != null && m_refWebSocket.IsAlive)
+            {
+                m_refWebSocket.OnOpen -= _OnWebSocketOpen;
+                m_refWebSocket.OnMessage -= _OnWebSocketMessage;
+                m_refWebSocket.OnError -= _OnWebSocketError;
+                m_refWebSocket.OnClose -= _OnWebSocketClose;
+                m_refWebSocket.Close();
+            }
+            m_refWebSocket = new WebSocket("ws://" + m_strServerHost + ":" + m_iServerPort);
+
+            m_refWebSocket.OnOpen += new EventHandler(_OnWebSocketOpen);
+            m_refWebSocket.OnMessage += new EventHandler<MessageEventArgs>(_OnWebSocketMessage);
+            m_refWebSocket.OnError += new EventHandler<WebSocketSharp.ErrorEventArgs>(_OnWebSocketError);
+            m_refWebSocket.OnClose += new EventHandler<WebSocketSharp.CloseEventArgs>(_OnWebSocketClose);
         }
 
         private void _updateFacesList(JArray ja)
@@ -568,39 +596,6 @@ namespace FaceDetection
             }
         }
 
-        void m_refWS_OnError(object sender, WebSocketSharp.ErrorEventArgs e)
-        {            
-            ActivityLog += "REMOVE VIEWER ERROR:" + e.Message + "\n";            
-        }
-
-        void m_refWS_OnClose(object sender, WebSocketSharp.CloseEventArgs e)
-        {
-            IsConnectedToFaceDetectionServer = false;
-
-            ActivityLog += "WebSocket Closed:" + e.Reason + "\n";
-            System.Threading.Thread.Sleep(5000);
-            _updateWS();
-            m_refWS.Connect();
-        }
-
-        private void _updateWS()
-        {
-            if (m_refWS != null && m_refWS.IsAlive)
-            {
-                m_refWS.OnOpen -= m_refWS_OnOpen;
-                m_refWS.OnMessage -= m_refWS_OnMessage;
-                m_refWS.OnError -= m_refWS_OnError;
-                m_refWS.OnClose -= m_refWS_OnClose;
-                m_refWS.Close();
-            }
-            m_refWS = new WebSocket("ws://" + m_strServerHost + ":" + m_iServerPort);
-
-            m_refWS.OnOpen += new EventHandler(m_refWS_OnOpen);
-            m_refWS.OnMessage += new EventHandler<MessageEventArgs>(m_refWS_OnMessage);
-            m_refWS.OnError += new EventHandler<WebSocketSharp.ErrorEventArgs>(m_refWS_OnError);
-            m_refWS.OnClose += new EventHandler<WebSocketSharp.CloseEventArgs>(m_refWS_OnClose);
-        }
-
         #endregion Callbacks
 
         #region Public Operations
@@ -608,13 +603,13 @@ namespace FaceDetection
         public void ConnectToServer()
         {
             ActivityLog += "Trying to open Web socket on " + ServerHost + ":" + ServerPort + "\n";
-            m_refWS.Connect();            
+            m_refWebSocket.Connect();            
         }
 
         public void DisconnectFromServer()
         {
             ActivityLog += "Trying to close Web socket on " + ServerHost + ":" + ServerPort + "\n";
-            m_refWS.Close();
+            m_refWebSocket.Close();
         }
 
         #endregion Public Operations
