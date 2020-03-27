@@ -80,8 +80,8 @@ void Exporter::exportFaces(std::list<Face::Ptr> faces, size_t width, size_t heig
 	ptree root;
 	root.put("Count", faces.size());
 
-	float fInvWidth = 1 / width;
-	float fInvHeight = 1 / height;
+	float fInvWidth = 1.0 / (float)width;
+	float fInvHeight = 1.0 / (float)height;
 
 	// Add a list of faces informations
 	ptree faceList;
@@ -136,7 +136,7 @@ void Exporter::exportFaces(std::list<Face::Ptr> faces, size_t width, size_t heig
 
 void Exporter::sendMessage(std::string msg)
 {	
-	m_refSharedState->send(msg);	
+	m_refSharedState->send(msg);
 }
 
 void Exporter::poll()
