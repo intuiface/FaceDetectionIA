@@ -14,9 +14,6 @@ pipeline {
     }
 
     stage('Sign') {
-	  script {
-	    files = findFiles(glob: '**/Cryptifix-x64-*.zip')
-      }
       steps {
 		copyArtifacts filter: '**/Cryptifix-x64-*.zip', fingerprintArtifacts: true, projectName: 'IntuiFace/master', selector: lastSuccessful(), target: 'cryptifix'
 		script {
