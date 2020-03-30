@@ -17,7 +17,7 @@ pipeline {
       steps {
 		copyArtifacts filter: '**/Cryptifix-x64-*.zip', fingerprintArtifacts: true, projectName: 'IntuiFace/master', selector: lastSuccessful(), target: 'cryptifix'
 		unzip zipFile: "cryptifix\\Cryptifix-x64-*.zip"
-		bat "cryptifix\\Cryptifix.exe sign "dist\\x64\\Release\\FaceDetection" --LicenseEdition=FREE --IsAllowedByNonInteractivePlayer=false
+		bat "cryptifix\\Cryptifix.exe sign \"dist\\x64\\Release\\FaceDetection\" --LicenseEdition=FREE --IsAllowedByNonInteractivePlayer=false"
       }
     }
 
