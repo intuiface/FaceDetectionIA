@@ -14,9 +14,15 @@ pipeline {
     }
 
     stage('Sign') {
+	  script {
+	    files = findFiles(glob: '**/Cryptifix-x64-*.zip')
+      }
       steps {
 		copyArtifacts filter: '**/Cryptifix-x64-*.zip', fingerprintArtifacts: true, projectName: 'IntuiFace/master', selector: lastSuccessful(), target: 'cryptifix'
-		unzip zipFile: "cryptifix\\Cryptifix-x64-*.zip"
+		script {
+			def files = findFiles(glob: '**/Cryptifix-x64-*.zip')
+		}
+		unzip zipFile: "cryptifix\\${files[0].name}"
 		bat "cryptifix\\Cryptifix.exe sign \"dist\\x64\\Release\\FaceDetection\" --LicenseEdition=FREE --IsAllowedByNonInteractivePlayer=false"
       }
     }
