@@ -3,7 +3,7 @@
 	"discoveryVersion": "v1",
 	"id": "FaceDetection",
 	"name": "FaceDetection",
-	"version": "1.0",
+	"version": "1.1",
 	"protocol": "dll",
 	"baseUrl": null,
 	"basePath": "FaceDetection",

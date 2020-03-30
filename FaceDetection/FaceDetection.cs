@@ -265,7 +265,7 @@ namespace FaceDetection
                 m_refWebSocket.OnMessage -= _OnWebSocketMessage;
                 m_refWebSocket.OnError -= _OnWebSocketError;
                 m_refWebSocket.OnClose -= _OnWebSocketClose;
-                m_refWebSocket.Close();
+                m_refWebSocket.CloseAsync();
             }
         }
 
@@ -329,7 +329,7 @@ namespace FaceDetection
             ActivityLog += "WebSocket Closed:" + e.Reason + "\n";
             System.Threading.Thread.Sleep(5000);
             _updateWS();
-            m_refWebSocket.Connect();
+            m_refWebSocket.ConnectAsync();
         }
 
         private void _updateWS()
@@ -340,7 +340,7 @@ namespace FaceDetection
                 m_refWebSocket.OnMessage -= _OnWebSocketMessage;
                 m_refWebSocket.OnError -= _OnWebSocketError;
                 m_refWebSocket.OnClose -= _OnWebSocketClose;
-                m_refWebSocket.Close();
+                m_refWebSocket.CloseAsync();
             }
             m_refWebSocket = new WebSocket("ws://" + m_strServerHost + ":" + m_iServerPort);
 
@@ -614,13 +614,13 @@ namespace FaceDetection
         public void ConnectToServer()
         {
             ActivityLog += "Trying to open Web socket on " + ServerHost + ":" + ServerPort + "\n";
-            m_refWebSocket.Connect();            
+            m_refWebSocket.ConnectAsync();            
         }
 
         public void DisconnectFromServer()
         {
             ActivityLog += "Trying to close Web socket on " + ServerHost + ":" + ServerPort + "\n";
-            m_refWebSocket.Close();
+            m_refWebSocket.CloseAsync();
         }
 
         #endregion Public Operations
