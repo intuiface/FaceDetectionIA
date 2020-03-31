@@ -384,7 +384,7 @@ namespace FaceDetection
                     y += height / 2;
 
                     // TODO: estimate distance in cm based on head size and camera focal / calibration step ?? 
-                    var distance = (int)(width * height * 100 * 100); // Current value: % of head area over total image area
+                    var faceSize = (int)(width * height * 100 * 100); // Current value: % of head area over total image area
 
                     var mainEmotion = v["mainEmotion"]["emotion"].ToString();
                     var mainEmotionConfidence = float.Parse(v["mainEmotion"]["confidence"].ToString(), CultureInfo.InvariantCulture);
@@ -404,16 +404,16 @@ namespace FaceDetection
                     headPoseEstimation.Roll = float.Parse(v["headpose"]["roll"].ToString(), CultureInfo.InvariantCulture);
 
                     // If face size filtering is active, check is head is bigger than threshold
-                    if (distance < m_dMinimumFaceSize)
+                    if (faceSize < m_dMinimumFaceSize)
                     {
                         // Don't add face to list
                         continue;
                     }
 
                     // TODO: use real "distance" and take the min one. 
-                    if (distance > maxHeadSize)
+                    if (faceSize > maxHeadSize)
                     {
-                        maxHeadSize = width * height;
+                        maxHeadSize = faceSize;
                         mainFaceID = id;
                     }
 
@@ -424,7 +424,7 @@ namespace FaceDetection
                         Y = y,
                         Width = width,
                         Height = height,
-                        FaceSize = distance,
+                        FaceSize = faceSize,
                         Gender = gender,
                         Age = age,
                         AgeRange = ageRange,
