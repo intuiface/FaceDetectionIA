@@ -1,0 +1,23 @@
+Boost Software License - Version 1.0 - 17 août 2003
+
+La permission est accordée, gratuitement, à toute personne ou organisation
+obtenir une copie du logiciel et de la documentation d'accompagnement couverte par
+cette licence (le "Logiciel") pour utiliser, reproduire, afficher, distribuer,
+exécuter et transmettre le Logiciel, et de préparer les travaux dérivés du
+Logiciel, et de permettre à des tiers auxquels le Logiciel est fourni de
+faites-le, sous réserve des conditions suivantes:
+
+Les mentions de copyright dans le logiciel et cette déclaration complète, y compris
+l'octroi de licence ci-dessus, cette restriction et la clause de non-responsabilité suivante,
+doit être inclus dans toutes les copies du Logiciel, en tout ou en partie, et
+toutes les œuvres dérivées du Logiciel, à moins que ces copies ou dérivés
+les travaux sont uniquement sous la forme de code objet exécutable par machine généré par
+un processeur de langue source.
+
+LE LOGICIEL EST FOURNI "TEL QUEL", SANS GARANTIE D'AUCUNE SORTE, EXPRESSE OU
+IMPLICITE, Y COMPRIS, MAIS SANS S'Y LIMITER, LES GARANTIES DE QUALITÉ MARCHANDE,
+ADAPTATION À UN USAGE PARTICULIER, TITRE ET NON-CONTREFAÇON. EN AUCUN CAS
+LES TITULAIRES DU DROIT D'AUTEUR OU TOUTE PERSONNE DISTRIBUANT LE LOGICIEL SERONT TENUS RESPONSABLES
+POUR TOUT DOMMAGE OU AUTRE RESPONSABILITÉ, SOUS CONTRAT, TORT OU AUTRE,
+DÉCOULANT, HORS OU EN RELATION AVEC LE LOGICIEL OU L'UTILISATION OU AUTRE
+OPÉRATIONS DANS LE LOGICIEL.
