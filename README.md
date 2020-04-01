@@ -1,5 +1,7 @@
 # FaceDetectionIA
 
+Intuiface Interface Asset which uses the OpenVINO toolkit to detect faces from a camera stream.
+
 ## ⚙️ Quickstart
 
 Prerequisites:
@@ -26,5 +28,6 @@ Install Face Detection dependencies:
 
 ## 👷 Compile and Run
 
-Open FaceDetectionIA.sln with Visual Studio and generate a build.
-Run TestFaceDetection project.
+Open FaceDetection.sln with Visual Studio and generate a build.
+Run OpenVINOFaceDetectionServer project to launch face detection server.
+Open ./dist/x64/Release/TestFaceDetection/ directory and run TestFaceDetection.exe to test Intuiface Interface Asset.

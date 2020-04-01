@@ -371,7 +371,7 @@
 					"title": "Face detected",
 					"description": "Raised when a new face is detected.",
 					"properties": {
-						"Id": {
+						"FaceId": {
 							"type": "integer",
 							"title": "ID"
 						},
@@ -391,7 +391,7 @@
 					"title": "Face lost",
 					"description": "Raised when a face is lost.",
 					"properties": {
-						"Id": {
+						"FaceId": {
 							"type": "integer",
 							"title": "ID"
 						},

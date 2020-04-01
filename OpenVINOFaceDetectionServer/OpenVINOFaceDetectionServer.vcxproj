@@ -130,7 +130,9 @@ XCOPY "C:\program files (x86)\common files\intel\shared libraries\redist\intel64
 XCOPY "C:\Windows\System32\msvcp140d.dll" "$(targetDir)" /S /Y
 XCOPY "C:\Windows\System32\vcruntime140d.dll" "$(targetDir)" /S /Y
 XCOPY "C:\Windows\System32\concrt140d.dll" "$(targetDir)" /S /Y
-XCOPY "$(projectDir)\scripts\*" "$(targetDir)" /S /Y</Command>
+XCOPY "$(projectDir)\scripts\*" "$(targetDir)" /S /Y
+XCOPY "$(projectDir)\licensing\*" "$(targetDir)\licensing\" /S /Y /E
+</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -173,7 +175,9 @@ XCOPY "C:\program files (x86)\common files\intel\shared libraries\redist\intel64
 XCOPY "C:\Windows\System32\msvcp140d.dll" "$(targetDir)" /S /Y
 XCOPY "C:\Windows\System32\vcruntime140d.dll" "$(targetDir)" /S /Y
 XCOPY "C:\Windows\System32\concrt140d.dll" "$(targetDir)" /S /Y
-XCOPY "$(projectDir)\scripts\*" "$(targetDir)" /S /Y</Command>
+XCOPY "$(projectDir)\scripts\*" "$(targetDir)" /S /Y
+XCOPY "$(projectDir)\licensing\*" "$(targetDir)\licensing\" /S /Y /E
+</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -221,8 +225,7 @@ XCOPY "C:\Windows\System32\msvcp140.dll" "$(targetDir)" /S /Y
 XCOPY "C:\Windows\System32\vcruntime140.dll" "$(targetDir)" /S /Y
 XCOPY "C:\Windows\System32\concrt140.dll" "$(targetDir)" /S /Y
 XCOPY "$(projectDir)\scripts\*" "$(targetDir)" /S /Y
-
-
+XCOPY "$(projectDir)\licensing\*" "$(targetDir)\licensing\" /S /Y /E
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -271,8 +274,7 @@ XCOPY "C:\Windows\System32\msvcp140.dll" "$(targetDir)" /S /Y
 XCOPY "C:\Windows\System32\vcruntime140.dll" "$(targetDir)" /S /Y
 XCOPY "C:\Windows\System32\concrt140.dll" "$(targetDir)" /S /Y
 XCOPY "$(projectDir)\scripts\*" "$(targetDir)" /S /Y
-
-
+XCOPY "$(projectDir)\licensing\*" "$(targetDir)\licensing\" /S /Y /E
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>

@@ -67,4 +67,7 @@
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>XCOPY "$(projectDir)\Dependencies\licensing\*" "$(targetDir)\licensing\" /S /Y /E</PostBuildEvent>
+  </PropertyGroup>
 </Project>
