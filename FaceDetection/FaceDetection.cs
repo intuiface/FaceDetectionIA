@@ -51,6 +51,8 @@ namespace FaceDetection
         // FaceDetection server Port
         private int m_iServerPort = 2975;
 
+        private bool m_bMustConnect = false;
+
         private WebSocket m_refWebSocket;
 
         // Attributes to be displayed to IntuiFace
@@ -329,7 +331,10 @@ namespace FaceDetection
             ActivityLog += "WebSocket Closed:" + e.Reason + "\n";
             System.Threading.Thread.Sleep(5000);
             _updateWS();
-            m_refWebSocket.ConnectAsync();
+            if (m_bMustConnect)
+            {
+                m_refWebSocket.ConnectAsync();
+            }
         }
 
         private void _updateWS()
@@ -613,12 +618,14 @@ namespace FaceDetection
 
         public void ConnectToServer()
         {
+            m_bMustConnect = true;
             ActivityLog += "Trying to open Web socket on " + ServerHost + ":" + ServerPort + "\n";
             m_refWebSocket.ConnectAsync();            
         }
 
         public void DisconnectFromServer()
         {
+            m_bMustConnect = false;
             ActivityLog += "Trying to close Web socket on " + ServerHost + ":" + ServerPort + "\n";
             m_refWebSocket.CloseAsync();
         }
