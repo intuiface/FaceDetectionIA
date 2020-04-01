@@ -1,5 +1,10 @@
+// Copyright (C) 2020 IntuiLab
+//
 // Copyright (C) 2018-2019 Intel Corporation
 // SPDX-License-Identifier: Apache-2.0
+//
+// Notice: this file has been modified by Intuilab under compliance with Apache 2.0 license from the original work
+// of the company Intel Corporation to export detected faces to JSON format and send this JSON by websocket.
 //
 
 /**
@@ -202,6 +207,7 @@ int main(int argc, char *argv[]) {
             }
         }
 
+		// Change by IntuiLab: use exporter to export face detected to JSON format
 		// Initializing exporter for JSON / WebSocket
 		Exporter::Ptr exporter;
 		exporter = std::make_shared<Exporter>();
@@ -289,10 +295,6 @@ int main(int argc, char *argv[]) {
 
             faces.clear();
 
-			// TODO: make this configurable at launch through command line parameter. 
-			// See article here for explanation: https://www.pyimagesearch.com/2016/11/07/intersection-over-union-iou-for-object-detection/
-			float IoUThreshold = 0.40;
-
             // For every detected face			
             for (size_t i = 0; i < prev_detection_results.size(); i++) {
                 auto& result = prev_detection_results[i];
@@ -300,7 +302,9 @@ int main(int argc, char *argv[]) {
 
                 Face::Ptr face;
                 if (!FLAGS_no_smooth) {
-                    face = matchFace(rect, prev_faces, IoUThreshold);
+
+					// Change by IntuiLab: use custom Intersection over Union threshold
+                    face = matchFace(rect, prev_faces, FLAGS_t);
                     float intensity_mean = calcMean(prev_frame(rect));
 
                     if ((face == nullptr) ||
@@ -361,6 +365,7 @@ int main(int argc, char *argv[]) {
                 }
             }
 
+			// Change by IntuiLab: export face detected to JSON format
 			// Export faces to web socket
 			exporter->exportFaces(faces, width, height);
 
