@@ -197,7 +197,7 @@
 				},
 				"IsConnectedToFaceDetectionServer": {
 					"title": "Is connected to face detection server",
-					"type": "string",
+					"type": "boolean",
 					"readonly": true,
 					"description": "Is connected to face detection server"
 				},
