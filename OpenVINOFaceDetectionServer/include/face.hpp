@@ -1,5 +1,10 @@
+// Copyright (C) 2020 IntuiLab
+//
 // Copyright (C) 2018-2019 Intel Corporation
 // SPDX-License-Identifier: Apache-2.0
+//
+// Notice: this file has been modified by Intuilab under compliance with Apache 2.0 license from the original work
+// of the company Intel Corporation to change default value of Intersection over Union threshold.
 //
 
 # pragma once
@@ -67,4 +72,6 @@ private:
 // ----------------------------------- Utils -----------------------------------------------------------------
 float calcIoU(cv::Rect& src, cv::Rect& dst);
 float calcMean(const cv::Mat& src);
+
+// Change by IntuiLab: add Intersection over Union threshold parameter and change the defaut value
 Face::Ptr matchFace(cv::Rect rect, std::list<Face::Ptr>& faces, float IoUThreshold);
