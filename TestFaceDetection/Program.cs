@@ -1,17 +1,17 @@
 ﻿// ****************************************************************************
-// <copyright file="Program.cs" company="IntuiLab">
+// <copyright file="Program.cs" company="Intuilab SAS">
 // INTUILAB CONFIDENTIAL
 //_____________________
-// [2002] - [2020] IntuiLab
+// [2002] - [2020] Intuilab SAS
 // All Rights Reserved.
 // NOTICE: All information contained herein is, and remains
-// the property of IntuiLab. The intellectual and technical
-// concepts contained herein are proprietary to IntuiLab
+// the property of Intuilab SAS. The intellectual and technical
+// concepts contained herein are proprietary to Intuilab SAS
 // and may be covered by U.S. and other country Patents, patents
 // in process, and are protected by trade secret or copyright law.
 // Dissemination of this information or reproduction of this
 // material is strictly forbidden unless prior written permission
-// is obtained from IntuiLab.
+// is obtained from Intuilab SAS.
 // </copyright>
 // ****************************************************************************
 

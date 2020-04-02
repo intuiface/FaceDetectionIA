@@ -1,4 +1,4 @@
-// Copyright (C) 2020 IntuiLab
+// Copyright (C) 2020 Intuilab SAS
 //
 // Copyright (C) 2018-2019 Intel Corporation
 // SPDX-License-Identifier: Apache-2.0
@@ -207,7 +207,7 @@ int main(int argc, char *argv[]) {
             }
         }
 
-		// Change by IntuiLab: use exporter to export face detected to JSON format
+		// Change by Intuilab SAS: use exporter to export face detected to JSON format
 		// Initializing exporter for JSON / WebSocket
 		Exporter::Ptr exporter;
 		exporter = std::make_shared<Exporter>();
@@ -303,7 +303,7 @@ int main(int argc, char *argv[]) {
                 Face::Ptr face;
                 if (!FLAGS_no_smooth) {
 
-					// Change by IntuiLab: use custom Intersection over Union threshold
+					// Change by Intuilab SAS: use custom Intersection over Union threshold
                     face = matchFace(rect, prev_faces, FLAGS_t);
                     float intensity_mean = calcMean(prev_frame(rect));
 
@@ -365,7 +365,7 @@ int main(int argc, char *argv[]) {
                 }
             }
 
-			// Change by IntuiLab: export face detected to JSON format
+			// Change by Intuilab SAS: export face detected to JSON format
 			// Export faces to web socket
 			exporter->exportFaces(faces, width, height);
 

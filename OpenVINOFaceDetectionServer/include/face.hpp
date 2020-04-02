@@ -1,4 +1,4 @@
-// Copyright (C) 2020 IntuiLab
+// Copyright (C) 2020 Intuilab SAS
 //
 // Copyright (C) 2018-2019 Intel Corporation
 // SPDX-License-Identifier: Apache-2.0
@@ -73,5 +73,5 @@ private:
 float calcIoU(cv::Rect& src, cv::Rect& dst);
 float calcMean(const cv::Mat& src);
 
-// Change by IntuiLab: add Intersection over Union threshold parameter and change the defaut value
+// Change by Intuilab SAS: add Intersection over Union threshold parameter and change the defaut value
 Face::Ptr matchFace(cv::Rect rect, std::list<Face::Ptr>& faces, float IoUThreshold);
