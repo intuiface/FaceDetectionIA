@@ -61,10 +61,10 @@ namespace FaceDetection
         private ObservableCollection<Face> m_lstXPFaces;
 
         // Additional features
-        private int m_dMinimumFaceSize = 2000; // width x height in pixels
+        private int m_dMinimumFaceSize = 100; // width x height in pixels
 
         // FPS limiter
-        private int m_iDetectionUpdateFrequency = 500;
+        private int m_iDetectionUpdateFrequency = 100;
 
         // Main face
         private Face m_refMainFace;
