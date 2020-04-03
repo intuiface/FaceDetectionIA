@@ -3,8 +3,8 @@
 // Copyright (C) 2018-2019 Intel Corporation
 // SPDX-License-Identifier: Apache-2.0
 //
-// Notice: this file has been modified by Intuilab under compliance with Apache 2.0 license from the original work
-// of the company Intel Corporation to add Intersection over Union threshold.
+// Notice: this file has been modified by Intuilab SAS under compliance with Apache 2.0 license from the original work
+// by Intel Corporation in order to add Intersection over Union threshold.
 //
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
