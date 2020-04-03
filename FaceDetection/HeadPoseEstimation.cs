@@ -1,6 +1,6 @@
 ﻿// ****************************************************************************
 // <copyright file="HeadPoseEstimation.cs" company="Intuilab SAS">
-// INTUILAB CONFIDENTIAL
+// INTUILAB SAS
 //_____________________
 // [2002] - [2020] Intuilab SAS
 // All Rights Reserved.
