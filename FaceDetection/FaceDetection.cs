@@ -537,30 +537,37 @@ namespace FaceDetection
             // Copy main face info
             if (FaceCount > 0)
             {
-                var item = Faces.Single(i => i.Id == mainFaceID);
-                MainFace.Id = item.Id;
-                MainFace.X = item.X;
-                MainFace.Y = item.Y;
-                MainFace.Width = item.Width;
-                MainFace.Height = item.Height;
-                MainFace.FaceSize = item.FaceSize;
-                MainFace.Gender = item.Gender;
+                var item = Faces.FirstOrDefault(i => i.Id == mainFaceID);
+                if (item != null)
+                {
+                    MainFace.Id = item.Id;
+                    MainFace.X = item.X;
+                    MainFace.Y = item.Y;
+                    MainFace.Width = item.Width;
+                    MainFace.Height = item.Height;
+                    MainFace.FaceSize = item.FaceSize;
+                    MainFace.Gender = item.Gender;
 
-                MainFace.Age = item.Age;
-                MainFace.AgeRange = item.AgeRange;
-                MainFace.DwellTime = (DateTime.Now - m_startTimeMap[item.Id]).TotalSeconds;
+                    MainFace.Age = item.Age;
+                    MainFace.AgeRange = item.AgeRange;
+                    MainFace.DwellTime = (DateTime.Now - m_startTimeMap[item.Id]).TotalSeconds;
 
-                MainFace.MainEmotion = item.MainEmotion;
-                MainFace.MainEmotionConfidence = item.MainEmotionConfidence;
+                    MainFace.MainEmotion = item.MainEmotion;
+                    MainFace.MainEmotionConfidence = item.MainEmotionConfidence;
 
-                // Additional emotions
-                MainFace.EmotionConfidence = item.EmotionConfidence;
+                    // Additional emotions
+                    MainFace.EmotionConfidence = item.EmotionConfidence;
 
-                // Head pose estimation
-                MainFace.HeadPoseEstimation = item.HeadPoseEstimation;
+                    // Head pose estimation
+                    MainFace.HeadPoseEstimation = item.HeadPoseEstimation;
 
-                // Mark the face detected
-                IsMainFaceDetected = true;
+                    // Mark the face detected
+                    IsMainFaceDetected = true;
+                }
+                else
+                {
+                    IsMainFaceDetected = false;
+                }
             }
             else
             {
