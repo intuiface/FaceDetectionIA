@@ -132,6 +132,7 @@ XCOPY "C:\Windows\System32\vcruntime140d.dll" "$(targetDir)" /S /Y
 XCOPY "C:\Windows\System32\concrt140d.dll" "$(targetDir)" /S /Y
 XCOPY "$(projectDir)\scripts\*" "$(targetDir)" /S /Y
 XCOPY "$(projectDir)\licensing\*" "$(targetDir)\licensing\" /S /Y /E
+COPY "$(solutionDir)\LICENSE" "$(targetDir)"
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -177,6 +178,7 @@ XCOPY "C:\Windows\System32\vcruntime140d.dll" "$(targetDir)" /S /Y
 XCOPY "C:\Windows\System32\concrt140d.dll" "$(targetDir)" /S /Y
 XCOPY "$(projectDir)\scripts\*" "$(targetDir)" /S /Y
 XCOPY "$(projectDir)\licensing\*" "$(targetDir)\licensing\" /S /Y /E
+COPY "$(solutionDir)\LICENSE" "$(targetDir)"
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -226,6 +228,7 @@ XCOPY "C:\Windows\System32\vcruntime140.dll" "$(targetDir)" /S /Y
 XCOPY "C:\Windows\System32\concrt140.dll" "$(targetDir)" /S /Y
 XCOPY "$(projectDir)\scripts\*" "$(targetDir)" /S /Y
 XCOPY "$(projectDir)\licensing\*" "$(targetDir)\licensing\" /S /Y /E
+COPY "$(solutionDir)\LICENSE" "$(targetDir)"
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -275,6 +278,7 @@ XCOPY "C:\Windows\System32\vcruntime140.dll" "$(targetDir)" /S /Y
 XCOPY "C:\Windows\System32\concrt140.dll" "$(targetDir)" /S /Y
 XCOPY "$(projectDir)\scripts\*" "$(targetDir)" /S /Y
 XCOPY "$(projectDir)\licensing\*" "$(targetDir)\licensing\" /S /Y /E
+COPY "$(solutionDir)\LICENSE" "$(targetDir)"
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
