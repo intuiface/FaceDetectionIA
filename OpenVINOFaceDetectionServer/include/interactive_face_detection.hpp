@@ -87,11 +87,14 @@ DEFINE_string(d_ag, "CPU", target_device_message_ag);
 DEFINE_string(d_hp, "CPU", target_device_message_hp);
 DEFINE_string(d_em, "CPU", target_device_message_em);
 DEFINE_string(d_lm, "CPU", target_device_message_lm);
-DEFINE_uint32(n_ag, 16, num_batch_ag_message);
+// Change by Intuilab SAS: change default value of number of batches for age and gender detection
+DEFINE_uint32(n_ag, 32, num_batch_ag_message);
 DEFINE_bool(dyn_ag, false, dyn_batch_ag_message);
-DEFINE_uint32(n_hp, 16, num_batch_hp_message);
+// Change by Intuilab SAS: change default value of number of batches for head pose estimation
+DEFINE_uint32(n_hp, 32, num_batch_hp_message);
 DEFINE_bool(dyn_hp, false, dyn_batch_hp_message);
-DEFINE_uint32(n_em, 16, num_batch_em_message);
+// Change by Intuilab SAS: change default value of number of batches for emotion detection
+DEFINE_uint32(n_em, 32, num_batch_em_message);
 DEFINE_bool(dyn_em, false, dyn_batch_em_message);
 DEFINE_uint32(n_lm, 16, num_batch_em_message);
 DEFINE_bool(dyn_lm, false, dyn_batch_em_message);
