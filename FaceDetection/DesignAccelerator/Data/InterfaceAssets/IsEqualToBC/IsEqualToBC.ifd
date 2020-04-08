@@ -1,0 +1,63 @@
+{
+  "kind": "discovery#restDescription",
+  "discoveryVersion": "v1",
+  "id": "IsEqualToBC:v1",
+  "name": "IsEqualToBC",
+  "if.category": "Math & Logic",
+  "version": "v0.1",
+  "protocol": "js",
+  "basePath": "IsEqualToBC",
+  "if.dependencies": [
+    "IsEqualToBC.js"
+  ],
+  "schemas": {
+    "IsEqualToBC": {
+      "id": "IsEqualToBC",
+      "type": "object"
+    }
+  },
+  "resources": {
+    "IsEqualToBC": {
+      "id": "IsEqualToBC",
+      "if.interfaceAsset": "true",
+      "methods": {
+        "isEqualTo": {
+          "id": "IsEqualToBC.isEqualTo",
+          "title": "Is Equal To",
+          "if.converter": "true",
+          "description": "Tests if the input is equal to the value below.",
+          "path": "IsEqualToBC",
+          "parameters": {
+            "input": {
+              "type": "string",
+              "title": "Input"
+            },
+            "valueToTest": {
+              "type": "string",
+              "title": "Value"
+            },
+            "caseSensitive": {
+              "type": "boolean",
+              "title": "Case sensitive",
+              "default": true
+            }
+          },
+          "response": {
+            "$ref": "boolean"
+          }
+        }
+      }
+    }
+  },
+  "signature": {
+    "hash": "Kls8xfqfcy+oXkWMEsH7Y0F0iZ4oNcYNuhUL/PPQdLU=",
+    "signatureData": {
+      "editionLevel": "FREE",
+      "hostname": "SAPIN2",
+      "v": 2,
+      "data": "HZXrxj3DRcBl94dFGhxI+MJN/f8dL2U9GQe1VwebPRmxZC55VNK80FP1AWOfyNGwY0VcQbADzlSqy9Q+MhMZKPvMUZYLCSdyItyM+7lhB5EH2cRwZCt8asC5cztUFlPTuUwSMqEfdiPLNXb5b8CxNp3IRH0DlWmSQQHo53D/Vjbl7F8HhxiMrzMkfN2ktjkkKrHhL+i1bUHm1DMylDzBgrBkRmSUsXrXWQVvcP0gzBn/wGeqFUVjLbTngo8qqppDxBqKDuCOpEh3pOpJM8EippeiIam7qIbtf6C76/IP/KUbKIfLvtfT7rmdmAAUYKKWs4dsv0jS/CzSHwiPSbmdz+ARFZ9+tsAXPZ6VCw+Nvo3z+sfwuUAuh2m2HbU5bwXeFPVSnCLPaCCkQTgXNejd+1uVLNO9L8mNL0IeoEgo/K8pguvsvOc9gqeD0/CkdPXfmxAuIXJWwlOOuLoa8OR4nDrczNrClGfSrDF7EX5rTh42lAjBCZWCXNKL/9b89MhAiGoxoD/DeYfiQ5Hg2XUF501xlZqVvOH4NNE0Pz1heyrj1kVgOobT9vK27EAdrC8rBOY00WAffsoHRz1a3Pm7GKAAL+Z4tlGn1AG8/xg/9a8AKVvtSw2XrKum+oim9r1GzlbPaOT9gt2jxFH1GbmOfWpxSzAwig2WdXHnd3hdcMzvKhZgi+731pOrO/qob9yGOtDzquwAPt5vXUWLde0JieJmN2W7XitvRWA6wfq380Xg7rsKz3uFbQX2bpgz+gEf2IR15C1G3gLQdn68e/Jxud7TTfr+cYP6g62BSQbQimXkz6FugnfdLbh7yUvFbqPGjhCTIgQ6YZV1bewZgQqxNoBEg/kxUfmW9yXf8wjo/ZRI/OswH9NSA/hsYF+a+MjNuGM2D61BmpLv2qx4RWKglLdP2DlsKyOR1Jhdm2WEFqeg7peQODhIyqZL29fnuvvej2a4C/pB09GGGMtGqkUOC+BbH9StJKeflG8u5Kw26afheuXepyuQfGuhY5imqAINl2fAv0k0YNgQ+fRBg3x8fg==",
+      "key": "BbADI1lyylSYbgUvUhI0O9H8wdpXfYRkCy+7UjcsOsx8ZwArKPfiV0NsuTI3+tDl7p4WA/H35PLnpSdOj94lP6Gr4mvsa2v5r7BHO5qC5KlIrOQD/rNhYXYjJ3q5zAki7VcJZsIA5k5991ikkPKytgeXLg+5xve7vWMkm+duCeaJyuIIl6fvzlRTMr6rt8wM9LU1x3r0l3JLAIA8hpn/hMRmgQgkSSfR6HGCmVhKM3qF0/i+k8PcwFXmMjd6g0oAhvvzNPM1x66Mps3LBqOk7D0D1e7NavBvhvW05qnofShJKsC2Mu5D/OEBua4jktSNj6EIpOG5L3gUtsQb0C9sig==",
+      "iv": "Ry1NgaZIM/8eHunSaiEc9C8pbMQfotgzE9w/V6E6O8MX396VyR8rODzE+OeeOgCLI2Lu+mNBB61pVAze+PF3vSSIWlI1GuDynD3dia84ZJ0rwQdUlFxWT1DpQPr/hSQskt2M/13HjZoMfekYAznzASCoMHEf3T1bmGHyhyX1jJs/ORug2MnACfQ32aFUBfdS+QSLWyFJBlei9UQ9zty81X4z1dL/uywqmBNqpVol6IkAtJS/RN3AdV3hWhyJzSwwfCoVajjhJs99/Zd4SkmcHS5kvhIBHceLuZ+GbhWgkj/Xe5weCkGN5ldY4LUaKsqMJWWNDM2yiyq1vAIaqRiilw=="
+    }
+  }
+}

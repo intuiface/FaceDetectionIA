@@ -3,7 +3,8 @@
 	"discoveryVersion": "v1",
 	"id": "FaceDetection",
 	"name": "FaceDetection",
-	"version": "1.3",
+	"description": "Automatically detect, log, and react to age, gender, head pose, and emotion using any camera.",
+	"version": "1.4",
 	"protocol": "dll",
 	"baseUrl": null,
 	"basePath": "FaceDetection",
@@ -348,6 +349,8 @@
 		"FaceDetection": {
 			"title": "FaceDetection",
 			"isInterfaceAsset": true,
+			"description": "Automatically detect, log, and react to age, gender, head pose, and emotion using any camera.",
+			"if.templateDesignAccelerator": "Face Detection.dax",
 			"methods": {
 				"ConnectToServer": {
 					"title": "Connect to face detection server",

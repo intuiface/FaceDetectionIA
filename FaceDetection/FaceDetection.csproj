@@ -51,6 +51,7 @@
     <Compile Include="EmotionConfidence.cs" />
     <Compile Include="Events\FaceCountEventArgs.cs" />
     <Compile Include="Events\FaceEventArgs.cs" />
+    <Compile Include="Events\FaceLostEventArgs.cs" />
     <Compile Include="FaceDetection.cs" />
     <Compile Include="HeadPoseEstimation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -68,7 +69,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>XCOPY "$(projectDir)\Dependencies\licensing\*" "$(targetDir)\licensing\" /S /Y /E
+    <PostBuildEvent>XCOPY "$(projectDir)\DesignAccelerator\*" "$(targetDir)" /S /Y /E
+XCOPY "$(projectDir)\Dependencies\licensing\*" "$(targetDir)\licensing\" /S /Y /E
 COPY "$(solutionDir)\LICENSE" "$(targetDir)"</PostBuildEvent>
   </PropertyGroup>
 </Project>

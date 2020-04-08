@@ -1,0 +1,973 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mashup ApiNumber="28" Name="Face Detection" Description="" Category="Computer Vision" Author="Intuiface" AuthorId="Intuiface" Icon="Face Detection.png" OriginalLocalPath=".\Local" OriginalDataPath=".\Data" OriginalProcessID="25316" OriginalXpId="1-fd21ea19-1c54-4f04-a69a-b8db06955360">
+  <MashupPresentation ContextAlias="CURRENT_PRESENTATION" Name="mashup_root_0" OriginalAbsoluteVisualPath="player://visuals/OpenVINO-Default-DA">
+    <Presentation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xi="http://www.w3.org/2001/XInclude" xsi:noNamespaceSchemaLocation="http://schemas.intuilab.com/intuiface/api5/ip.xsd" Name="OpenVINO-Default-DA" Id="" DataPath="" Language="" Width="1920" Height="1080" ShowLoadingIndicator="true" Platform="windows" ComposerVersion="6.5.3" ApiNumber="28" MinApiNumber="28" RequiredPlayerWindows="6.4.0" RequiredPlayerTablet="6.4.0" LastModificationDate="2020-04-07T14:40:26.5668682Z" SnapshotPath="player://data/Snapshots/default.png">
+      <Layers />
+      <Spaces />
+      <SharedContracts />
+      <Converters />
+      <ExternalAssets />
+      <Resources />
+      <Sequence />
+    </Presentation>
+  </MashupPresentation>
+  <MashupSpace ContextAlias="CURRENT_SPACE" Name="mashup_root_1" OriginalAbsoluteVisualPath="player://visuals/OpenVINO-Default-DA/Scene 1">
+    <Space Name="Scene 1" AutoReset="false" />
+  </MashupSpace>
+  <MashupCollection Name="mashup_root_2" OriginalAbsoluteVisualPath="player://visuals/OpenVINO-Default-DA/Scene 1/Layer 1/Default_template_for_FaceDetection" CreateAsCollectionSibling="true">
+    <Collection Name="Default_template_for_FaceDetection" Visual="Group" Style="" Container="Static" ContainerStyle="">
+      <Properties>
+        <Property Type="Container" Name="MinWidth"><![CDATA[value:0]]></Property>
+        <Property Type="Container" Name="MinHeight"><![CDATA[value:0]]></Property>
+        <Property Type="Container" Name="MaxWidth"><![CDATA[value:4000]]></Property>
+        <Property Type="Container" Name="MaxHeight"><![CDATA[value:4000]]></Property>
+        <Property Type="Visual" Name="ItemWidth"><![CDATA[value:1200]]></Property>
+        <Property Type="Visual" Name="ItemHeight"><![CDATA[value:600]]></Property>
+        <Property Type="Visual" Name="ShowFeedback"><![CDATA[value:False]]></Property>
+        <Property Type="Container" Name="MinimizedImage"><![CDATA[player://data/DefaultAssets/DefaultMinimized.png]]></Property>
+        <Property Type="Container" Name="MinimizedPressedImage"><![CDATA[player://data/DefaultAssets/DefaultMinimized.png]]></Property>
+        <Property Type="Container" Name="X"><![CDATA[value:414]]></Property>
+        <Property Type="Container" Name="Y"><![CDATA[value:532]]></Property>
+        <Property Type="Visual" Name="InitialWidth"><![CDATA[value:600]]></Property>
+        <Property Type="Container" Name="Width"><![CDATA[value:600]]></Property>
+        <Property Type="Visual" Name="InitialHeight"><![CDATA[value:980]]></Property>
+        <Property Type="Container" Name="Height"><![CDATA[value:980]]></Property>
+        <Property Type="Container" Name="Orientation"><![CDATA[value:0]]></Property>
+      </Properties>
+      <Asset Name="Background" Visual="DefaultRectangle" Style="" Container="Default" ContainerStyle="" Domain="value:Rectangle">
+        <Properties>
+          <Property Type="Visual" Name="BorderThickness"><![CDATA[value:0]]></Property>
+          <Property Type="Visual" Name="BorderColor"><![CDATA[value:#00000000]]></Property>
+          <Property Type="Visual" Name="CornerRadius"><![CDATA[value:5]]></Property>
+          <Property Type="Visual" Name="BackgroundColor"><![CDATA[value:#D9D1D1D1]]></Property>
+          <Property Type="Container" Name="X"><![CDATA[value:300]]></Property>
+          <Property Type="Container" Name="Y"><![CDATA[value:490]]></Property>
+          <Property Type="Container" Name="Width"><![CDATA[value:600]]></Property>
+          <Property Type="Container" Name="Height"><![CDATA[value:980]]></Property>
+          <Property Type="Container" Name="Orientation"><![CDATA[value:0]]></Property>
+        </Properties>
+      </Asset>
+      <Asset Name="openvino-logo" Visual="DefaultImage" Style="" Container="Default" ContainerStyle="" Domain="value:Image">
+        <Properties>
+          <Property Type="Domain" Name="Source"><![CDATA[player://resources/65a30bef-0188-42b6-bc48-e5aefae8b96f]]></Property>
+          <Property Type="Container" Name="MinimizedImage"><![CDATA[player://data/DefaultAssets/DefaultMinimized.png]]></Property>
+          <Property Type="Container" Name="MinimizedPressedImage"><![CDATA[player://data/DefaultAssets/DefaultMinimized.png]]></Property>
+          <Property Type="Container" Name="X"><![CDATA[value:302]]></Property>
+          <Property Type="Container" Name="Y"><![CDATA[value:43]]></Property>
+          <Property Type="Container" Name="Width"><![CDATA[value:253]]></Property>
+          <Property Type="Container" Name="Height"><![CDATA[value:52]]></Property>
+          <Property Type="Container" Name="Orientation"><![CDATA[value:0]]></Property>
+        </Properties>
+      </Asset>
+      <Asset Name="Group separator Title" Visual="DefaultRectangle" Style="" Container="No resize" ContainerStyle="" Domain="value:Rectangle">
+        <Properties>
+          <Property Type="Visual" Name="BorderThickness"><![CDATA[value:0]]></Property>
+          <Property Type="Visual" Name="BorderColor"><![CDATA[value:#00000000]]></Property>
+          <Property Type="Visual" Name="CornerRadius"><![CDATA[value:0]]></Property>
+          <Property Type="Visual" Name="BackgroundColor"><![CDATA[value:#FF343333]]></Property>
+          <Property Type="Container" Name="X"><![CDATA[value:300]]></Property>
+          <Property Type="Container" Name="Y"><![CDATA[value:85]]></Property>
+          <Property Type="Container" Name="Width"><![CDATA[value:600]]></Property>
+          <Property Type="Container" Name="Height"><![CDATA[value:1]]></Property>
+          <Property Type="Container" Name="Orientation"><![CDATA[value:0]]></Property>
+        </Properties>
+      </Asset>
+      <Collection Name="Group Properties" Visual="Group" Style="" Container="Default" ContainerStyle="">
+        <Properties>
+          <Property Type="Container" Name="X"><![CDATA[value:300]]></Property>
+          <Property Type="Container" Name="Y"><![CDATA[value:334]]></Property>
+          <Property Type="Visual" Name="InitialWidth"><![CDATA[value:600]]></Property>
+          <Property Type="Container" Name="Width"><![CDATA[value:600]]></Property>
+          <Property Type="Visual" Name="InitialHeight"><![CDATA[value:497]]></Property>
+          <Property Type="Container" Name="Height"><![CDATA[value:497]]></Property>
+          <Property Type="Container" Name="Orientation"><![CDATA[value:0]]></Property>
+        </Properties>
+        <Asset Name="PROPERTIES" Visual="DefaultText" Style="" Container="Scale" ContainerStyle="" Domain="value:Text">
+          <Properties>
+            <Property Type="Visual" Name="VerticalAlignment"><![CDATA[value:Center]]></Property>
+            <Property Type="Visual" Name="Font"><![CDATA[value:Verdana]]></Property>
+            <Property Type="Visual" Name="FontColor"><![CDATA[value:#FF333333]]></Property>
+            <Property Type="Domain" Name="Text"><![CDATA[value:PROPERTIES]]></Property>
+            <Property Type="Visual" Name="Bold"><![CDATA[value:False]]></Property>
+            <Property Type="Visual" Name="FontSize"><![CDATA[value:20]]></Property>
+            <Property Type="Visual" Name="Alignment"><![CDATA[value:Left]]></Property>
+            <Property Type="Visual" Name="Italic"><![CDATA[value:False]]></Property>
+            <Property Type="Container" Name="X"><![CDATA[value:150]]></Property>
+            <Property Type="Container" Name="Y"><![CDATA[value:23]]></Property>
+            <Property Type="Container" Name="Width"><![CDATA[value:271]]></Property>
+            <Property Type="Container" Name="Height"><![CDATA[value:36]]></Property>
+            <Property Type="Container" Name="Orientation"><![CDATA[value:0]]></Property>
+          </Properties>
+        </Asset>
+        <Asset Name="Face detection serve" Visual="DefaultText" Container="Scale" ContainerStyle="" Domain="value:Text">
+          <Properties>
+            <Property Type="Visual" Name="FontColor"><![CDATA[value:#FF262626]]></Property>
+            <Property Type="Visual" Name="Font"><![CDATA[value:Verdana]]></Property>
+            <Property Type="Visual" Name="Bold"><![CDATA[value:False]]></Property>
+            <Property Type="Visual" Name="FontSize"><![CDATA[value:14]]></Property>
+            <Property Type="Visual" Name="Alignment"><![CDATA[value:Right]]></Property>
+            <Property Type="Domain" Name="Text"><![CDATA[value:Face detection server host]]></Property>
+            <Property Type="Visual" Name="VerticalAlignment"><![CDATA[value:Center]]></Property>
+            <Property Type="Container" Name="X"><![CDATA[value:156]]></Property>
+            <Property Type="Container" Name="Y"><![CDATA[value:60]]></Property>
+            <Property Type="Container" Name="Width"><![CDATA[value:288]]></Property>
+            <Property Type="Container" Name="Height"><![CDATA[value:30]]></Property>
+            <Property Type="Container" Name="Orientation"><![CDATA[value:0]]></Property>
+          </Properties>
+        </Asset>
+        <Asset Name="Value - Server host" Visual="Text input" Style="" Container="Scale" ContainerStyle="" Domain="value:Text input">
+          <Attachments>
+            <EventTrigger EventType="Visual" EventName="EnterKeyPressed">
+              <InvokeService Target="mashup://visuals/mashup_root_2/Default_template_for_FaceDetection/Group%20Properties/Value%20-%20Server%20host/" Type="Visual" Name="StopEdition" Delay="value:0.0" />
+            </EventTrigger>
+            <EventTrigger EventType="Visual" EventName="StopEditing">
+              <InvokeService Target="mashup://externals/FaceDetection/" Type="Domain" Name="SetServerHost" Delay="value:0">
+                <ServiceValueParameter ParamName="Value" Value="mashup://visuals/mashup_root_2/Default_template_for_FaceDetection/Group%20Properties/Value%20-%20Server%20host/DomainComponent/Text" />
+              </InvokeService>
+            </EventTrigger>
+          </Attachments>
+          <Properties>
+            <Property Type="Domain" Name="Text"><![CDATA[mashup://externals/FaceDetection/ServerHost]]></Property>
+            <Property Type="Visual" Name="Font"><![CDATA[value:Verdana]]></Property>
+            <Property Type="Visual" Name="FontColor"><![CDATA[value:#FF262626]]></Property>
+            <Property Type="Visual" Name="FontSize"><![CDATA[value:14]]></Property>
+            <Property Type="Visual" Name="InstructionFont">
+              <Typeface>
+                <Family>Segoe UI</Family>
+                <Stretch>normal</Stretch>
+                <Weight>400</Weight>
+                <Style>italic</Style>
+              </Typeface>
+            </Property>
+            <Property Type="Visual" Name="InstructionFontSize"><![CDATA[value:25]]></Property>
+            <Property Type="Visual" Name="Keyboard"><![CDATA[value:UNDEFINED]]></Property>
+            <Property Type="Visual" Name="BackgroundColor"><![CDATA[value:#FFBABABA]]></Property>
+            <Property Type="Visual" Name="EditionBackgroundColor"><![CDATA[value:#FFCFCFCF]]></Property>
+            <Property Type="Visual" Name="InstructionFontColor"><![CDATA[value:#FF848484]]></Property>
+            <Property Type="Visual" Name="InstructionItalic"><![CDATA[value:True]]></Property>
+            <Property Type="Visual" Name="Bold"><![CDATA[value:True]]></Property>
+            <Property Type="Visual" Name="SelectionAreaColor"><![CDATA[value:#FF595959]]></Property>
+            <Property Type="Visual" Name="BorderColor"><![CDATA[value:#FFE8E8E8]]></Property>
+            <Property Type="Visual" Name="EditionBorderColor"><![CDATA[value:#FFE8E8E8]]></Property>
+            <Property Type="Container" Name="X"><![CDATA[value:412]]></Property>
+            <Property Type="Container" Name="Y"><![CDATA[value:60]]></Property>
+            <Property Type="Container" Name="Width"><![CDATA[value:172]]></Property>
+            <Property Type="Container" Name="Height"><![CDATA[value:30]]></Property>
+            <Property Type="Container" Name="Orientation"><![CDATA[value:0]]></Property>
+          </Properties>
+        </Asset>
+        <Asset Name="Minimum face size" Visual="DefaultText" Container="Scale" ContainerStyle="" Domain="value:Text">
+          <Properties>
+            <Property Type="Visual" Name="FontColor"><![CDATA[value:#FF262626]]></Property>
+            <Property Type="Visual" Name="Font"><![CDATA[value:Verdana]]></Property>
+            <Property Type="Visual" Name="Bold"><![CDATA[value:False]]></Property>
+            <Property Type="Visual" Name="FontSize"><![CDATA[value:14]]></Property>
+            <Property Type="Visual" Name="Alignment"><![CDATA[value:Right]]></Property>
+            <Property Type="Domain" Name="Text"><![CDATA[value:Minimum face size]]></Property>
+            <Property Type="Visual" Name="VerticalAlignment"><![CDATA[value:Center]]></Property>
+            <Property Type="Container" Name="X"><![CDATA[value:156]]></Property>
+            <Property Type="Container" Name="Y"><![CDATA[value:100]]></Property>
+            <Property Type="Container" Name="Width"><![CDATA[value:288]]></Property>
+            <Property Type="Container" Name="Height"><![CDATA[value:30]]></Property>
+            <Property Type="Container" Name="Orientation"><![CDATA[value:0]]></Property>
+          </Properties>
+        </Asset>
+        <Asset Name="Value - Min face size" Visual="Text input" Style="" Container="Scale" ContainerStyle="" Domain="value:Text input">
+          <Attachments>
+            <EventTrigger EventType="Visual" EventName="EnterKeyPressed">
+              <InvokeService Target="mashup://visuals/mashup_root_2/Default_template_for_FaceDetection/Group%20Properties/Value%20-%20Min%20face%20size/" Type="Visual" Name="StopEdition" Delay="value:0.0" />
+            </EventTrigger>
+            <EventTrigger EventType="Visual" EventName="StopEditing">
+              <InvokeService Target="mashup://externals/FaceDetection/" Type="Domain" Name="SetMinimumFaceSize" Delay="value:0">
+                <ServiceValueParameter ParamName="Value" Value="mashup://visuals/mashup_root_2/Default_template_for_FaceDetection/Group%20Properties/Value%20-%20Min%20face%20size/DomainComponent/Text" />
+              </InvokeService>
+            </EventTrigger>
+          </Attachments>
+          <Properties>
+            <Property Type="Domain" Name="Text"><![CDATA[mashup://externals/FaceDetection/MinimumFaceSize]]></Property>
+            <Property Type="Visual" Name="Font"><![CDATA[value:Verdana]]></Property>
+            <Property Type="Visual" Name="FontColor"><![CDATA[value:#FF262626]]></Property>
+            <Property Type="Visual" Name="FontSize"><![CDATA[value:14]]></Property>
+            <Property Type="Visual" Name="InstructionFont">
+              <Typeface>
+                <Family>Segoe UI</Family>
+                <Stretch>normal</Stretch>
+                <Weight>400</Weight>
+                <Style>italic</Style>
+              </Typeface>
+            </Property>
+            <Property Type="Visual" Name="InstructionFontSize"><![CDATA[value:25]]></Property>
+            <Property Type="Visual" Name="Keyboard"><![CDATA[value:UNDEFINED]]></Property>
+            <Property Type="Visual" Name="BackgroundColor"><![CDATA[value:#FFBABABA]]></Property>
+            <Property Type="Visual" Name="EditionBackgroundColor"><![CDATA[value:#FFCFCFCF]]></Property>
+            <Property Type="Visual" Name="InstructionFontColor"><![CDATA[value:#FF848484]]></Property>
+            <Property Type="Visual" Name="InstructionItalic"><![CDATA[value:True]]></Property>
+            <Property Type="Visual" Name="Bold"><![CDATA[value:True]]></Property>
+            <Property Type="Visual" Name="SelectionAreaColor"><![CDATA[value:#FF595959]]></Property>
+            <Property Type="Visual" Name="BorderColor"><![CDATA[value:#FFE8E8E8]]></Property>
+            <Property Type="Visual" Name="EditionBorderColor"><![CDATA[value:#FFE8E8E8]]></Property>
+            <Property Type="Container" Name="X"><![CDATA[value:366]]></Property>
+            <Property Type="Container" Name="Y"><![CDATA[value:100]]></Property>
+            <Property Type="Container" Name="Width"><![CDATA[value:80]]></Property>
+            <Property Type="Container" Name="Height"><![CDATA[value:30]]></Property>
+            <Property Type="Container" Name="Orientation"><![CDATA[value:0]]></Property>
+          </Properties>
+        </Asset>
+        <Asset Name="Detection update fre" Visual="DefaultText" Container="Scale" ContainerStyle="" Domain="value:Text">
+          <Properties>
+            <Property Type="Visual" Name="FontColor"><![CDATA[value:#FF262626]]></Property>
+            <Property Type="Visual" Name="Font"><![CDATA[value:Verdana]]></Property>
+            <Property Type="Visual" Name="Bold"><![CDATA[value:False]]></Property>
+            <Property Type="Visual" Name="FontSize"><![CDATA[value:14]]></Property>
+            <Property Type="Visual" Name="Alignment"><![CDATA[value:Right]]></Property>
+            <Property Type="Domain" Name="Text"><![CDATA[value:Detection update frequency]]></Property>
+            <Property Type="Visual" Name="VerticalAlignment"><![CDATA[value:Center]]></Property>
+            <Property Type="Container" Name="X"><![CDATA[value:156]]></Property>
+            <Property Type="Container" Name="Y"><![CDATA[value:141]]></Property>
+            <Property Type="Container" Name="Width"><![CDATA[value:288]]></Property>
+            <Property Type="Container" Name="Height"><![CDATA[value:30]]></Property>
+            <Property Type="Container" Name="Orientation"><![CDATA[value:0]]></Property>
+          </Properties>
+        </Asset>
+        <Asset Name="Value - Update frequency" Visual="Text input" Style="" Container="Scale" ContainerStyle="" Domain="value:Text input">
+          <Attachments>
+            <EventTrigger EventType="Visual" EventName="EnterKeyPressed">
+              <InvokeService Target="mashup://visuals/mashup_root_2/Default_template_for_FaceDetection/Group%20Properties/Value%20-%20Update%20frequency/" Type="Visual" Name="StopEdition" Delay="value:0.0" />
+            </EventTrigger>
+            <EventTrigger EventType="Visual" EventName="StopEditing">
+              <InvokeService Target="mashup://externals/FaceDetection/" Type="Domain" Name="SetDetectionUpdateFrequency" Delay="value:0">
+                <ServiceValueParameter ParamName="Value" Value="mashup://visuals/mashup_root_2/Default_template_for_FaceDetection/Group%20Properties/Value%20-%20Update%20frequency/DomainComponent/Text" />
+              </InvokeService>
+            </EventTrigger>
+          </Attachments>
+          <Properties>
+            <Property Type="Domain" Name="Text"><![CDATA[mashup://externals/FaceDetection/DetectionUpdateFrequency]]></Property>
+            <Property Type="Visual" Name="Font"><![CDATA[value:Verdana]]></Property>
+            <Property Type="Visual" Name="FontColor"><![CDATA[value:#FF262626]]></Property>
+            <Property Type="Visual" Name="FontSize"><![CDATA[value:14]]></Property>
+            <Property Type="Visual" Name="InstructionFont">
+              <Typeface>
+                <Family>Segoe UI</Family>
+                <Stretch>normal</Stretch>
+                <Weight>400</Weight>
+                <Style>italic</Style>
+              </Typeface>
+            </Property>
+            <Property Type="Visual" Name="InstructionFontSize"><![CDATA[value:25]]></Property>
+            <Property Type="Visual" Name="Keyboard"><![CDATA[value:UNDEFINED]]></Property>
+            <Property Type="Visual" Name="BackgroundColor"><![CDATA[value:#FFBABABA]]></Property>
+            <Property Type="Visual" Name="EditionBackgroundColor"><![CDATA[value:#FFCFCFCF]]></Property>
+            <Property Type="Visual" Name="InstructionFontColor"><![CDATA[value:#FF848484]]></Property>
+            <Property Type="Visual" Name="InstructionItalic"><![CDATA[value:True]]></Property>
+            <Property Type="Visual" Name="Bold"><![CDATA[value:True]]></Property>
+            <Property Type="Visual" Name="SelectionAreaColor"><![CDATA[value:#FF595959]]></Property>
+            <Property Type="Visual" Name="BorderColor"><![CDATA[value:#FFE8E8E8]]></Property>
+            <Property Type="Visual" Name="EditionBorderColor"><![CDATA[value:#FFE8E8E8]]></Property>
+            <Property Type="Container" Name="X"><![CDATA[value:366]]></Property>
+            <Property Type="Container" Name="Y"><![CDATA[value:141]]></Property>
+            <Property Type="Container" Name="Width"><![CDATA[value:80]]></Property>
+            <Property Type="Container" Name="Height"><![CDATA[value:30]]></Property>
+            <Property Type="Container" Name="Orientation"><![CDATA[value:0]]></Property>
+          </Properties>
+        </Asset>
+        <Asset Name="Face count" Visual="DefaultText" Container="Scale" ContainerStyle="" Domain="value:Text">
+          <Properties>
+            <Property Type="Visual" Name="FontColor"><![CDATA[value:#FF262626]]></Property>
+            <Property Type="Visual" Name="Font"><![CDATA[value:Verdana]]></Property>
+            <Property Type="Visual" Name="Bold"><![CDATA[value:False]]></Property>
+            <Property Type="Visual" Name="FontSize"><![CDATA[value:14]]></Property>
+            <Property Type="Visual" Name="Alignment"><![CDATA[value:Right]]></Property>
+            <Property Type="Domain" Name="Text"><![CDATA[value:Face count]]></Property>
+            <Property Type="Visual" Name="VerticalAlignment"><![CDATA[value:Center]]></Property>
+            <Property Type="Container" Name="X"><![CDATA[value:156]]></Property>
+            <Property Type="Container" Name="Y"><![CDATA[value:182]]></Property>
+            <Property Type="Container" Name="Width"><![CDATA[value:288]]></Property>
+            <Property Type="Container" Name="Height"><![CDATA[value:30]]></Property>
+            <Property Type="Container" Name="Orientation"><![CDATA[value:0]]></Property>
+          </Properties>
+        </Asset>
+        <Asset Name="Value - Face count" Visual="DefaultText" Container="Scale" ContainerStyle="" Domain="value:Text">
+          <Properties>
+            <Property Type="Domain" Name="Text"><![CDATA[mashup://externals/FaceDetection/FaceCount]]></Property>
+            <Property Type="Visual" Name="FontColor"><![CDATA[value:#FF262626]]></Property>
+            <Property Type="Visual" Name="Font"><![CDATA[value:Verdana]]></Property>
+            <Property Type="Visual" Name="Alignment"><![CDATA[value:Left]]></Property>
+            <Property Type="Visual" Name="Bold"><![CDATA[value:True]]></Property>
+            <Property Type="Visual" Name="FontSize"><![CDATA[value:14]]></Property>
+            <Property Type="Visual" Name="VerticalAlignment"><![CDATA[value:Center]]></Property>
+            <Property Type="Container" Name="X"><![CDATA[value:377]]></Property>
+            <Property Type="Container" Name="Y"><![CDATA[value:182]]></Property>
+            <Property Type="Container" Name="Width"><![CDATA[value:102]]></Property>
+            <Property Type="Container" Name="Height"><![CDATA[value:30]]></Property>
+            <Property Type="Container" Name="Orientation"><![CDATA[value:0]]></Property>
+          </Properties>
+        </Asset>
+        <Collection Name="Faces" Visual="Group" Style="" Container="Default" ContainerStyle="">
+          <Properties>
+            <Property Type="Visual" Name="ItemWidth"><![CDATA[value:300]]></Property>
+            <Property Type="Visual" Name="ItemHeight"><![CDATA[value:1490]]></Property>
+            <Property Type="Visual" Name="ItemSpacing"><![CDATA[value:30]]></Property>
+            <Property Type="Visual" Name="ShowFeedback"><![CDATA[value:False]]></Property>
+            <Property Type="Container" Name="MinimizedImage"><![CDATA[player://data/DefaultAssets/DefaultMinimized.png]]></Property>
+            <Property Type="Container" Name="MinimizedPressedImage"><![CDATA[player://data/DefaultAssets/DefaultMinimized.png]]></Property>
+            <Property Type="Visual" Name="FillDirection"><![CDATA[value:TopToBottom]]></Property>
+            <Property Type="Visual" Name="BackgroundRadius"><![CDATA[value:0]]></Property>
+            <Property Type="Visual" Name="Rows"><![CDATA[value:1]]></Property>
+            <Property Type="Container" Name="X"><![CDATA[value:299]]></Property>
+            <Property Type="Container" Name="Y"><![CDATA[value:344]]></Property>
+            <Property Type="Visual" Name="InitialWidth"><![CDATA[value:380]]></Property>
+            <Property Type="Container" Name="Width"><![CDATA[value:380]]></Property>
+            <Property Type="Visual" Name="InitialHeight"><![CDATA[value:280]]></Property>
+            <Property Type="Container" Name="Height"><![CDATA[value:280]]></Property>
+            <Property Type="Container" Name="Orientation"><![CDATA[value:0]]></Property>
+          </Properties>
+          <Asset Name="Rectangle" Visual="DefaultRectangle" Style="" Container="Default" ContainerStyle="" Domain="value:Rectangle">
+            <Properties>
+              <Property Type="Container" Name="MinimizedImage"><![CDATA[player://data/DefaultAssets/DefaultMinimized.png]]></Property>
+              <Property Type="Container" Name="MinimizedPressedImage"><![CDATA[player://data/DefaultAssets/DefaultMinimized.png]]></Property>
+              <Property Type="Container" Name="Width"><![CDATA[value:380]]></Property>
+              <Property Type="Container" Name="Height"><![CDATA[value:280]]></Property>
+              <Property Type="Container" Name="Orientation"><![CDATA[value:0]]></Property>
+              <Property Type="Container" Name="MinimizedWidth"><![CDATA[value:50]]></Property>
+              <Property Type="Container" Name="MinimizedHeight"><![CDATA[value:50]]></Property>
+              <Property Type="Container" Name="DisplayButtonsRadius"><![CDATA[value:19]]></Property>
+              <Property Type="Visual" Name="BorderThickness"><![CDATA[value:2]]></Property>
+              <Property Type="Visual" Name="BackgroundColor"><![CDATA[value:#00000000]]></Property>
+              <Property Type="Container" Name="X"><![CDATA[value:190]]></Property>
+              <Property Type="Container" Name="Y"><![CDATA[value:140]]></Property>
+            </Properties>
+          </Asset>
+          <Asset Name="Main Face" Visual="DefaultEllipse" Style="" Container="Default" ContainerStyle="" Domain="value:Ellipse">
+            <Properties>
+              <Property Type="Container" Name="MinimizedImage"><![CDATA[player://data/DefaultAssets/DefaultMinimized.png]]></Property>
+              <Property Type="Container" Name="MinimizedPressedImage"><![CDATA[player://data/DefaultAssets/DefaultMinimized.png]]></Property>
+              <Property Type="Visual" Name="BorderColor"><![CDATA[value:#FF00FF00]]></Property>
+              <Property Type="Container" Name="MinimizedWidth"><![CDATA[value:50]]></Property>
+              <Property Type="Container" Name="MinimizedHeight"><![CDATA[value:50]]></Property>
+              <Property Type="Container" Name="DisplayButtonsRadius"><![CDATA[value:19]]></Property>
+              <Property Type="Container" Name="Width">
+                <ConvertedValue ConverterName="value:Multiply">
+                  <ServiceValueParameter ParamName="input" Value="mashup://externals/FaceDetection/MainFace/Width" />
+                  <ServiceValueParameter ParamName="param" Value="value:382" />
+                </ConvertedValue>
+              </Property>
+              <Property Type="Container" Name="Height">
+                <ConvertedValue ConverterName="value:Multiply">
+                  <ServiceValueParameter ParamName="input" Value="mashup://externals/FaceDetection/MainFace/Height" />
+                  <ServiceValueParameter ParamName="param" Value="value:280" />
+                </ConvertedValue>
+              </Property>
+              <Property Type="Visual" Name="BackgroundColor"><![CDATA[value:#0000FF00]]></Property>
+              <Property Type="Visual" Name="BorderThickness"><![CDATA[value:5]]></Property>
+              <Property Type="Visual" Name="Flat"><![CDATA[value:True]]></Property>
+              <Property Type="Container" Name="X">
+                <ConvertedValue ConverterName="value:Multiply">
+                  <ServiceValueParameter ParamName="input" Value="mashup://externals/FaceDetection/MainFace/X" />
+                  <ServiceValueParameter ParamName="param" Value="value:380" />
+                </ConvertedValue>
+              </Property>
+              <Property Type="Container" Name="Y">
+                <ConvertedValue ConverterName="value:Multiply">
+                  <ServiceValueParameter ParamName="input" Value="mashup://externals/FaceDetection/MainFace/Y" />
+                  <ServiceValueParameter ParamName="param" Value="value:280" />
+                </ConvertedValue>
+              </Property>
+              <Property Type="Container" Name="Orientation"><![CDATA[value:0]]></Property>
+              <Property Type="Container" Name="IsVisible"><![CDATA[mashup://externals/FaceDetection/IsMainFaceDetected]]></Property>
+            </Properties>
+          </Asset>
+          <DataSourceProvider>
+            <DataSource>
+              <Contract Uri="mashup://externals/FaceDetection/Faces" />
+            </DataSource>
+            <Master>
+              <Collection Name="Template for items of Faces" Visual="Group" Style="" Container="Default" ContainerStyle="">
+                <Properties>
+                  <Property Type="Visual" Name="ItemWidth"><![CDATA[value:75]]></Property>
+                  <Property Type="Visual" Name="ItemHeight"><![CDATA[value:250]]></Property>
+                  <Property Type="Visual" Name="ShowFeedback"><![CDATA[value:False]]></Property>
+                  <Property Type="Container" Name="MinimizedImage"><![CDATA[player://data/DefaultAssets/DefaultMinimized.png]]></Property>
+                  <Property Type="Container" Name="MinimizedPressedImage"><![CDATA[player://data/DefaultAssets/DefaultMinimized.png]]></Property>
+                  <Property Type="Container" Name="X">
+                    <ConvertedValue ConverterName="value:Multiply">
+                      <ServiceValueParameter ParamName="input" Value="current://DomainComponent/X" />
+                      <ServiceValueParameter ParamName="param" Value="value:380" />
+                    </ConvertedValue>
+                  </Property>
+                  <Property Type="Container" Name="Y">
+                    <ConvertedValue ConverterName="value:Multiply">
+                      <ServiceValueParameter ParamName="input" Value="current://DomainComponent/Y" />
+                      <ServiceValueParameter ParamName="param" Value="value:280" />
+                    </ConvertedValue>
+                  </Property>
+                  <Property Type="Visual" Name="InitialWidth"><![CDATA[current://view/RootVisual/ContainerInterface/Width]]></Property>
+                  <Property Type="Container" Name="Width">
+                    <ConvertedValue ConverterName="value:Multiply">
+                      <ServiceValueParameter ParamName="input" Value="current://DomainComponent/Width" />
+                      <ServiceValueParameter ParamName="param" Value="value:380" />
+                    </ConvertedValue>
+                  </Property>
+                  <Property Type="Visual" Name="InitialHeight"><![CDATA[current://view/RootVisual/ContainerInterface/Height]]></Property>
+                  <Property Type="Container" Name="Height">
+                    <ConvertedValue ConverterName="value:Multiply">
+                      <ServiceValueParameter ParamName="input" Value="current://DomainComponent/Height" />
+                      <ServiceValueParameter ParamName="param" Value="value:280" />
+                    </ConvertedValue>
+                  </Property>
+                  <Property Type="Container" Name="Orientation"><![CDATA[value:0]]></Property>
+                </Properties>
+                <Asset Name="Male feedback" Visual="DefaultEllipse" Style="" Container="Default" ContainerStyle="" Domain="value:Ellipse">
+                  <Properties>
+                    <Property Type="Container" Name="MinimizedImage"><![CDATA[player://data/DefaultAssets/DefaultMinimized.png]]></Property>
+                    <Property Type="Container" Name="MinimizedPressedImage"><![CDATA[player://data/DefaultAssets/DefaultMinimized.png]]></Property>
+                    <Property Type="Visual" Name="BorderColor"><![CDATA[value:#FF00B3FF]]></Property>
+                    <Property Type="Container" Name="MinimizedWidth"><![CDATA[value:50]]></Property>
+                    <Property Type="Container" Name="MinimizedHeight"><![CDATA[value:50]]></Property>
+                    <Property Type="Container" Name="DisplayButtonsRadius"><![CDATA[value:19]]></Property>
+                    <Property Type="Container" Name="Width">
+                      <ConvertedValue ConverterName="value:Multiply">
+                        <ServiceValueParameter ParamName="input" Value="current://DomainComponent/Width" />
+                        <ServiceValueParameter ParamName="param" Value="value:380" />
+                      </ConvertedValue>
+                    </Property>
+                    <Property Type="Container" Name="Height">
+                      <ConvertedValue ConverterName="value:Multiply">
+                        <ServiceValueParameter ParamName="input" Value="current://DomainComponent/Height" />
+                        <ServiceValueParameter ParamName="param" Value="value:280" />
+                      </ConvertedValue>
+                    </Property>
+                    <Property Type="Visual" Name="BackgroundColor"><![CDATA[value:#00000000]]></Property>
+                    <Property Type="Visual" Name="BorderThickness"><![CDATA[value:2]]></Property>
+                    <Property Type="Visual" Name="Flat"><![CDATA[value:True]]></Property>
+                    <Property Type="Container" Name="X">
+                      <ConvertedValue ConverterName="value:Multiply">
+                        <ServiceValueParameter ParamName="input" Value="current://DomainComponent/Width" />
+                        <ServiceValueParameter ParamName="param" Value="value:190" />
+                      </ConvertedValue>
+                    </Property>
+                    <Property Type="Container" Name="Y">
+                      <ConvertedValue ConverterName="value:Multiply">
+                        <ServiceValueParameter ParamName="input" Value="current://DomainComponent/Height" />
+                        <ServiceValueParameter ParamName="param" Value="value:140" />
+                      </ConvertedValue>
+                    </Property>
+                    <Property Type="Container" Name="Orientation"><![CDATA[value:0]]></Property>
+                    <Property Type="Container" Name="IsVisible">
+                      <ConvertedValue ConverterName="value:isEqualTo" ConverterInstance="mashup://converters/IsEqualToBC/">
+                        <ServiceValueParameter ParamName="input" Value="current://DomainComponent/Gender" />
+                        <ServiceValueParameter ParamName="valueToTest" Value="value:male" />
+                        <ServiceValueParameter ParamName="caseSensitive" Value="value:False" />
+                      </ConvertedValue>
+                    </Property>
+                  </Properties>
+                </Asset>
+                <Asset Name="Female feedback" Visual="DefaultEllipse" Style="" Container="Default" ContainerStyle="" Domain="value:Ellipse">
+                  <Properties>
+                    <Property Type="Container" Name="MinimizedImage"><![CDATA[player://data/DefaultAssets/DefaultMinimized.png]]></Property>
+                    <Property Type="Container" Name="MinimizedPressedImage"><![CDATA[player://data/DefaultAssets/DefaultMinimized.png]]></Property>
+                    <Property Type="Visual" Name="BorderColor"><![CDATA[value:#FFFF00FF]]></Property>
+                    <Property Type="Container" Name="MinimizedWidth"><![CDATA[value:50]]></Property>
+                    <Property Type="Container" Name="MinimizedHeight"><![CDATA[value:50]]></Property>
+                    <Property Type="Container" Name="DisplayButtonsRadius"><![CDATA[value:19]]></Property>
+                    <Property Type="Container" Name="Width">
+                      <ConvertedValue ConverterName="value:Multiply">
+                        <ServiceValueParameter ParamName="input" Value="current://DomainComponent/Width" />
+                        <ServiceValueParameter ParamName="param" Value="value:380" />
+                      </ConvertedValue>
+                    </Property>
+                    <Property Type="Container" Name="Height">
+                      <ConvertedValue ConverterName="value:Multiply">
+                        <ServiceValueParameter ParamName="input" Value="current://DomainComponent/Height" />
+                        <ServiceValueParameter ParamName="param" Value="value:280" />
+                      </ConvertedValue>
+                    </Property>
+                    <Property Type="Visual" Name="BackgroundColor"><![CDATA[value:#00000000]]></Property>
+                    <Property Type="Visual" Name="BorderThickness"><![CDATA[value:2]]></Property>
+                    <Property Type="Visual" Name="Flat"><![CDATA[value:True]]></Property>
+                    <Property Type="Container" Name="X">
+                      <ConvertedValue ConverterName="value:Multiply">
+                        <ServiceValueParameter ParamName="input" Value="current://DomainComponent/Width" />
+                        <ServiceValueParameter ParamName="param" Value="value:190" />
+                      </ConvertedValue>
+                    </Property>
+                    <Property Type="Container" Name="Y">
+                      <ConvertedValue ConverterName="value:Multiply">
+                        <ServiceValueParameter ParamName="input" Value="current://DomainComponent/Height" />
+                        <ServiceValueParameter ParamName="param" Value="value:140" />
+                      </ConvertedValue>
+                    </Property>
+                    <Property Type="Container" Name="Orientation"><![CDATA[value:0]]></Property>
+                    <Property Type="Container" Name="IsVisible">
+                      <ConvertedValue ConverterName="value:isEqualTo" ConverterInstance="mashup://converters/IsEqualToBC/">
+                        <ServiceValueParameter ParamName="input" Value="current://DomainComponent/Gender" />
+                        <ServiceValueParameter ParamName="caseSensitive" Value="value:False" />
+                        <ServiceValueParameter ParamName="valueToTest" Value="value:female" />
+                      </ConvertedValue>
+                    </Property>
+                  </Properties>
+                </Asset>
+                <Asset Name="Age" Visual="DefaultText" Style="" Container="Scale" ContainerStyle="" Domain="value:Text">
+                  <Properties>
+                    <Property Type="Container" Name="Width">
+                      <ConvertedValue ConverterName="value:Multiply">
+                        <ServiceValueParameter ParamName="input" Value="current://DomainComponent/Width" />
+                        <ServiceValueParameter ParamName="param" Value="value:380" />
+                      </ConvertedValue>
+                    </Property>
+                    <Property Type="Container" Name="Height"><![CDATA[value:40]]></Property>
+                    <Property Type="Domain" Name="Text"><![CDATA[current://DomainComponent/Age]]></Property>
+                    <Property Type="Visual" Name="Font">
+                      <Typeface>
+                        <Family>Verdana</Family>
+                        <Stretch>normal</Stretch>
+                        <Weight>400</Weight>
+                        <Style>normal</Style>
+                      </Typeface>
+                    </Property>
+                    <Property Type="Visual" Name="FontSize"><![CDATA[value:16]]></Property>
+                    <Property Type="Visual" Name="FontColor"><![CDATA[value:#FF262626]]></Property>
+                    <Property Type="Visual" Name="VerticalAlignment"><![CDATA[value:Center]]></Property>
+                    <Property Type="Container" Name="MinimizedImage"><![CDATA[player://data/DefaultAssets/DefaultMinimized.png]]></Property>
+                    <Property Type="Container" Name="MinimizedPressedImage"><![CDATA[player://data/DefaultAssets/DefaultMinimized.png]]></Property>
+                    <Property Type="Visual" Name="OverflowBehavior"><![CDATA[value:Ellipsis]]></Property>
+                    <Property Type="Container" Name="X">
+                      <ConvertedValue ConverterName="value:Multiply">
+                        <ServiceValueParameter ParamName="input" Value="current://DomainComponent/Width" />
+                        <ServiceValueParameter ParamName="param" Value="value:190" />
+                      </ConvertedValue>
+                    </Property>
+                    <Property Type="Container" Name="Y">
+                      <ConvertedValue ConverterName="value:Multiply">
+                        <ServiceValueParameter ParamName="input" Value="current://DomainComponent/Height" />
+                        <ServiceValueParameter ParamName="param" Value="value:230" />
+                      </ConvertedValue>
+                    </Property>
+                    <Property Type="Visual" Name="AdaptFontSize" RequiredApi="28.4.5"><![CDATA[value:True]]></Property>
+                    <Property Type="Visual" Name="Alignment"><![CDATA[value:Center]]></Property>
+                  </Properties>
+                </Asset>
+                <Asset Name="MainEmotion" Visual="DefaultText" Style="" Container="Scale" ContainerStyle="" Domain="value:Text">
+                  <Properties>
+                    <Property Type="Container" Name="Width"><![CDATA[current://view/RootVisual/ContainerInterface/Width]]></Property>
+                    <Property Type="Container" Name="Height"><![CDATA[value:30]]></Property>
+                    <Property Type="Domain" Name="Text"><![CDATA[current://DomainComponent/MainEmotion]]></Property>
+                    <Property Type="Visual" Name="Font">
+                      <Typeface>
+                        <Family>Verdana</Family>
+                        <Stretch>normal</Stretch>
+                        <Weight>400</Weight>
+                        <Style>normal</Style>
+                      </Typeface>
+                    </Property>
+                    <Property Type="Visual" Name="FontSize"><![CDATA[value:20]]></Property>
+                    <Property Type="Visual" Name="FontColor"><![CDATA[value:#FF262626]]></Property>
+                    <Property Type="Visual" Name="VerticalAlignment"><![CDATA[value:Center]]></Property>
+                    <Property Type="Container" Name="MinimizedImage"><![CDATA[player://data/DefaultAssets/DefaultMinimized.png]]></Property>
+                    <Property Type="Container" Name="MinimizedPressedImage"><![CDATA[player://data/DefaultAssets/DefaultMinimized.png]]></Property>
+                    <Property Type="Visual" Name="OverflowBehavior"><![CDATA[value:Ellipsis]]></Property>
+                    <Property Type="Container" Name="X">
+                      <ConvertedValue ConverterName="value:Multiply">
+                        <ServiceValueParameter ParamName="input" Value="current://DomainComponent/Width" />
+                        <ServiceValueParameter ParamName="param" Value="value:190" />
+                      </ConvertedValue>
+                    </Property>
+                    <Property Type="Container" Name="Y">
+                      <ConvertedValue ConverterName="value:Multiply">
+                        <ServiceValueParameter ParamName="input" Value="current://DomainComponent/Height" />
+                        <ServiceValueParameter ParamName="param" Value="value:140" />
+                      </ConvertedValue>
+                    </Property>
+                    <Property Type="Visual" Name="AdaptFontSize" RequiredApi="28.4.5"><![CDATA[value:True]]></Property>
+                    <Property Type="Visual" Name="Alignment"><![CDATA[value:Center]]></Property>
+                  </Properties>
+                </Asset>
+              </Collection>
+            </Master>
+          </DataSourceProvider>
+        </Collection>
+      </Collection>
+      <Asset Name="Group separator Top" Visual="DefaultRectangle" Style="" Container="No resize" ContainerStyle="" Domain="value:Rectangle">
+        <Properties>
+          <Property Type="Visual" Name="BorderThickness"><![CDATA[value:0]]></Property>
+          <Property Type="Visual" Name="BorderColor"><![CDATA[value:#00000000]]></Property>
+          <Property Type="Visual" Name="CornerRadius"><![CDATA[value:0]]></Property>
+          <Property Type="Visual" Name="BackgroundColor"><![CDATA[value:#D9343333]]></Property>
+          <Property Type="Container" Name="X"><![CDATA[value:300]]></Property>
+          <Property Type="Container" Name="Y"><![CDATA[value:583]]></Property>
+          <Property Type="Container" Name="Width"><![CDATA[value:600]]></Property>
+          <Property Type="Container" Name="Height"><![CDATA[value:1]]></Property>
+          <Property Type="Container" Name="Orientation"><![CDATA[value:0]]></Property>
+        </Properties>
+      </Asset>
+      <Collection Name="Group Actions" Visual="Group" Style="" Container="Default" ContainerStyle="">
+        <Properties>
+          <Property Type="Container" Name="X"><![CDATA[value:300]]></Property>
+          <Property Type="Container" Name="Y"><![CDATA[value:651]]></Property>
+          <Property Type="Visual" Name="InitialWidth"><![CDATA[value:600]]></Property>
+          <Property Type="Container" Name="Width"><![CDATA[value:600]]></Property>
+          <Property Type="Visual" Name="InitialHeight"><![CDATA[value:137]]></Property>
+          <Property Type="Container" Name="Height"><![CDATA[value:137]]></Property>
+          <Property Type="Container" Name="Orientation"><![CDATA[value:0]]></Property>
+        </Properties>
+        <Asset Name="ACTIONS" Visual="DefaultText" Style="" Container="Scale" ContainerStyle="" Domain="value:Text">
+          <Properties>
+            <Property Type="Visual" Name="VerticalAlignment"><![CDATA[value:Center]]></Property>
+            <Property Type="Visual" Name="Font"><![CDATA[value:Verdana]]></Property>
+            <Property Type="Visual" Name="FontColor"><![CDATA[value:#FF333333]]></Property>
+            <Property Type="Domain" Name="Text"><![CDATA[value:ACTIONS]]></Property>
+            <Property Type="Visual" Name="Bold"><![CDATA[value:False]]></Property>
+            <Property Type="Visual" Name="FontSize"><![CDATA[value:20]]></Property>
+            <Property Type="Visual" Name="Alignment"><![CDATA[value:Left]]></Property>
+            <Property Type="Visual" Name="Italic"><![CDATA[value:False]]></Property>
+            <Property Type="Container" Name="X"><![CDATA[value:152]]></Property>
+            <Property Type="Container" Name="Y"><![CDATA[value:26]]></Property>
+            <Property Type="Container" Name="Width"><![CDATA[value:271]]></Property>
+            <Property Type="Container" Name="Height"><![CDATA[value:36]]></Property>
+            <Property Type="Container" Name="Orientation"><![CDATA[value:0]]></Property>
+          </Properties>
+        </Asset>
+        <Asset Name="Connect to face dete" Visual="DefaultText" Container="Scale" ContainerStyle="" Domain="value:Text">
+          <Properties>
+            <Property Type="Visual" Name="FontColor"><![CDATA[value:#FF262626]]></Property>
+            <Property Type="Visual" Name="Font"><![CDATA[value:Verdana]]></Property>
+            <Property Type="Visual" Name="Bold"><![CDATA[value:False]]></Property>
+            <Property Type="Visual" Name="FontSize"><![CDATA[value:14]]></Property>
+            <Property Type="Visual" Name="Alignment"><![CDATA[value:Right]]></Property>
+            <Property Type="Domain" Name="Text"><![CDATA[value:Connect to face detection server]]></Property>
+            <Property Type="Visual" Name="VerticalAlignment"><![CDATA[value:Center]]></Property>
+            <Property Type="Container" Name="X"><![CDATA[value:158]]></Property>
+            <Property Type="Container" Name="Y"><![CDATA[value:58]]></Property>
+            <Property Type="Container" Name="Width"><![CDATA[value:288]]></Property>
+            <Property Type="Container" Name="Height"><![CDATA[value:30]]></Property>
+            <Property Type="Container" Name="Orientation"><![CDATA[value:0]]></Property>
+          </Properties>
+        </Asset>
+        <Asset Name="Connect" Visual="Button" Style="Simple button" Container="Default" ContainerStyle="" Domain="value:VisibleTrigger">
+          <Attachments>
+            <EventTrigger EventType="Visual" EventName="Released">
+              <InvokeService Target="mashup://externals/FaceDetection/" Type="Domain" Name="ConnectToServer" Delay="value:0" />
+            </EventTrigger>
+          </Attachments>
+          <Properties>
+            <Property Type="Visual" Name="Font">
+              <Typeface>
+                <Family>Segoe UI</Family>
+                <Stretch>normal</Stretch>
+                <Weight>400</Weight>
+                <Style>normal</Style>
+              </Typeface>
+            </Property>
+            <Property Type="Visual" Name="FontSize"><![CDATA[value:14]]></Property>
+            <Property Type="Visual" Name="Text"><![CDATA[value:Connect ]]></Property>
+            <Property Type="Visual" Name="BackgroundColor"><![CDATA[value:#FFFAFAFA]]></Property>
+            <Property Type="Visual" Name="Radius"><![CDATA[value:5]]></Property>
+            <Property Type="Visual" Name="Flat"><![CDATA[value:True]]></Property>
+            <Property Type="Visual" Name="PressedVeilColor"><![CDATA[value:#80000000]]></Property>
+            <Property Type="Visual" Name="FontColor"><![CDATA[value:#FF000000]]></Property>
+            <Property Type="Visual" Name="OutlineColor"><![CDATA[value:#FF2B2B2B]]></Property>
+            <Property Type="Visual" Name="LineWrap"><![CDATA[value:True]]></Property>
+            <Property Type="Container" Name="X"><![CDATA[value:366]]></Property>
+            <Property Type="Container" Name="Y"><![CDATA[value:58]]></Property>
+            <Property Type="Container" Name="Width"><![CDATA[value:80]]></Property>
+            <Property Type="Container" Name="Height"><![CDATA[value:30]]></Property>
+            <Property Type="Container" Name="Orientation"><![CDATA[value:0]]></Property>
+          </Properties>
+        </Asset>
+        <Asset Name="Disconnect from face" Visual="DefaultText" Container="Scale" ContainerStyle="" Domain="value:Text">
+          <Properties>
+            <Property Type="Visual" Name="FontColor"><![CDATA[value:#FF262626]]></Property>
+            <Property Type="Visual" Name="Font"><![CDATA[value:Verdana]]></Property>
+            <Property Type="Visual" Name="Bold"><![CDATA[value:False]]></Property>
+            <Property Type="Visual" Name="FontSize"><![CDATA[value:14]]></Property>
+            <Property Type="Visual" Name="Alignment"><![CDATA[value:Right]]></Property>
+            <Property Type="Domain" Name="Text"><![CDATA[value:Disconnect from face detection server]]></Property>
+            <Property Type="Visual" Name="VerticalAlignment"><![CDATA[value:Center]]></Property>
+            <Property Type="Container" Name="X"><![CDATA[value:158]]></Property>
+            <Property Type="Container" Name="Y"><![CDATA[value:102]]></Property>
+            <Property Type="Container" Name="Width"><![CDATA[value:288]]></Property>
+            <Property Type="Container" Name="Height"><![CDATA[value:30]]></Property>
+            <Property Type="Container" Name="Orientation"><![CDATA[value:0]]></Property>
+          </Properties>
+        </Asset>
+        <Asset Name="Disconnect" Visual="Button" Style="Simple button" Container="Default" ContainerStyle="" Domain="value:VisibleTrigger">
+          <Attachments>
+            <EventTrigger EventType="Visual" EventName="Released">
+              <InvokeService Target="mashup://externals/FaceDetection/" Type="Domain" Name="DisconnectFromServer" Delay="value:0" />
+            </EventTrigger>
+          </Attachments>
+          <Properties>
+            <Property Type="Visual" Name="Font">
+              <Typeface>
+                <Family>Segoe UI</Family>
+                <Stretch>normal</Stretch>
+                <Weight>400</Weight>
+                <Style>normal</Style>
+              </Typeface>
+            </Property>
+            <Property Type="Visual" Name="FontSize"><![CDATA[value:14]]></Property>
+            <Property Type="Visual" Name="Text"><![CDATA[value:Disconnect]]></Property>
+            <Property Type="Visual" Name="BackgroundColor"><![CDATA[value:#FFFAFAFA]]></Property>
+            <Property Type="Visual" Name="Radius"><![CDATA[value:5]]></Property>
+            <Property Type="Visual" Name="Flat"><![CDATA[value:True]]></Property>
+            <Property Type="Visual" Name="PressedVeilColor"><![CDATA[value:#80000000]]></Property>
+            <Property Type="Visual" Name="FontColor"><![CDATA[value:#FF000000]]></Property>
+            <Property Type="Visual" Name="OutlineColor"><![CDATA[value:#FF2B2B2B]]></Property>
+            <Property Type="Visual" Name="LineWrap"><![CDATA[value:True]]></Property>
+            <Property Type="Container" Name="X"><![CDATA[value:366]]></Property>
+            <Property Type="Container" Name="Y"><![CDATA[value:102]]></Property>
+            <Property Type="Container" Name="Width"><![CDATA[value:80]]></Property>
+            <Property Type="Container" Name="Height"><![CDATA[value:30]]></Property>
+            <Property Type="Container" Name="Orientation"><![CDATA[value:0]]></Property>
+          </Properties>
+        </Asset>
+      </Collection>
+      <Asset Name="Group separator Middle" Visual="DefaultRectangle" Style="" Container="No resize" ContainerStyle="" Domain="value:Rectangle">
+        <Properties>
+          <Property Type="Visual" Name="BorderThickness"><![CDATA[value:0]]></Property>
+          <Property Type="Visual" Name="BorderColor"><![CDATA[value:#00000000]]></Property>
+          <Property Type="Visual" Name="CornerRadius"><![CDATA[value:0]]></Property>
+          <Property Type="Visual" Name="BackgroundColor"><![CDATA[value:#D9343333]]></Property>
+          <Property Type="Container" Name="X"><![CDATA[value:300]]></Property>
+          <Property Type="Container" Name="Y"><![CDATA[value:720]]></Property>
+          <Property Type="Container" Name="Width"><![CDATA[value:600]]></Property>
+          <Property Type="Container" Name="Height"><![CDATA[value:1]]></Property>
+          <Property Type="Container" Name="Orientation"><![CDATA[value:0]]></Property>
+        </Properties>
+      </Asset>
+      <Collection Name="Group Triggers" Visual="Group" Style="" Container="Default" ContainerStyle="">
+        <Properties>
+          <Property Type="Container" Name="X"><![CDATA[value:300]]></Property>
+          <Property Type="Container" Name="Y"><![CDATA[value:770]]></Property>
+          <Property Type="Visual" Name="InitialWidth"><![CDATA[value:600]]></Property>
+          <Property Type="Container" Name="Width"><![CDATA[value:600]]></Property>
+          <Property Type="Visual" Name="InitialHeight"><![CDATA[value:100]]></Property>
+          <Property Type="Container" Name="Height"><![CDATA[value:100]]></Property>
+          <Property Type="Container" Name="Orientation"><![CDATA[value:0]]></Property>
+        </Properties>
+        <Asset Name="TRIGGERS" Visual="DefaultText" Style="" Container="Scale" ContainerStyle="" Domain="value:Text">
+          <Properties>
+            <Property Type="Visual" Name="VerticalAlignment"><![CDATA[value:Center]]></Property>
+            <Property Type="Visual" Name="Font"><![CDATA[value:Verdana]]></Property>
+            <Property Type="Visual" Name="FontColor"><![CDATA[value:#FF333333]]></Property>
+            <Property Type="Domain" Name="Text"><![CDATA[value:TRIGGERS]]></Property>
+            <Property Type="Visual" Name="Bold"><![CDATA[value:False]]></Property>
+            <Property Type="Visual" Name="FontSize"><![CDATA[value:20]]></Property>
+            <Property Type="Visual" Name="Alignment"><![CDATA[value:Left]]></Property>
+            <Property Type="Visual" Name="Italic"><![CDATA[value:False]]></Property>
+            <Property Type="Container" Name="X"><![CDATA[value:161]]></Property>
+            <Property Type="Container" Name="Y"><![CDATA[value:30]]></Property>
+            <Property Type="Container" Name="Width"><![CDATA[value:271]]></Property>
+            <Property Type="Container" Name="Height"><![CDATA[value:36]]></Property>
+            <Property Type="Container" Name="Orientation"><![CDATA[value:0]]></Property>
+          </Properties>
+        </Asset>
+        <Asset Name="Face detected" Visual="DefaultText" Container="Scale" ContainerStyle="" Domain="value:Text">
+          <Properties>
+            <Property Type="Visual" Name="FontColor"><![CDATA[value:#FF262626]]></Property>
+            <Property Type="Visual" Name="Font"><![CDATA[value:Verdana]]></Property>
+            <Property Type="Visual" Name="Bold"><![CDATA[value:False]]></Property>
+            <Property Type="Visual" Name="FontSize"><![CDATA[value:14]]></Property>
+            <Property Type="Visual" Name="Alignment"><![CDATA[value:Right]]></Property>
+            <Property Type="Domain" Name="Text"><![CDATA[value:Face detected]]></Property>
+            <Property Type="Visual" Name="VerticalAlignment"><![CDATA[value:Center]]></Property>
+            <Property Type="Container" Name="X"><![CDATA[value:173]]></Property>
+            <Property Type="Container" Name="Y"><![CDATA[value:54]]></Property>
+            <Property Type="Container" Name="Width"><![CDATA[value:259]]></Property>
+            <Property Type="Container" Name="Height"><![CDATA[value:30]]></Property>
+            <Property Type="Container" Name="Orientation"><![CDATA[value:0]]></Property>
+          </Properties>
+        </Asset>
+        <Asset Name="Feedback - Face detected" Visual="DefaultEllipse" Style="" Container="Default" ContainerStyle="" Domain="value:Ellipse">
+          <Properties>
+            <Property Type="Visual" Name="BorderColor"><![CDATA[value:#FF000000]]></Property>
+            <Property Type="Container" Name="MinimizedWidth"><![CDATA[value:50]]></Property>
+            <Property Type="Container" Name="MinimizedHeight"><![CDATA[value:50]]></Property>
+            <Property Type="Container" Name="DisplayButtonsRadius"><![CDATA[value:19]]></Property>
+            <Property Type="Visual" Name="BackgroundColor"><![CDATA[value:#FF7D00A3]]></Property>
+            <Property Type="Visual" Name="BorderThickness"><![CDATA[value:0]]></Property>
+            <Property Type="Visual" Name="Flat"><![CDATA[value:True]]></Property>
+            <Property Type="Visual" Name="Effects">
+              <EffectsCollection>
+                <Blur Radius="4" />
+              </EffectsCollection>
+            </Property>
+            <Property Type="Container" Name="IsVisible"><![CDATA[value:False]]></Property>
+            <Property Type="Container" Name="X"><![CDATA[value:324]]></Property>
+            <Property Type="Container" Name="Y"><![CDATA[value:54]]></Property>
+            <Property Type="Container" Name="Width"><![CDATA[value:12]]></Property>
+            <Property Type="Container" Name="Height"><![CDATA[value:12]]></Property>
+            <Property Type="Container" Name="Orientation"><![CDATA[value:0]]></Property>
+          </Properties>
+        </Asset>
+        <Asset Name="Face lost" Visual="DefaultText" Container="Scale" ContainerStyle="" Domain="value:Text">
+          <Properties>
+            <Property Type="Visual" Name="FontColor"><![CDATA[value:#FF262626]]></Property>
+            <Property Type="Visual" Name="Font"><![CDATA[value:Verdana]]></Property>
+            <Property Type="Visual" Name="Bold"><![CDATA[value:False]]></Property>
+            <Property Type="Visual" Name="FontSize"><![CDATA[value:14]]></Property>
+            <Property Type="Visual" Name="Alignment"><![CDATA[value:Right]]></Property>
+            <Property Type="Domain" Name="Text"><![CDATA[value:Face lost]]></Property>
+            <Property Type="Visual" Name="VerticalAlignment"><![CDATA[value:Center]]></Property>
+            <Property Type="Container" Name="X"><![CDATA[value:173]]></Property>
+            <Property Type="Container" Name="Y"><![CDATA[value:82]]></Property>
+            <Property Type="Container" Name="Width"><![CDATA[value:259]]></Property>
+            <Property Type="Container" Name="Height"><![CDATA[value:30]]></Property>
+            <Property Type="Container" Name="Orientation"><![CDATA[value:0]]></Property>
+          </Properties>
+        </Asset>
+        <Asset Name="Feedback - Face lost" Visual="DefaultEllipse" Style="" Container="Default" ContainerStyle="" Domain="value:Ellipse">
+          <Properties>
+            <Property Type="Visual" Name="BorderColor"><![CDATA[value:#FF000000]]></Property>
+            <Property Type="Container" Name="MinimizedWidth"><![CDATA[value:50]]></Property>
+            <Property Type="Container" Name="MinimizedHeight"><![CDATA[value:50]]></Property>
+            <Property Type="Container" Name="DisplayButtonsRadius"><![CDATA[value:19]]></Property>
+            <Property Type="Visual" Name="BackgroundColor"><![CDATA[value:#FF7D00A3]]></Property>
+            <Property Type="Visual" Name="BorderThickness"><![CDATA[value:0]]></Property>
+            <Property Type="Visual" Name="Flat"><![CDATA[value:True]]></Property>
+            <Property Type="Visual" Name="Effects">
+              <EffectsCollection>
+                <Blur Radius="4" />
+              </EffectsCollection>
+            </Property>
+            <Property Type="Container" Name="IsVisible"><![CDATA[value:False]]></Property>
+            <Property Type="Container" Name="X"><![CDATA[value:324]]></Property>
+            <Property Type="Container" Name="Y"><![CDATA[value:82]]></Property>
+            <Property Type="Container" Name="Width"><![CDATA[value:12]]></Property>
+            <Property Type="Container" Name="Height"><![CDATA[value:12]]></Property>
+            <Property Type="Container" Name="Orientation"><![CDATA[value:0]]></Property>
+          </Properties>
+        </Asset>
+      </Collection>
+      <Asset Name="Group separator Bottom" Visual="DefaultRectangle" Style="" Container="No resize" ContainerStyle="" Domain="value:Rectangle">
+        <Properties>
+          <Property Type="Visual" Name="BorderThickness"><![CDATA[value:0]]></Property>
+          <Property Type="Visual" Name="BorderColor"><![CDATA[value:#00000000]]></Property>
+          <Property Type="Visual" Name="CornerRadius"><![CDATA[value:0]]></Property>
+          <Property Type="Visual" Name="BackgroundColor"><![CDATA[value:#D9343333]]></Property>
+          <Property Type="Container" Name="X"><![CDATA[value:300]]></Property>
+          <Property Type="Container" Name="Y"><![CDATA[value:820]]></Property>
+          <Property Type="Container" Name="Width"><![CDATA[value:600]]></Property>
+          <Property Type="Container" Name="Height"><![CDATA[value:1]]></Property>
+          <Property Type="Container" Name="Orientation"><![CDATA[value:0]]></Property>
+        </Properties>
+      </Asset>
+      <Collection Name="Group Activity" Visual="Group" Style="" Container="Default" ContainerStyle="">
+        <Properties>
+          <Property Type="Container" Name="X"><![CDATA[value:300]]></Property>
+          <Property Type="Container" Name="Y"><![CDATA[value:900]]></Property>
+          <Property Type="Visual" Name="InitialWidth"><![CDATA[value:600]]></Property>
+          <Property Type="Container" Name="Width"><![CDATA[value:600]]></Property>
+          <Property Type="Visual" Name="InitialHeight"><![CDATA[value:159]]></Property>
+          <Property Type="Container" Name="Height"><![CDATA[value:159]]></Property>
+          <Property Type="Container" Name="Orientation"><![CDATA[value:0]]></Property>
+        </Properties>
+        <Asset Name="Label - Activity log" Visual="DefaultText" Style="" Container="Scale" ContainerStyle="" Domain="value:Text">
+          <Properties>
+            <Property Type="Visual" Name="VerticalAlignment"><![CDATA[value:Center]]></Property>
+            <Property Type="Visual" Name="Font"><![CDATA[value:Verdana]]></Property>
+            <Property Type="Visual" Name="FontColor"><![CDATA[value:#FF333333]]></Property>
+            <Property Type="Domain" Name="Text"><![CDATA[value:Activity log:]]></Property>
+            <Property Type="Visual" Name="Bold"><![CDATA[value:False]]></Property>
+            <Property Type="Visual" Name="FontSize"><![CDATA[value:10]]></Property>
+            <Property Type="Visual" Name="Alignment"><![CDATA[value:Left]]></Property>
+            <Property Type="Visual" Name="Italic"><![CDATA[value:False]]></Property>
+            <Property Type="Container" Name="X"><![CDATA[value:63]]></Property>
+            <Property Type="Container" Name="Y"><![CDATA[value:13]]></Property>
+            <Property Type="Container" Name="Width"><![CDATA[value:74]]></Property>
+            <Property Type="Container" Name="Height"><![CDATA[value:11.2625]]></Property>
+            <Property Type="Container" Name="Orientation"><![CDATA[value:0]]></Property>
+          </Properties>
+        </Asset>
+        <Asset Name="Value - Activity log" Visual="DefaultText" Container="Scale" ContainerStyle="" Domain="value:Text">
+          <Properties>
+            <Property Type="Domain" Name="Text"><![CDATA[mashup://externals/FaceDetection/ActivityLog]]></Property>
+            <Property Type="Visual" Name="FontColor"><![CDATA[value:#FF262626]]></Property>
+            <Property Type="Visual" Name="Font"><![CDATA[value:Verdana]]></Property>
+            <Property Type="Visual" Name="Alignment"><![CDATA[value:Left]]></Property>
+            <Property Type="Visual" Name="Bold"><![CDATA[value:True]]></Property>
+            <Property Type="Visual" Name="FontSize"><![CDATA[value:8]]></Property>
+            <Property Type="Visual" Name="VerticalAlignment"><![CDATA[value:Top]]></Property>
+            <Property Type="Container" Name="X"><![CDATA[value:337]]></Property>
+            <Property Type="Container" Name="Y"><![CDATA[value:71]]></Property>
+            <Property Type="Container" Name="Width"><![CDATA[value:484]]></Property>
+            <Property Type="Container" Name="Height"><![CDATA[value:121]]></Property>
+            <Property Type="Container" Name="Orientation"><![CDATA[value:0]]></Property>
+          </Properties>
+        </Asset>
+        <Asset Name="Trademark" Visual="DefaultText" Style="" Container="Scale" ContainerStyle="" Domain="value:Text">
+          <Properties>
+            <Property Type="Visual" Name="VerticalAlignment"><![CDATA[value:Center]]></Property>
+            <Property Type="Visual" Name="Font"><![CDATA[value:Verdana]]></Property>
+            <Property Type="Visual" Name="FontColor"><![CDATA[value:#FF333333]]></Property>
+            <Property Type="Domain" Name="Text"><![CDATA[value:OpenVINO and the OpenVINO logo are trademarks of Intel Corporation or its subsidiaries.]]></Property>
+            <Property Type="Visual" Name="Bold"><![CDATA[value:False]]></Property>
+            <Property Type="Visual" Name="FontSize"><![CDATA[value:12]]></Property>
+            <Property Type="Visual" Name="Alignment"><![CDATA[value:Center]]></Property>
+            <Property Type="Visual" Name="Italic"><![CDATA[value:True]]></Property>
+            <Property Type="Visual" Name="AdaptFontSize" RequiredApi="28.4.5"><![CDATA[value:True]]></Property>
+            <Property Type="Container" Name="X"><![CDATA[value:302]]></Property>
+            <Property Type="Container" Name="Y"><![CDATA[value:148]]></Property>
+            <Property Type="Container" Name="Width"><![CDATA[value:587]]></Property>
+            <Property Type="Container" Name="Height"><![CDATA[value:20]]></Property>
+            <Property Type="Container" Name="Orientation"><![CDATA[value:0]]></Property>
+          </Properties>
+        </Asset>
+      </Collection>
+    </Collection>
+  </MashupCollection>
+  <MashupResource>
+    <Resource Key="65a30bef-0188-42b6-bc48-e5aefae8b96f" Type="uri" Length="11216" LastModificationDate="2020-03-31T13:42:44.3304931Z" Archive="SmallFiles.zip" DefaultValue="player://data/Images/openvino-logo.png">
+      <Alternate Value="player://data/Generated/3bd38bc4a0f5f9b3214994908d1f070e.png" Width="253" Height="51" Length="5203" LastModificationDate="2020-03-31T10:47:06.1184359-05:00" Archive="SmallFiles.zip" />
+    </Resource>
+  </MashupResource>
+  <MashupExternalAsset ContextAlias="ASSOCIATED_IA">
+    <ExternalAsset Name="FaceDetection" DescriptorPath="player://resources/43ac374f-0c7c-4797-a672-bd2bba5929e4" ExternalAssetName="FaceDetection">
+      <Attachments>
+        <PresentationEventTrigger EventType="Domain" EventName="FaceDetected" TypeList="All">
+          <InvokeService Target="mashup://visuals/mashup_root_2/Default_template_for_FaceDetection/Group%20Triggers/Feedback%20-%20Face%20detected/" Type="Container" Name="Show" Delay="value:0">
+            <ServiceValueParameter ParamName="hideOtherAssetsInCollection" Value="value:False" />
+            <ServiceValueParameter ParamName="animationType" Value="value:Fade" />
+            <ServiceValueParameter ParamName="dDuration" Value="value:0.2" />
+            <ServiceValueParameter ParamName="eTweeningTypes" Value="value:eEaseInOut" />
+            <ServiceValueParameter ParamName="nRunningCount" Value="value:3" />
+            <ServiceValueParameter ParamName="eRepeatBehavior" Value="value:eAutoReverse" />
+            <ServiceValueParameter ParamName="dDelayBeforeRepeat" Value="value:0" />
+            <ServiceValueParameter ParamName="bResetAtEnd" Value="value:True" />
+          </InvokeService>
+        </PresentationEventTrigger>
+        <PresentationEventTrigger EventType="Domain" EventName="FaceLost" TypeList="All">
+          <InvokeService Target="mashup://visuals/mashup_root_2/Default_template_for_FaceDetection/Group%20Triggers/Feedback%20-%20Face%20lost/" Type="Container" Name="Show" Delay="value:0">
+            <ServiceValueParameter ParamName="hideOtherAssetsInCollection" Value="value:False" />
+            <ServiceValueParameter ParamName="animationType" Value="value:Fade" />
+            <ServiceValueParameter ParamName="dDuration" Value="value:0.2" />
+            <ServiceValueParameter ParamName="eTweeningTypes" Value="value:eEaseInOut" />
+            <ServiceValueParameter ParamName="nRunningCount" Value="value:3" />
+            <ServiceValueParameter ParamName="eRepeatBehavior" Value="value:eAutoReverse" />
+            <ServiceValueParameter ParamName="dDelayBeforeRepeat" Value="value:0" />
+            <ServiceValueParameter ParamName="bResetAtEnd" Value="value:True" />
+          </InvokeService>
+        </PresentationEventTrigger>
+      </Attachments>
+    </ExternalAsset>
+  </MashupExternalAsset>
+  <MashupExternalConverters>
+    <ExternalAsset Name="IsEqualToBC" DescriptorPath="player://resources/509f9d54-0d9a-41d0-a433-ec933e9c56d7" ExternalAssetName="IsEqualToBC" />
+  </MashupExternalConverters>
+  <MashupResource>
+    <Resource Key="43ac374f-0c7c-4797-a672-bd2bba5929e4" Type="uri" Length="14254" LastModificationDate="2020-04-03T14:30:13.5082124Z" DefaultValue="player://data/InterfaceAssets/FaceDetection/FaceDetection.ifd">
+      <Dependencies>
+        <Dependency URI="player://data/InterfaceAssets/FaceDetection/FaceDetection.dll" Length="20992" LastModificationDate="2020-04-03T14:30:12.54605Z" Archive="SmallFiles.zip" />
+        <Dependency URI="player://data/InterfaceAssets/FaceDetection/icon_facedetection_32.png" Length="494" LastModificationDate="2020-04-03T14:30:14.4372353Z" Archive="SmallFiles.zip" />
+        <Dependency URI="player://data/InterfaceAssets/FaceDetection/Newtonsoft.Json.dll" Length="525232" LastModificationDate="2020-04-03T14:30:15.4066841Z" />
+        <Dependency URI="player://data/InterfaceAssets/FaceDetection/websocket-sharp.dll" Length="254976" LastModificationDate="2020-04-03T14:30:16.373306Z" />
+      </Dependencies>
+    </Resource>
+  </MashupResource>
+  <MashupResource>
+    <Resource Key="509f9d54-0d9a-41d0-a433-ec933e9c56d7" Type="uri" Length="3251" LastModificationDate="2020-03-19T18:58:08Z" DefaultValue="player://data/InterfaceAssets/IsEqualToBC/IsEqualToBC.ifd">
+      <Dependencies>
+        <Dependency URI="player://data/InterfaceAssets/IsEqualToBC/IsEqualToBC.js" Length="1930" LastModificationDate="2020-03-11T17:35:26Z" Archive="SmallFiles.zip" />
+      </Dependencies>
+    </Resource>
+  </MashupResource>
+</Mashup>
