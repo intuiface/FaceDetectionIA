@@ -217,20 +217,21 @@ namespace FaceDetection
         #region Events
 
         public delegate void FaceEventHandler(object sender, FaceEventArgs e);
+        public delegate void FaceLostEventHandler(object sender, FaceLostEventArgs e);
         public delegate void FaceCountEventHandler(object sender, FaceCountEventArgs e);
 
         public event FaceEventHandler FaceDetected;
-        public event FaceEventHandler FaceLost;
+        public event FaceLostEventHandler FaceLost;
         public event FaceCountEventHandler FaceCountChanged;
 
-        protected void RaiseFaceDetected(int faceId, string gender, string ageRange)
+        protected void RaiseFaceDetected(int faceId, string gender, string age)
         {
-            FaceDetected(this, new FaceEventArgs(faceId, gender, ageRange));
+            FaceDetected(this, new FaceEventArgs(faceId, gender, age));
         }
 
-        protected void RaiseFaceLost(int faceId, string gender, string ageRange)
+        protected void RaiseFaceLost(int faceId, string gender, string age, double dwellTime)
         {
-            FaceLost(this, new FaceEventArgs(faceId, gender, ageRange));
+            FaceLost(this, new FaceLostEventArgs(faceId, gender, age, dwellTime));
         }
 
         protected void RaiseFaceCountChanged(int count)
@@ -449,7 +450,7 @@ namespace FaceDetection
                 {
                     // Raise face lost event
                     Console.WriteLine("Face lost: " + face);
-                    RaiseFaceLost(face.Id, face.Gender, face.Age);
+                    RaiseFaceLost(face.Id, face.Gender, face.Age, face.DwellTime);
                     m_startTimeMap.Remove(face.Id);
                 }
             }
@@ -596,7 +597,7 @@ namespace FaceDetection
                     Face v = Faces[index];
 
                     // Raise event first
-                    RaiseFaceLost(v.Id, v.Gender, v.Age);
+                    RaiseFaceLost(v.Id, v.Gender, v.Age, v.DwellTime);
                     m_startTimeMap.Remove(v.Id);
 
                     // Remove index from map and Face from list
