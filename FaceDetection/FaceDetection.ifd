@@ -4,7 +4,7 @@
 	"id": "FaceDetection",
 	"name": "FaceDetection",
 	"description": "Automatically detect, log, and react to age, gender, head pose, and emotion using any camera.",
-	"version": "1.4",
+	"version": "1.5",
 	"protocol": "dll",
 	"baseUrl": null,
 	"basePath": "FaceDetection",
@@ -405,6 +405,11 @@
 						"Age": {
 							"type": "string",
 							"title": "Age"
+						},
+						"DwellTime": {
+							"title": "Dwell time",
+							"type": "number",
+							"format": "double"
 						}
 					}
 				},
