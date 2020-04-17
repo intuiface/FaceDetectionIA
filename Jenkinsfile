@@ -21,6 +21,7 @@ pipeline {
 			unzip zipFile: "cryptifix\\${files[0].name}", dir: 'cryptifix'
 		}
 		bat "cryptifix\\Cryptifix.exe sign \"dist\\x64\\Release\\FaceDetection\" --LicenseEdition=FREE --IsAllowedByNonInteractivePlayer=false"
+        callBuildScript workspace: workspace, script:'signcode.pl', params: "\"dist\\x64\\Release\\OpenVINOFaceDetectionServer\" \"*.exe\""
       }
     }
 
