@@ -1,12 +1,12 @@
 <a name="1.1"></a>
-# 1.1 (2020-04-20)
+# [1.1](https://github.com/intuiface/FaceDetectionIA/releases/tag/1.1) (2020-04-20)
 
 ### Bug Fixes
 
 * **server:** Sign Face Detection Server.
 
 <a name="1.0"></a>
-# 1.0 (2020-04-14)
+# [1.0](https://github.com/intuiface/FaceDetectionIA/releases/tag/1.0) (2020-04-14)
 
 ### Features
 
