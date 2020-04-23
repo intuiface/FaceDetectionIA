@@ -22,6 +22,7 @@ pipeline {
 		}
 		bat "cryptifix\\Cryptifix.exe sign \"dist\\x64\\Release\\FaceDetection\" --LicenseEdition=FREE --IsAllowedByNonInteractivePlayer=false"
         callBuildScript workspace: workspace, script:'signcode.pl', params: "\"OpenVINOFaceDetectionServer\" \"dist\\x64\\Release\\OpenVINOFaceDetectionServer\\*.exe\""
+        callBuildScript workspace: workspace, script:'signcode.pl', params: "\"OpenVINOFaceDetectionServer\" \"dist\\x64\\Release\\OpenVINOFaceDetectionServer\\*.bat\""
       }
     }
 
