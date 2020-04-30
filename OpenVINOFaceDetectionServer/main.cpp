@@ -33,6 +33,9 @@
 #include <samples/ocv_common.hpp>
 #include <samples/slog.hpp>
 
+#include <boost/property_tree/ptree.hpp>
+#include <boost/property_tree/json_parser.hpp>
+
 #include "interactive_face_detection.hpp"
 #include "detectors.hpp"
 #include "face.hpp"
@@ -47,6 +50,38 @@
 
 using namespace InferenceEngine;
 
+// Change by Intuilab SAS: parse confiuration file to set models, device and show/no_show
+void ParseAndCheckConfigurationFile() {
+	// Load configuration file
+	boost::property_tree::ptree root;
+	boost::property_tree::read_json("OpenVINOFaceDetectionServer.config", root);
+
+	// Parse parameters
+	boost::optional<std::string> faceModelOptional = root.get_optional<std::string>("m");
+	if (faceModelOptional.has_value()) {
+		FLAGS_m.assign(faceModelOptional.get());
+	}
+	boost::optional<std::string> ageGenderModelOptional = root.get_optional<std::string>("m_ag");
+	if (ageGenderModelOptional.has_value()) {
+		FLAGS_m_ag.assign(ageGenderModelOptional.get());
+	}
+	boost::optional<std::string> emotionModelOptional = root.get_optional<std::string>("m_em");
+	if (emotionModelOptional.has_value()) {
+		FLAGS_m_em.assign(emotionModelOptional.get());
+	}
+	boost::optional<std::string> headPoseModelOptional = root.get_optional<std::string>("m_hp");
+	if (headPoseModelOptional.has_value()) {
+		FLAGS_m_hp.assign(headPoseModelOptional.get());
+	}
+	boost::optional<std::string> deviceOptional = root.get_optional<std::string>("d");
+	if (deviceOptional.has_value()) {
+		FLAGS_d.assign(deviceOptional.get());
+	}
+	boost::optional<bool> noShowOptional = root.get_optional<bool>("no_show");
+	if (noShowOptional.has_value()) {
+		FLAGS_no_show = noShowOptional.get();
+	}
+}
 
 bool ParseAndCheckCommandLine(int argc, char *argv[]) {
     // ---------------------------Parsing and validating input arguments--------------------------------------
@@ -85,6 +120,7 @@ int main(int argc, char *argv[]) {
         std::cout << "InferenceEngine: " << GetInferenceEngineVersion() << std::endl;
 
         // ------------------------------ Parsing and validating of input arguments --------------------------
+		ParseAndCheckConfigurationFile();
         if (!ParseAndCheckCommandLine(argc, argv)) {
             return 0;
         }

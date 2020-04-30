@@ -66,4 +66,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="src\exporter.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="OpenVINOFaceDetectionServer.config" />
+  </ItemGroup>
 </Project>

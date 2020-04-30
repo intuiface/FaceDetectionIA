@@ -130,7 +130,6 @@ XCOPY "C:\program files (x86)\common files\intel\shared libraries\redist\intel64
 XCOPY "C:\Windows\System32\msvcp140d.dll" "$(targetDir)" /S /Y
 XCOPY "C:\Windows\System32\vcruntime140d.dll" "$(targetDir)" /S /Y
 XCOPY "C:\Windows\System32\concrt140d.dll" "$(targetDir)" /S /Y
-XCOPY "$(projectDir)\scripts\*" "$(targetDir)" /S /Y
 XCOPY "$(projectDir)\licensing\*" "$(targetDir)\licensing\" /S /Y /E
 COPY "$(solutionDir)\LICENSE" "$(targetDir)"
 </Command>
@@ -176,7 +175,6 @@ XCOPY "C:\program files (x86)\common files\intel\shared libraries\redist\intel64
 XCOPY "C:\Windows\System32\msvcp140d.dll" "$(targetDir)" /S /Y
 XCOPY "C:\Windows\System32\vcruntime140d.dll" "$(targetDir)" /S /Y
 XCOPY "C:\Windows\System32\concrt140d.dll" "$(targetDir)" /S /Y
-XCOPY "$(projectDir)\scripts\*" "$(targetDir)" /S /Y
 XCOPY "$(projectDir)\licensing\*" "$(targetDir)\licensing\" /S /Y /E
 COPY "$(solutionDir)\LICENSE" "$(targetDir)"
 </Command>
@@ -226,7 +224,6 @@ XCOPY "C:\program files (x86)\common files\intel\shared libraries\redist\intel64
 XCOPY "C:\Windows\System32\msvcp140.dll" "$(targetDir)" /S /Y
 XCOPY "C:\Windows\System32\vcruntime140.dll" "$(targetDir)" /S /Y
 XCOPY "C:\Windows\System32\concrt140.dll" "$(targetDir)" /S /Y
-XCOPY "$(projectDir)\scripts\*" "$(targetDir)" /S /Y
 XCOPY "$(projectDir)\licensing\*" "$(targetDir)\licensing\" /S /Y /E
 COPY "$(solutionDir)\LICENSE" "$(targetDir)"
 </Command>
@@ -276,7 +273,6 @@ XCOPY "C:\program files (x86)\common files\intel\shared libraries\redist\intel64
 XCOPY "C:\Windows\System32\msvcp140.dll" "$(targetDir)" /S /Y
 XCOPY "C:\Windows\System32\vcruntime140.dll" "$(targetDir)" /S /Y
 XCOPY "C:\Windows\System32\concrt140.dll" "$(targetDir)" /S /Y
-XCOPY "$(projectDir)\scripts\*" "$(targetDir)" /S /Y
 XCOPY "$(projectDir)\licensing\*" "$(targetDir)\licensing\" /S /Y /E
 COPY "$(solutionDir)\LICENSE" "$(targetDir)"
 </Command>
@@ -305,6 +301,16 @@ COPY "$(solutionDir)\LICENSE" "$(targetDir)"
     <ClCompile Include="src\shared_state.cpp" />
     <ClCompile Include="src\visualizer.cpp" />
     <ClCompile Include="src\websocket_session.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="OpenVINOFaceDetectionServer.config">
+      <DeploymentContent>true</DeploymentContent>
+      <FileType>Document</FileType>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+    </CopyFileToFolders>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

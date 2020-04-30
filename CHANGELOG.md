@@ -1,3 +1,10 @@
+<a name="1.2"></a>
+# [1.2](https://github.com/intuiface/FaceDetectionIA/releases/tag/1.2) (2020-05-04)
+
+### Features
+
+* **server:** Replace all bat files by one configuration file to avoid Defender SmartScreen.
+
 <a name="1.1"></a>
 # [1.1](https://github.com/intuiface/FaceDetectionIA/releases/tag/1.1) (2020-04-20)
 
