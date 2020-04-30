@@ -75,12 +75,14 @@ static const char utilization_monitors_message[] = "Optional. List of monitors t
 static const char thresh_iou_message[] = "Optional. Intersection over Union threshold for detections";
 
 DEFINE_bool(h, false, help_message);
-DEFINE_string(i, "", input_video_message);
+// Change by Intuilab SAS: change default value of input video to use camera
+DEFINE_string(i, "cam", input_video_message);
 DEFINE_string(o, "", output_video_message);
-DEFINE_string(m, "", face_detection_model_message);
-DEFINE_string(m_ag, "", age_gender_model_message);
-DEFINE_string(m_hp, "", head_pose_model_message);
-DEFINE_string(m_em, "", emotions_model_message);
+// Change by Intuilab SAS: change default value of used models
+DEFINE_string(m, ".\\models\\face-detection-adas-0001.xml", face_detection_model_message);
+DEFINE_string(m_ag, ".\\models\\age-gender-recognition-retail-0013.xml", age_gender_model_message);
+DEFINE_string(m_hp, ".\\models\\head-pose-estimation-adas-0001.xml", head_pose_model_message);
+DEFINE_string(m_em, ".\\models\\emotions-recognition-retail-0003.xml", emotions_model_message);
 DEFINE_string(m_lm, "", facial_landmarks_model_message);
 DEFINE_string(d, "CPU", target_device_message);
 DEFINE_string(d_ag, "CPU", target_device_message_ag);
