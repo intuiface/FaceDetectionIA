@@ -23,7 +23,7 @@ Prerequisites:
 * install [Visual Studio 2015 or later](https://visualstudio.microsoft.com/fr/downloads/)
 * install [CMake 3.4 or later](https://cmake.org/download/)
 * install [Python 3.6.5](https://www.python.org/downloads/release/python-365/)
-* install [OpenVINO](https://www.dropbox.com/s/2svslu5jkdddwj1/w_openvino_toolkit_p_2020.1.033.exe?dl=0)
+* install [OpenVINO](https://www.dropbox.com/s/2svslu5jkdddwj1/w_openvino_toolkit_p_2020.1.033.exe?dl=0) (version 2020.1.033)
 
 Configure environment variables:
 
