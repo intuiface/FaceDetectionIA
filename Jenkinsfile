@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        bat "\"${tool 'msbuild-v15'}\\MSBuild.exe\" /v:m /clp:ErrorsOnly;Summary /p:Configuration=Release /p:Platform=\"Any CPU\" FaceDetection.sln"
+        bat "\"${tool 'msbuild-v17'}\\MSBuild.exe\" /v:m /clp:ErrorsOnly;Summary /p:Configuration=Release /p:Platform=\"Any CPU\" FaceDetection.sln"
         bat 'package.bat'
       }
     }
