@@ -1,7 +1,7 @@
 pipeline {
   agent {
     node {
-      label 'sapin3'
+      label 'DotNetCompiler'
     }
 
   }
