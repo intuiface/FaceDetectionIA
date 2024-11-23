@@ -1,0 +1,25 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "outDir": "./tmp/",
+    "noImplicitAny": true,
+    "target": "ES2022",
+    "useDefineForClassFields": false,
+    "module": "es2020",
+    "lib": [
+      "es2020",
+      "dom"
+    ],
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop" : true,    
+    "declaration": false,
+    "downlevelIteration": true,
+    "moduleResolution": "node",
+    "importHelpers": true,
+  },
+  "include": [
+    "src/*"
+  ]
+}

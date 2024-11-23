@@ -1,0 +1,19 @@
+{
+    "editor.formatOnSave": false,
+    "typescript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
+    "typescript.format.placeOpenBraceOnNewLineForControlBlocks": true,
+    "typescript.format.placeOpenBraceOnNewLineForFunctions": true,
+    "typescript.preferences.quoteStyle": "single",
+    "typescript.tsdk": "./node_modules/typescript/lib",
+    "eslint.format.enable": true,
+    "eslint.lintTask.enable": true,
+    "eslint.lintTask.options": "-c .eslintrc.js --ext .ts . --ignore-pattern node_modules --ignore-pattern dist",
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": false,
+      "source.fixAll.eslint": true
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    }
+}
